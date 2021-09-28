@@ -15,10 +15,9 @@ describe('Testa se o navBar funciona devidamente', () => {
 
   test('Verifica o texto, e se o link About funciona devidamente', () => {
     const { history } = renderWithRouter(<App />);
-    const getAbout = screen.getByText(/About/);
+    const getAbout = screen.getByRole('link', { name: /about/i });
 
     expect(getAbout).toBeInTheDocument();
-
     fireEvent.click(getAbout);
     expect(history.location.pathname).toBe('/about');
   });
@@ -27,6 +26,7 @@ describe('Testa se o navBar funciona devidamente', () => {
     const { history } = renderWithRouter(<App />);
     const getFavorite = screen.getByText(/Favorite Pokémons/);
 
+    expect(getFavorite).toBeInTheDocument();
     fireEvent.click(getFavorite);
     expect(history.location.pathname).toBe('/favorites');
   });
