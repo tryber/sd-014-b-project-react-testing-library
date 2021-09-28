@@ -1,7 +1,10 @@
+// Ajuda Vitor Novaes para solucionar o peso médio do Pokemon pelo data
+
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
 import renderRouter from './renderRouter';
+import Pokemon from '../data';
 import App from '../App';
 
 describe(' Teste o componente <Pokemon.js />', () => {
@@ -15,7 +18,9 @@ describe(' Teste o componente <Pokemon.js />', () => {
     const pokeType = screen.getByTestId('pokemon-type');
     expect(pokeType).toHaveTextContent('Electric');
     const pokeWeight = screen.getByTestId('pokemon-weight');
-    expect(pokeWeight).toHaveTextContent(/6.0/i);
+    const { averageWeight: { value, measurementUnit } } = Pokemon[0];
+    expect(pokeWeight)
+      .toHaveTextContent(`Average weight: ${value} ${measurementUnit}`);
     const pokeImg = screen.getByAltText(/sprite/i);
     expect(pokeImg.src).toBe('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
   });
