@@ -4,9 +4,9 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
 const renderRouter = (component) => {
-  const historic = createMemoryHistory();
+  const history = createMemoryHistory();
   return ({
-    ...render(<Router historic={ historic }>{ component }</Router>), historic,
+    ...render(<Router history={ history }>{ component }</Router>), history,
   });
 };
 

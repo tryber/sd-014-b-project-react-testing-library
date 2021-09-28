@@ -5,7 +5,7 @@ import renderRouter from './renderRouter';
 import App from '../App';
 
 describe('Teste o componente <App.js />', () => {
-  const { historic } = () => {
+  const { history } = () => {
     beforeEach(() => {
       renderRouter(<App />);
     });
@@ -27,14 +27,14 @@ describe('Teste o componente <App.js />', () => {
     // Mock do clique:
     userEvent.click(linkHome);
     // Testa caminho da pasta
-    const { location: { pathname } } = historic;
+    const { location: { pathname } } = history;
     expect(pathname).toBe('/');
   });
 
   test('Testa se redireciona p/ pág About URL/about,ao clicar no link About', () => {
     const linkAbout = screen.getByRole('link', { name: /About/i });
     userEvent.click(linkAbout);
-    const { pathname } = historic.location;
+    const { pathname } = history.location;
     expect(pathname).toBe('/about');
   });
 
@@ -42,13 +42,13 @@ describe('Teste o componente <App.js />', () => {
     const linkFavPokemon = screen.getByRole('link',
       { name: /Favorite Pokémons/i });
     userEvent.click(linkFavPokemon);
-    const { pathname } = historic.location;
+    const { pathname } = history.location;
     expect(pathname).toBe('/favorites');
   });
 
   test('Teste se é redirecionado para pag NotFound ao entrar em URL desconhecida', () => {
     // Tenta acessar uma 404
-    historic.push('/mistakenlink');
+    history.push('/mistakenlink');
     const notFound = screen.getByText('Page requested not found');
     expect(notFound).toBeInTheDocument();
   });

@@ -42,10 +42,10 @@ describe(' Teste o componente <Pokemon.js />', () => {
   });
 
   test('Teste se a URL muda para /pokemon/<id>', () => {
-    const { historic } = renderRouter(<App />);
+    const { history } = renderRouter(<App />);
     const moreDetails = screen.getByText(/More details/i);
     userEvent.click(moreDetails);
-    const { pathname } = historic.location;
+    const { pathname } = history.location;
     expect(pathname).toBe('/pokemons/25');
   });
 
