@@ -52,4 +52,11 @@ describe('Testa o componente App', () => {
     );
     expect(textFavorites).toBeInTheDocument();
   });
+
+  test('se a aplicação é redirecionada p/ Not Found quando a url é desconhecida', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/nao-encontro-a-url');
+    const notFound = screen.getByText(/Page requested not found/);
+    expect(notFound).toBeInTheDocument();
+  });
 });
