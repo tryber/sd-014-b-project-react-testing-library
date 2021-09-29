@@ -18,11 +18,13 @@ describe('Testa se o componente Pokedex.js', () => {
     getPokemon('6.0');
     getAlt('Pikachu');
     expect(getAlt('Pikachu').src).toBe('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+    expect(screen.getByTestId('pokemon-type').innerHTML).toBe('Electric');
 
     // Faz os testes com o Charmander
     fireEvent.click(screen.getByText(/fire/i));
     getPokemon('8.5');
     getAlt('Charmander');
+    expect(screen.getByTestId('pokemon-type').innerHTML).toBe('Fire');
     expect(getAlt('Charmander').src).toBe('https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png');
   });
 
@@ -64,6 +66,7 @@ describe('Testa se o componente Pokedex.js', () => {
     // Acionando o botão favoritado
     fireEvent.click(screen.getByText(/favoritado/i));
     expect(getImgs().length).toBe(2 * 2 + 2);
+    expect(getImgs()[1].src).toContain('/star-icon.svg');
     screen.getByAltText(/charmander is marked as favorite/i);
     // Testando se caso ele saia e volte, a estrela continua por lá
     fireEvent.click(screen.getByText(/home/i));
