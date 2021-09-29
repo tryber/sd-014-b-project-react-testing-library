@@ -105,6 +105,5 @@ class App extends Component {
     );
   }
 }
-// Charizard melhor pokémon ò_Ó
 
 export default App;
