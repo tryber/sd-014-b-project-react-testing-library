@@ -1,3 +1,5 @@
+// Wallacy iniciando o projeto
+
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
