@@ -23,6 +23,7 @@ describe(
         userEvent.click(homeLink);
 
         expect(homeLink).toBeInTheDocument();
+        expect(history.location.pathname).toBe('/');
       },
     );
 
@@ -42,6 +43,7 @@ describe(
         userEvent.click(aboutLink);
 
         expect(aboutLink).toBeInTheDocument();
+        expect(history.location.pathname).toBe('/about');
       },
     );
 
@@ -60,6 +62,7 @@ describe(
         userEvent.click(favoriteLink);
 
         expect(favoriteLink).toBeInTheDocument();
+        expect(history.location.pathname).toBe('/favorites');
       },
     );
   },
