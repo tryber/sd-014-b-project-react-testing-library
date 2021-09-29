@@ -35,6 +35,5 @@ describe('Testando Componente APP', () => {
     history.push('/anythink');
     const NotFoundText = screen.getByText('Page requested not found');
     expect(NotFoundText).toBeInTheDocument();
-
   });
 });
