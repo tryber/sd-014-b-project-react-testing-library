@@ -57,7 +57,7 @@ describe('tests set of app.js', () => {
 
   it('should the click in the link Favorite Pokémon will'
   + ' redirects to the sites page correctly', () => {
-    // Teste se a aplicação é redirecionada para a página de Pokémons Favoritados, na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação.
+    // Teste se a aplicação é redirecionada para a página de Pokémons Favoritados na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação.
     render(
       <MemoryRouter>
         <App />
