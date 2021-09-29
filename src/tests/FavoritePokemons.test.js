@@ -12,7 +12,7 @@ describe('Teste o componente <FavoritePokemons.js />', () => {
 
   it('Teste se é exibido todos os cards de pokémons favoritados', () => {
     renderRouter(<App />);
-    const detailsBtn = screen.getByRole('link', { name: 'More detailsBtn' });
+    const detailsBtn = screen.getByRole('link', { name: 'More details' });
     expect(detailsBtn).toBeInTheDocument();
     fireEvent.click(detailsBtn);
 
