@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from '../components/renderWithRouter';
 import App from '../App';
 
-describe('Testa os links do App e sua rotas', () => {
+describe('1 - Testa o componente App.js', () => {
   test('Primeiro link deve possuir o texto home', () => {
     renderWithRouter(<App />);
     const elementHome = screen.getByText(/home/i);
