@@ -19,10 +19,11 @@ describe('Requisito 2', () => {
     });
     expect(h2).toBeInTheDocument();
   });
-  it('A pagina contém a seguinte imagem?', () =>{
+  it('A pagina contém a seguinte imagem?', () => {
     renderWithRouter(<About />);
     const img = screen.getByRole('img');
     const src = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
     expect(img.src).toBe(src);
-  })
+  });
 });
+// o primeiro teste também vale para os paragrafos, como? pelos nós filhos
