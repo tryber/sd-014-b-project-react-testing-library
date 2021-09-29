@@ -17,4 +17,13 @@ describe('Testa componente `About`', () => {
     expect(pokedexFirstParagraph).toBeInTheDocument();
     expect(pokedexSecondParagraph).toBeInTheDocument();
   });
+
+  test('se a página contém um heading `h2` com o texto `About Pokédex`.', () => {
+    renderWithRouter(<About />);
+    const title = screen.getByRole('heading', {
+      level: 2,
+      name: 'About Pokédex',
+    });
+    expect(title).toBeInTheDocument();
+  });
 });
