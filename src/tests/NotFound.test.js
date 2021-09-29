@@ -22,7 +22,7 @@ describe('Testa componente `NotFound`', () => {
 
     expect(image).toHaveAttribute(
       'src',
-      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif'
+      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif',
     );
   });
 });
