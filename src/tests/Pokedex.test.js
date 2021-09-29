@@ -1,8 +1,10 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './helper/renderWithRouter';
 import Pokedex from '../components/Pokedex';
+
+beforeEach(cleanup);
 
 const pokemons = [
   {
@@ -84,4 +86,37 @@ test('Se o proximo pokemon é exibido quando "proximo pokemon" é clicado', () =
   expect(firstPokemon).toBeInTheDocument();
   secondPokemon = screen.queryByText('Charmander');
   expect(secondPokemon).toBeNull();
+});
+
+describe('Testando se os botões do filtro estão funcionando corretamente', () => {
+  test('Testando se os botões são renderizados corretamente', () => {
+    renderWithRouter(
+      <Pokedex
+        pokemons={ pokemons }
+        isPokemonFavoriteById={ { isPokemonFavoriteById: true } }
+      />,
+    );
+    const TypeButtons = screen.getAllByTestId('pokemon-type-button');
+    expect(screen.getByText('All')).toHaveTextContent('All');
+    expect(TypeButtons[0]).toHaveTextContent('Electric');
+    expect(TypeButtons[1]).toHaveTextContent('Fire');
+  });
+
+  test('se os botões funcionam corretamente quando clicados', () => {
+    renderWithRouter(
+      <Pokedex
+        pokemons={ pokemons }
+        isPokemonFavoriteById={ { isPokemonFavoriteById: true } }
+      />,
+    );
+    const dataTestId = 'next-pokemon';
+    const buttons = screen.getAllByRole('button');
+    expect(screen.getByTestId(dataTestId)).toBeEnabled();
+    userEvent.click(buttons[1]);
+    expect(screen.getByTestId(dataTestId)).toBeDisabled();
+    userEvent.click(buttons[2]);
+    expect(screen.getByTestId(dataTestId)).toBeDisabled();
+    userEvent.click(buttons[0]);
+    expect(screen.getByTestId(dataTestId)).toBeEnabled();
+  });
 });
