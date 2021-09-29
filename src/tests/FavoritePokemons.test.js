@@ -2,7 +2,6 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import renderWithRouter from './helper/renderWithRouter';
 import FavoritePokemons from '../components/FavoritePokemons';
-import pokemons from '../data';
 
 const Pikachu = {
   id: 25,
