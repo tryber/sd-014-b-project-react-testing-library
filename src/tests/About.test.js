@@ -1,1 +1,1 @@
-test('', () => {});
+test('Testa página `About`', () => {});
