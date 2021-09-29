@@ -1,5 +1,3 @@
-**/*.test.js
-src/tests/*
 src/*.js
 src/*.css
 src/components/*
