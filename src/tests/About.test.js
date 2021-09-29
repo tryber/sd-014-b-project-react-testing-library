@@ -45,8 +45,6 @@ describe('Testa o componente About', () => {
       /This application simulates a Pokédex/,
       /One can filter Pokémons by type/,
     );
-      /* 'One can filter Pokémons by type, and see more details for each one of them', */
-
     expect(text).toBeInTheDocument();
   });
 
