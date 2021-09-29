@@ -3,13 +3,15 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
+import Pokedex from '../components/Pokedex';
+import pokemons from '../data';
 
 beforeEach(() => renderWithRouter(<App />));
 
 describe('Testa componentes da Pokedex', () => {
   const dataTestIdType = 'pokemon-type';
   test('se o título existe', () => {
-    /* renderWithRouter(<App />); */
+    /* renderWithRouter(<Pokedex pokemons={ pokemons[0].name } isPokemonFavoriteById={ pokemons[0].id } />); */
     const titlePokedex = screen
       .getByRole('heading', { level: 2, name: 'Encountered pokémons' });
     expect(titlePokedex).toBeInTheDocument();
@@ -117,8 +119,8 @@ describe('Testa componentes da Pokedex', () => {
     const buttonAll = screen.getByRole('button', { name: 'All' });
     expect(buttonAll).toBeInTheDocument();
 
-    const dataButtonAll = screen.getByTestId('');
-    expect(dataButtonAll.innerHTML).toBe('All');
+    /* const dataButtonAll = screen.getByTestId('');
+    expect(dataButtonAll.innerHTML).toBe('All'); */
 
     userEvent.click(buttonAll);
     const firstPokemon = screen.getByTestId('pokemon-name');
