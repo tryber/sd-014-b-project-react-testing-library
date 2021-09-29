@@ -27,10 +27,13 @@ describe('Testa o componente <PokemonDetails.js />', () => {
     const buttonDetails = screen.getByRole('link', { name: 'More details' });
     userEvent.click(buttonDetails);
 
-    const titleLocation = screen.getByRole('heading', { level: 2, name: /Locations/ });
+    const titleLocation = screen.getByRole('heading', {
+      level: 2,
+      name: /Locations of Pikachu/,
+    });
     expect(titleLocation).toBeInTheDocument();
 
-    const maps = screen.getAllByAltText(/location/);
+    const maps = screen.getAllByAltText(/Pikachu location/);
     expect(maps.length).toBe(2);
     expect(maps[0]).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
   });
