@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 
-describe('Testando <App />', () => {
+describe('Teste o componente <App.js />.', () => {
   it('Teste se o topo da aplicação contém um Home, About, Favorite Pokémons', () => {
     const history = createMemoryHistory();
     render(
