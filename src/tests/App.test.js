@@ -21,23 +21,29 @@ describe('Requisito 1 - Testa <App.js />', () => {
   // component, o próximo vai voltar o pathname do anterior
 
   it('Verifica se home direciona para /', () => {
-    fireEvent.click(screen.getByText(/home/i));
     const { history } = renderWithRouter(<App />);
+    fireEvent.click(screen.getByText(/home/i));
     const { pathname } = history.location;
     expect(pathname).toBe('/');
   });
 
   it('Verifica se about direciona para /about', () => {
-    fireEvent.click(screen.getByText(/about/i));
     const { history } = renderWithRouter(<App />);
+    fireEvent.click(screen.getByText(/about/i));
     const { pathname } = history.location;
     expect(pathname).toBe('/about');
   });
 
   it('Verifica se favorite pokémons direciona para /favorites', () => {
-    fireEvent.click(screen.getByText(/favorite pokémons/i));
     const { history } = renderWithRouter(<App />);
+    fireEvent.click(screen.getByText(/favorite pokémons/i));
     const { pathname } = history.location;
     expect(pathname).toBe('/favorites');
+  });
+
+  it('Verifica se uma URL desconhecida direciona para <NotFound />', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/trybe/');
+    expect(screen.getByText(/not found/i));
   });
 });
