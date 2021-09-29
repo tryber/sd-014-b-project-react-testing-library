@@ -44,7 +44,7 @@ describe('Testa o card do Pokemon', () => {
     const checkFav = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
     userEvent.click(checkFav);
 
-    const starIcon = screen.getByAltText(/is marked as favorite/);
+    const starIcon = screen.getByAltText('Pikachu is marked as favorite');
     expect(starIcon).toHaveAttribute('src', '/star-icon.svg');
   });
 });
