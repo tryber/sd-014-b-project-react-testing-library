@@ -27,7 +27,7 @@ describe('testanto se o About esta funcionando corretamente', () => {
   it('Testa se a página contém a seguinte imagem de uma Pokédex', () => {
     renderWithRouter(<About />);
     // https://testing-library.com/docs/queries/byalttext/ - como pegar uma imagem
-    const altImage = screen.getByAltText('Pokédex');
+    const altImage = screen.getByAltText('Crying emoji');
 
     expect(altImage.src).toContain('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
