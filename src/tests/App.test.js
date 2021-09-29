@@ -3,31 +3,30 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
-import { About } from '../components';
 
 describe('1 - Quando a Aplicação inicializa', () => {
-  beforeEach(() => {
-    jest.restoreAllMocks();
-  });
 
   it('Será validado se os links de navegação são exibidos na página de pesquisa', () => {
     renderWithRouter(<App />);
 
-    const allLinks = screen.getAllByRole('link');
+    const linkHome = screen.getByRole('link', { name: 'Home'});
+    expect(linkHome).toBeInTheDocument();
+    expect(linkHome).toHaveTextContent('Home');
 
-    expect(allLinks[0]).toBeInTheDocument();
-    expect(allLinks[0]).toHaveTextContent('Home');
-    expect(allLinks[1]).toBeInTheDocument();
-    expect(allLinks[1]).toHaveTextContent('About');
-    expect(allLinks[2]).toBeInTheDocument();
-    expect(allLinks[2]).toHaveTextContent('Favorite Pokémons');
+    const linkAbout = screen.getByRole('link', { name: 'About'});
+    expect(linkAbout).toBeInTheDocument();
+    expect(linkAbout).toHaveTextContent('About');
+
+    const linkFavorite = screen.getByRole('link', { name: 'Favorite Pokémons'});
+    expect(linkFavorite).toBeInTheDocument();
+    expect(linkFavorite).toHaveTextContent('Favorite Pokémons');
   });
 
   it('Será validado se a navegação para o Home ocorre corretamente', () => {
     const { history } = renderWithRouter(<App />);
 
-    const allLinks = screen.getAllByRole('link');
-    userEvent.click(allLinks[0], 'Home');
+    const linkHome = screen.getByRole('link', { name: 'Home'});
+    userEvent.click(linkHome);
 
     const { pathname } = history.location;
     expect(pathname).toBe('/');
@@ -36,8 +35,8 @@ describe('1 - Quando a Aplicação inicializa', () => {
   it('Será validado se a navegação para o About ocorre corretamente"', () => {
     const { history } = renderWithRouter(<App />);
 
-    const allLinks = screen.getAllByRole('link');
-    userEvent.click(allLinks[1], 'About');
+    const linkAbout = screen.getByRole('link', { name: 'About'});
+    userEvent.click(linkAbout);
 
     const { pathname } = history.location;
     expect(pathname).toBe('/about');
@@ -46,8 +45,8 @@ describe('1 - Quando a Aplicação inicializa', () => {
   it('Será validado se a navegação para o Favorite Pokémons ocorre corretamente"', () => {
     const { history } = renderWithRouter(<App />);
 
-    const allLinks = screen.getAllByRole('link');
-    userEvent.click(allLinks[2], 'Favorite Pokémons');
+    const linkFavorite = screen.getByRole('link', { name: 'Favorite Pokémons'});
+    userEvent.click(linkFavorite);
 
     const { pathname } = history.location;
     expect(pathname).toBe('/favorites');
