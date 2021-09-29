@@ -15,6 +15,4 @@ describe('Testa o card do Pokemon', () => {
     const pokemonWeight = screen.getByTestId('pokemon-weight');
     expect(pokemonWeight.innerHTML).toBe('Average weight: 6.0 kg');
   });
-
-  tes
 });
