@@ -4,23 +4,25 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
+beforeEach(() => renderWithRouter(<App />));
+
 describe('Testa componentes da Pokedex', () => {
   const dataTestIdType = 'pokemon-type';
   test('se o título existe', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const titlePokedex = screen
       .getByRole('heading', { level: 2, name: 'Encountered pokémons' });
     expect(titlePokedex).toBeInTheDocument();
   });
 
   test('Verifica existência do botão Próximo Pokemon', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonNext = screen.getByRole('button', { name: 'Próximo pokémon' });
     expect(buttonNext).toBeInTheDocument();
   });
 
   test('se, ao clicar no botão próximo pokemon, é de fato exibido outro', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonNext = screen.getByRole('button', { name: 'Próximo pokémon' });
     userEvent.click(buttonNext);
     const nextPokemon = screen.getByText('Charmander');
@@ -28,13 +30,13 @@ describe('Testa componentes da Pokedex', () => {
   });
 
   test('se apenas um podemon é mostrado por vez', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const quantityPokemon = screen.getAllByTestId('pokemon-name');
     expect(quantityPokemon.length).toStrictEqual(1);
   });
 
   test('se o botão Electric existe e funciona', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonElectric = screen.getByRole('button', { name: 'Electric' });
     expect(buttonElectric).toBeInTheDocument();
 
@@ -44,7 +46,7 @@ describe('Testa componentes da Pokedex', () => {
   });
 
   test('se o botão Fire existe e funciona', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonFire = screen.getByRole('button', { name: 'Fire' });
     expect(buttonFire).toBeInTheDocument();
 
@@ -54,7 +56,7 @@ describe('Testa componentes da Pokedex', () => {
   });
 
   test('se o botão Bug existe e funciona', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonBug = screen.getByRole('button', { name: 'Bug' });
     expect(buttonBug).toBeInTheDocument();
 
@@ -64,7 +66,7 @@ describe('Testa componentes da Pokedex', () => {
   });
 
   test('se o botão Poison existe e funciona', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonPoison = screen.getByRole('button', { name: 'Poison' });
     expect(buttonPoison).toBeInTheDocument();
 
@@ -74,7 +76,7 @@ describe('Testa componentes da Pokedex', () => {
   });
 
   test('se o botão Psychic existe e funciona', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonPsychic = screen.getByRole('button', { name: 'Psychic' });
     expect(buttonPsychic).toBeInTheDocument();
 
@@ -84,7 +86,7 @@ describe('Testa componentes da Pokedex', () => {
   });
 
   test('se o botão Normal existe e funciona', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonNormal = screen.getByRole('button', { name: 'Normal' });
     expect(buttonNormal).toBeInTheDocument();
 
@@ -94,7 +96,7 @@ describe('Testa componentes da Pokedex', () => {
   });
 
   test('se o botão Dragon existe e funciona', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonDragon = screen.getByRole('button', { name: 'Dragon' });
     expect(buttonDragon).toBeInTheDocument();
 
@@ -104,14 +106,14 @@ describe('Testa componentes da Pokedex', () => {
   });
 
   test('se os botões de filtro recebem o data testid "pokemon-type-button"', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const totalFilterButtons = 7;
     const quantityFiltersButton = screen.getAllByTestId('pokemon-type-button');
     expect(quantityFiltersButton.length).toBe(totalFilterButtons);
   });
 
   test('se o botão All existe e funciona', () => {
-    renderWithRouter(<App />);
+    /* renderWithRouter(<App />); */
     const buttonAll = screen.getByRole('button', { name: 'All' });
     expect(buttonAll).toBeInTheDocument();
 

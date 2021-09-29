@@ -15,4 +15,10 @@ describe('Testa o card do Pokemon', () => {
     const pokemonWeight = screen.getByTestId('pokemon-weight');
     expect(pokemonWeight.innerHTML).toBe('Average weight: 6.0 kg');
   });
+
+  test('se o tipo é mostrado corretamente', () => {
+    renderWithRouter(<App />);
+    const pokemonType = screen.getByTestId('pokemon-type');
+    expect(pokemonType.innerHTML).toBe('Electric');
+  });
 });
