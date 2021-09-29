@@ -47,7 +47,7 @@ describe('Testing the App page', () => {
     expect(pathname).toBe('/favorites');
   });
 
-  it('deveria ir apresentar Page requested not found', () => {
+  it('deveria apresentar Page requested not found', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/rota-de-origem-duvidosa');
     const title = screen.getByText('Page requested not found');
