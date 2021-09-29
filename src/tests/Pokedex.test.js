@@ -59,6 +59,19 @@ describe('5 - Teste o componente Pokedex', () => {
     });
   });
 
+  it('se é exibido os pokemons Fire, quando clicado no botão "Fire" ', () => {
+    renderWithRouter(<App />);
+
+    const buttonFire = screen.getByRole('button', { name: /Fire/i });
+    userEvent.click(buttonFire);
+
+    const PokemonsFires = data.filter(({ type }) => type === buttonFire.textContent);
+    expect(PokemonsFires).toHaveLength(2);
+
+    const namePokemon = screen.getByText(/charmander/i);
+    expect(namePokemon).toBeInTheDocument();
+  });
+
   it('se ao clicar no botão "All", reseta os outros filtros', () => {
     renderWithRouter(<App />);
 
