@@ -28,8 +28,8 @@ describe('Teste o componente <FavoritePokemons.js />', () => {
     history.push('/');
     const titleHome = screen.getByText('Encountered pokémons');
     expect(titleHome).toBeInTheDocument();
-    const buttonFavorites = screen.getByRole('button', { name: 'Próximo pokémon' });
-    expect(buttonFavorites).toBeInTheDocument();
+    const buttonNextPokemon = screen.getByRole('button', { name: 'Próximo pokémon' });
+    expect(buttonNextPokemon).toBeInTheDocument();
     const moreDetails = screen.getByRole('link', { name: 'More details' });
     expect(moreDetails).toBeInTheDocument();
     userEvent.click(moreDetails);

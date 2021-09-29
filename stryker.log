@@ -1,0 +1,267 @@
+18:08:12 (93100) INFO ConfigReader Using stryker.conf.json
+18:08:12 (93100) DEBUG BroadcastReporter Broadcasting to reporters ["progress","clear-text","html"]
+18:08:12 (93100) DEBUG ConfigReader Loading config /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker.conf.json
+18:08:12 (93100) DEBUG ConfigReader Loaded config: {
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "mutate": [
+    "src/components/About.js",
+    "src/App.js",
+    "src/components/FavoritePokemons.js",
+    "src/components/NotFound.js",
+    "src/components/Pokedex.js",
+    "src/components/Pokemon.js",
+    "src/components/PokemonDetails.js"
+  ],
+  "mutator": {
+    "name": "javascript",
+    "excludedMutations": [
+      "ArithmeticOperator",
+      "ArrayDeclaration",
+      "ArrowFunction",
+      "BlockStatement",
+      "BooleanLiteral",
+      "ConditionalExpression",
+      "EqualityOperator",
+      "LogicalOperator",
+      "ObjectLiteral",
+      "UnaryOperator",
+      "UpdateOperator"
+    ]
+  },
+  "testRunner": "jest",
+  "reporters": [
+    "progress",
+    "clear-text",
+    "html"
+  ],
+  "coverageAnalysis": "off",
+  "jest": {
+    "projectType": "create-react-app"
+  },
+  "allowConsoleColors": true,
+  "commandRunner": {
+    "command": "npm test"
+  },
+  "clearTextReporter": {
+    "allowColor": true,
+    "logTests": true,
+    "maxTestsToLog": 3
+  },
+  "dashboard": {
+    "baseUrl": "https://dashboard.stryker-mutator.io/api/reports",
+    "reportType": "full"
+  },
+  "eventReporter": {
+    "baseDir": "reports/mutation/events"
+  },
+  "fileLogLevel": "trace",
+  "logLevel": "debug",
+  "maxConcurrentTestRunners": 9007199254740991,
+  "plugins": [
+    "@stryker-mutator/*"
+  ],
+  "symlinkNodeModules": true,
+  "tempDirName": ".stryker-tmp",
+  "thresholds": {
+    "high": 80,
+    "low": 60,
+    "break": null
+  },
+  "timeoutFactor": 1.5,
+  "timeoutMS": 5000,
+  "transpilers": [],
+  "warnings": true,
+  "configFile": "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker.conf.json"
+}
+18:08:12 (93100) DEBUG PluginLoader Loading @stryker-mutator/* from /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator
+18:08:12 (93100) DEBUG PluginLoader Loading plugin "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator" (matched with expression @stryker-mutator/*)
+18:08:12 (93100) DEBUG PluginLoader Loading plugin "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/jest-runner" (matched with expression @stryker-mutator/*)
+18:08:12 (93100) DEBUG PluginLoader Loading plugins /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator
+18:08:12 (93100) DEBUG PluginLoader Loading plugins /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/jest-runner
+18:08:12 (93100) DEBUG PluginLoader Loading plugins /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/core/src/reporters/index.js
+18:08:12 (93100) DEBUG buildSchemaWithPluginContributions Contributing 1 schemas from plugins to options validation.
+18:08:12 (93100) INFO InputFileResolver Found 7 of 63 file(s) to be mutated.
+18:08:12 (93100) DEBUG InputFileResolver All input files: [
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker.log",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.babelrc.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.eslintignore",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.eslintrc.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.github/CODEOWNERS",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.github/workflows/main.yml",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.gitignore",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stylelintignore",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stylelintrc.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.trybe/requirements.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/README.md",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/package-lock.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/package.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/public/favicon.ico",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/public/index.html",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/public/logo192.png",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/public/logo512.png",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/public/manifest.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/public/robots.txt",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/public/star-icon.svg",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/App.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/App.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/About.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/Button.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/FavoritePokemons.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/NotFound.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/Pokedex.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/Pokemon.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/PokemonDetails.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/about.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/button.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/favorite-pokemons.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/index.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/not-found.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/pokedex.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/pokemon-details.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/pokemon.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/data.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/index.css",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/index.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/logo.svg",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/serviceWorker.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/services/pokedexService.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/setupTests.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/tests/About.test.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/tests/App.test.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/tests/FavoritePokemons.test.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/tests/NotFound.test.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/tests/Pokedex.test.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/tests/Pokemon.test.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/tests/PokemonDetails.test.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/tests/renderWithRouter.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/types/index.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker.conf.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker/About.conf.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker/App.conf.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker/FavoritePokemons.conf.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker/NotFound.conf.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker/Pokedex.conf.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker/Pokemon.conf.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/stryker/PokemonDetails.conf.json",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/testefalhando.png",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/testepassando.png"
+]
+18:08:12 (93100) DEBUG InputFileResolver Files to mutate: [
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/App.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/About.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/FavoritePokemons.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/NotFound.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/Pokedex.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/Pokemon.js",
+  "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/src/components/PokemonDetails.js"
+]
+18:08:12 (93100) DEBUG TemporaryDirectory Using temp directory "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stryker-tmp"
+18:08:12 (93100) DEBUG TestFrameworkOrchestrator The `coverageAnalysis` setting is "off", not hooking into the test framework to achieve performance benefits.
+18:08:12 (93100) INFO InitialTestExecutor Starting initial test run. This may take a while.
+18:08:12 (93100) DEBUG Sandbox Creating a sandbox for files in /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stryker-tmp/sandbox4810288
+18:08:12 (93100) DEBUG Sandbox Creating test runner 0
+18:08:12 (93100) DEBUG ChildProcessProxy Starting /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/core/src/test-runner/ChildProcessTestRunnerWorker.js in child process 93137
+18:08:12 (93137) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stryker-tmp/sandbox4810288
+18:08:12 (93137) DEBUG PluginLoader Loading @stryker-mutator/* from /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator
+18:08:12 (93137) DEBUG PluginLoader Loading plugin "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator" (matched with expression @stryker-mutator/*)
+18:08:12 (93137) DEBUG PluginLoader Loading plugin "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/jest-runner" (matched with expression @stryker-mutator/*)
+18:08:12 (93137) DEBUG PluginLoader Loading plugins /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator
+18:08:12 (93137) DEBUG PluginLoader Loading plugins /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/jest-runner
+18:08:12 (93137) DEBUG PluginLoader Loading plugins /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/core/src/reporters/index.js
+18:08:12 (93137) TRACE JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "!src/index.js",
+    "!src/serviceWorker.js"
+  ],
+  "setupFiles": [
+    "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jest-environment-jsdom-fourteen",
+  "transform": {
+    "^.+\\.(js|jsx|ts|tsx)$": "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "jest-watch-typeahead/filename",
+    "jest-watch-typeahead/testname"
+  ],
+  "rootDir": "/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stryker-tmp/sandbox4810288"
+} 
+      with custom config {}
+      and default (internal) stryker config [object Object]
+18:08:12 (93137) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+18:08:12 (93137) DEBUG JestTestRunner Project root is /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stryker-tmp/sandbox4810288
+18:08:12 (93100) DEBUG TimeoutDecorator Starting timeout timer (300000 ms) for a test run
+18:08:12 (93137) TRACE JestLessThan25TestAdapter Invoking Jest with config {"roots":["<rootDir>/src"],"collectCoverageFrom":["**/*.{js,jsx}","!src/index.js","!src/serviceWorker.js"],"setupFiles":["/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/react-app-polyfill/jsdom.js"],"setupFilesAfterEnv":["<rootDir>/src/setupTests.js"],"testMatch":["<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}","<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"],"testEnvironment":"jest-environment-jsdom-fourteen","transform":{"^.+\\.(js|jsx|ts|tsx)$":"/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/react-scripts/config/jest/babelTransform.js","^.+\\.css$":"/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/react-scripts/config/jest/cssTransform.js","^(?!.*\\.(js|jsx|ts|tsx|css|json)$)":"/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/react-scripts/config/jest/fileTransform.js"},"transformIgnorePatterns":["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$","^.+\\.module\\.(css|sass|scss)$"],"modulePaths":[],"moduleNameMapper":{"^react-native$":"react-native-web","^.+\\.module\\.(css|sass|scss)$":"identity-obj-proxy"},"moduleFileExtensions":["web.js","js","web.ts","ts","web.tsx","tsx","json","web.jsx","jsx","node"],"watchPlugins":["jest-watch-typeahead/filename","jest-watch-typeahead/testname"],"rootDir":"/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stryker-tmp/sandbox4810288","collectCoverage":false,"verbose":false,"bail":false,"notify":false,"reporters":[]}
+18:08:16 (93100) DEBUG ChildProcessProxy Disposing of worker process 93137
+18:08:16 (93100) DEBUG ChildProcessProxy Kill 93137
+18:08:16 (93100) ERROR InitialTestExecutor One or more tests failed in the initial test run:
+	Teste o componente <NotFound.js /> encountered a declaration exception
+		TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Próximo pokémon"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+[36m<body />[39m
+    at Object.getElementError (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@testing-library/dom/dist/config.js:37:19)
+    at /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+    at /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+    at getByRole (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+    at Suite.<anonymous> (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stryker-tmp/sandbox4810288/src/tests/Pokedex.test.js:8:36)
+    at addSpecsToSuite (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/jasmine/Env.js:496:51)
+    at Env.describe (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/jasmine/Env.js:466:11)
+    at describe (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/jasmine/jasmineLight.js:81:18)
+    at Object.<anonymous> (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/.stryker-tmp/sandbox4810288/src/tests/Pokedex.test.js:7:1)
+    at Runtime._execModule (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-runtime/build/index.js:867:68)
+    at Runtime._loadModule (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-runtime/build/index.js:577:12)
+    at Runtime.requireModule (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-runtime/build/index.js:433:10)
+    at /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/index.js:202:13
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/index.js:27:24)
+    at _next (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/index.js:47:9)
+    at /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/index.js:52:7
+    at new Promise (<anonymous>)
+    at /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/index.js:44:12
+    at _jasmine (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/index.js:207:19)
+    at jasmine2 (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-jasmine2/build/index.js:60:19)
+    at /home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-runner/build/runTest.js:385:24
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-runner/build/runTest.js:161:24)
+    at _next (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/jest-runner/build/runTest.js:181:9)
+18:08:16 (93100) ERROR StrykerCli an error occurred Error: There were failed tests in the initial test run.
+    at InitialTestExecutor.validateResult (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/core/src/process/InitialTestExecutor.js:69:27)
+    at InitialTestExecutor.run (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/core/src/process/InitialTestExecutor.js:41:14)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async Stryker.runMutationTest (/home/rafael/Trybe_Turma14_B/projects/sd-014-b-project-react-testing-library/node_modules/@stryker-mutator/core/src/Stryker.js:53:38)
