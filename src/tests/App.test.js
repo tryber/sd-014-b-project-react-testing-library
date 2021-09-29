@@ -6,7 +6,7 @@ import { Router } from 'react-router';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 
-describe('tests set of app.js', () => {
+describe('app.js tests set', () => {
   it('should the application top has a set of links', () => {
     // Teste se o topo da aplicação contém um conjunto fixo de links de navegação.
     render(
