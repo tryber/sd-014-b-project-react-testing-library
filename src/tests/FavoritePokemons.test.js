@@ -1,8 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import App from '../App';
-import renderWithRouter from './helpers/renderWithRouter';
 import { FavoritePokemons } from '../components';
 
 describe('3 - Teste o componente FavoritePokemons', () => {
@@ -15,21 +12,5 @@ describe('3 - Teste o componente FavoritePokemons', () => {
 
     const NotFoundPokemon = screen.getByText('No favorite pokemon found');
     expect(NotFoundPokemon).toBeInTheDocument();
-  });
-
-  it('se é exibido todos os cards de pokémons favoritados', () => {
-    renderWithRouter(<App />);
-
-    const linkDetails = screen.getByRole('link', { name: 'More details' });
-    userEvent.click(linkDetails);
-
-    const checkboxFavorite = screen.getByRole('checkbox');
-    userEvent.click(checkboxFavorite);
-
-    const linkFavorite = screen.getByRole('link', { name: 'Favorite Pokémons' });
-    userEvent.click(linkFavorite);
-
-    const pokemon = screen.getByText(/Pikachu/i);
-    expect(pokemon).toBeInTheDocument();
   });
 });

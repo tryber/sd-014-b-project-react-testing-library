@@ -47,6 +47,18 @@ describe('5 - Teste o componente Pokedex', () => {
     expect(buttonAll).toBeInTheDocument();
   });
 
+  it('se ao clicar no botão "All", reseta os outros filtros', () => {
+    renderWithRouter(<App />);
+
+    const buttonAll = screen.getByRole('button', { name: /All/i });
+    expect(buttonAll).toBeInTheDocument();
+
+    userEvent.click(buttonAll);
+
+    const firstPokemon = screen.getByText(/pikachu/i);
+    expect(firstPokemon).toBeInTheDocument();
+  });
+
   it('se é exibido os buttons de filtros', () => {
     renderWithRouter(<App />);
 
@@ -70,17 +82,5 @@ describe('5 - Teste o componente Pokedex', () => {
 
     const namePokemon = screen.getByText(/charmander/i);
     expect(namePokemon).toBeInTheDocument();
-  });
-
-  it('se ao clicar no botão "All", reseta os outros filtros', () => {
-    renderWithRouter(<App />);
-
-    const buttonAll = screen.getByRole('button', { name: /All/i });
-    expect(buttonAll).toBeInTheDocument();
-
-    userEvent.click(buttonAll);
-
-    const firstPokemon = screen.getByText(/pikachu/i);
-    expect(firstPokemon).toBeInTheDocument();
   });
 });
