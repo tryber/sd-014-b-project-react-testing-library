@@ -12,7 +12,10 @@ describe('Testa o componente <PokemonDetails.js />', () => {
     userEvent.click(buttonDetails);
     expect(buttonDetails).not.toBeInTheDocument();
 
-    const titleDetails = screen.getByRole('heading', { level: 2, name: /Details/ });
+    const titleDetails = screen.getByRole('heading', {
+      level: 2,
+      name: /Pikachu Details/,
+    });
     expect(titleDetails).toBeInTheDocument();
 
     const titleSummary = screen.getByRole('heading', { level: 2, name: 'Summary' });
