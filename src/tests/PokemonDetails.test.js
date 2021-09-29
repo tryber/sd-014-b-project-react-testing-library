@@ -39,6 +39,12 @@ describe('Testa se o componente Pokedex.js', () => {
   });
 
   it('Testa se a parte dos mapas aparece corretamente', () => {
+    renderWithRouter(<App />);
+
     fireEvent.click(screen.getByText(/details/i));
+    screen.getByRole('heading', { name: /game locations of pikachu/i });
+    screen.getByText(/kanto viridian forest/i);
+    expect(screen.getAllByRole('img')[1].src).toBe('https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
+    screen.getAllByAltText('Pikachu location');
   });
 });
