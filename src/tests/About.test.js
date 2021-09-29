@@ -2,7 +2,6 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import { About } from '../components';
 import renderWithRouter from './services/renderWithRouter';
-import '@testing-library/jest-dom';
 
 describe('Testa o componente <About.js />', () => {
   it('Deveria conter o título "About Pokédex"', () => {
