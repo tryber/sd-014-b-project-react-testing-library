@@ -19,12 +19,15 @@ describe('Testa se o componente Pokedex.js', () => {
     getAlt('Pikachu');
     expect(getAlt('Pikachu').src).toBe('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
     expect(screen.getByTestId('pokemon-type').innerHTML).toBe('Electric');
+    expect(screen.getByTestId('pokemon-name').innerHTML).toBe('Pikachu');
+
 
     // Faz os testes com o Charmander
     fireEvent.click(screen.getByText(/fire/i));
     getPokemon('8.5');
     getAlt('Charmander');
     expect(screen.getByTestId('pokemon-type').innerHTML).toBe('Fire');
+    expect(screen.getByTestId('pokemon-name').innerHTML).toBe('Charmander');
     expect(getAlt('Charmander').src).toBe('https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png');
   });
 
