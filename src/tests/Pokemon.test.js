@@ -21,7 +21,6 @@ describe('Testa se o componente Pokedex.js', () => {
     expect(screen.getByTestId('pokemon-type').innerHTML).toBe('Electric');
     expect(screen.getByTestId('pokemon-name').innerHTML).toBe('Pikachu');
 
-
     // Faz os testes com o Charmander
     fireEvent.click(screen.getByText(/fire/i));
     getPokemon('8.5');
