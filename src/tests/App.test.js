@@ -41,7 +41,10 @@ describe('1 - Testando o componente App.js', () => {
     history.push('/pagina-nao-existente');
 
     expect(history.location.pathname).toBe('/pagina-nao-existente');
-    const pageNotFound = screen.getByText(/Page requested not found/);
+    const pageNotFound = screen.getByRole('heading', {
+      name: /Page requested not found/,
+      level: 2,
+    });
     expect(pageNotFound).toBeInTheDocument();
   });
 });
