@@ -13,7 +13,7 @@ describe('Testa o componente <Pokemon.js />', () => {
     const favoriteInput = screen.getByRole('checkbox');
     userEvent.click(favoriteInput);
 
-    const img = screen.getByAltText(/marked/);
+    const img = screen.getByAltText(/Pikachu is marked/);
     expect(img).toHaveAttribute('src', '/star-icon.svg');
   });
 
@@ -26,7 +26,7 @@ describe('Testa o componente <Pokemon.js />', () => {
     expect(typePokemon).toHaveTextContent('Electric');
 
     const weightPokemon = screen.getByTestId('pokemon-weight');
-    expect(weightPokemon).toHaveTextContent(/Average weight/);
+    expect(weightPokemon).toHaveTextContent(/Average weight: 6.0 kg/);
 
     const imgPokemon = screen.getByAltText(/sprite/);
     expect(imgPokemon).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
