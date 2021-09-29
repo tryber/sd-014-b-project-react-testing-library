@@ -18,7 +18,7 @@ describe('Teste 5 - Pokedex.js', () => {
 
   it('Verifica se outro pokémon é exibido quando `Proximo Pokemon` é clicado', () => {
     renderWithRouter(<App />);
-    const nextPokemon = screen.getByTestId('next-pokemon');
+    const nextPokemon = screen.getByRole('button', { name: 'Próximo pokémon' });
     expect(nextPokemon).toBeInTheDocument();
     const pokemonName = screen.getByTestId(POKENAME);
 
