@@ -12,11 +12,8 @@ describe('Testa a aplicação do component About', () => {
 
   test('se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
     render(<About />);
-
-    const paragraph = screen.getAllByRole('paragraph');
     const paragraphOne = screen.getByText(/This application simulates a Pokédex,/);
     const paragraphTwo = screen.getByText(/One can filter Pokémons by type,/);
-    expect(paragraph.length).toBe(2);
     expect(paragraphOne).toBeInTheDocument();
     expect(paragraphTwo).toBeInTheDocument();
   });
