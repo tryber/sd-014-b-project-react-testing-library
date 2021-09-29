@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from '../components/renderWithRouter';
 
-describe('testanto se com App esta funcionando corretamente', () => {
+describe('testanto se o App esta funcionando corretamente', () => {
   it('O primeiro link deve possuir o texto Home', () => {
     renderWithRouter(<App />);
     const home = screen.getByRole('link', { name: 'Home' });
