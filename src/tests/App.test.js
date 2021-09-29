@@ -15,16 +15,16 @@ describe('Testa a aplicação do component App', () => {
 
   test('se a aplicação é redirecionada para a página de About', () => {
     const { history } = renderWithRouter(<App />);
-    const linkHome = screen.getByRole('link', { name: 'About' });
-    userEvent.click(linkHome);
+    const linkAbout = screen.getByRole('link', { name: 'About' });
+    userEvent.click(linkAbout);
     const pathName = history.location.pathname;
     expect(pathName).toBe('/about');
   });
 
   test('se a aplicação é redirecionada para a página de Pokémons Favoritados', () => {
     const { history } = renderWithRouter(<App />);
-    const linkHome = screen.getByRole('link', { name: 'Favorite Pokémons' });
-    userEvent.click(linkHome);
+    const linkFavorites = screen.getByRole('link', { name: 'Favorite Pokémons' });
+    userEvent.click(linkFavorites);
     const pathName = history.location.pathname;
     expect(pathName).toBe('/favorites');
   });
