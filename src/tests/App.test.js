@@ -5,13 +5,8 @@ import renderRouter from './renderRouter';
 import App from '../App';
 
 describe('Teste o componente <App.js />', () => {
-  const { history } = () => {
-    beforeEach(() => {
-      renderRouter(<App />);
-    });
-  };
-
   test('Teste se o topo da aplicação contém um conjunto fixo de links.', () => {
+    renderRouter(<App />);
     // Armazena os links e acessa:
     const linkHome = screen.getByRole('link', { name: /Home/i });
     const linkAbout = screen.getByText('About');
@@ -23,6 +18,7 @@ describe('Teste o componente <App.js />', () => {
   });
 
   test('Teste é redirecionada para a home ao clicar no link da navegação', () => {
+    const { history } = renderRouter(<App />);
     const linkHome = screen.getByRole('link', { name: /Home/i });
     // Mock do clique:
     userEvent.click(linkHome);
@@ -32,6 +28,7 @@ describe('Teste o componente <App.js />', () => {
   });
 
   test('Testa se redireciona p/ pág About URL/about,ao clicar no link About', () => {
+    const { history } = renderRouter(<App />);
     const linkAbout = screen.getByRole('link', { name: /About/i });
     userEvent.click(linkAbout);
     const { pathname } = history.location;
@@ -39,6 +36,7 @@ describe('Teste o componente <App.js />', () => {
   });
 
   test('Teste se redireciona p/ Pokémons Favoritados na URL/favorites ao clicar', () => {
+    const { history } = renderRouter(<App />);
     const linkFavPokemon = screen.getByRole('link',
       { name: /Favorite Pokémons/i });
     userEvent.click(linkFavPokemon);
@@ -47,6 +45,7 @@ describe('Teste o componente <App.js />', () => {
   });
 
   test('Teste se é redirecionado para pag NotFound ao entrar em URL desconhecida', () => {
+    const { history } = renderRouter(<App />);
     // Tenta acessar uma 404
     history.push('/mistakenlink');
     const notFound = screen.getByText('Page requested not found');
