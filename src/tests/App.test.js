@@ -1,18 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Router } from 'react-router';
-import { createMemoryHistory } from 'history';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import renderWithRouter from './Helpers/RenderRouter';
 import App from '../App';
 
 describe('o componente app', () => {
   it('deve possuir um cabeçalho fixo de navegação', () => {
-    const history = createMemoryHistory();
-    render(
-      <Router history={ history }>
-        <App />
-      </Router>,
-    );
+    const { history } = renderWithRouter(<App />);
 
     const homeLink = screen.getByRole('link', { name: 'Home' });
     expect(homeLink).toBeInTheDocument();
