@@ -14,8 +14,8 @@ describe('Testes do componente `<App.js />`', () => {
     const lengthMaxLinks = 4;
 
     expect(linksNav).toHaveLength(lengthMaxLinks);
-    expect(linksNav[0]).toContainHTML('Home');
-    expect(linksNav[1]).toContainHTML('About');
-    expect(linksNav[2]).toContainHTML('Favorite Pokémons');
+    expect(linksNav[0]).toHaveTextContent('Home');
+    expect(linksNav[1]).toHaveTextContent('About');
+    expect(linksNav[2]).toHaveTextContent('Favorite Pokémons');
   });
 });
