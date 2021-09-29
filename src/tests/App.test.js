@@ -12,13 +12,13 @@ describe('Verifica se contém um conjunto fixo de links de navegação', () => {
 
   it('Should have link About', () => {
     renderWithRouter(<App />);
-    const linkHome = screen.getByText('About');
-    expect(linkHome).toBeInTheDocument();
+    const linkAbout = screen.getByText('About');
+    expect(linkAbout).toBeInTheDocument();
   });
 
   it('Should have link Favorite Pokémons', () => {
     renderWithRouter(<App />);
-    const linkHome = screen.getByText('Favorite Pokémons');
-    expect(linkHome).toBeInTheDocument();
+    const linkFavoritePokemon = screen.getByText('Favorite Pokémons');
+    expect(linkFavoritePokemon).toBeInTheDocument();
   });
 });
