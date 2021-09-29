@@ -12,7 +12,9 @@ describe('Requisito 2 - Testa <About.js />', () => {
 
   test('A página tem a heading h2 com o texto: About Pokédex', () => {
     renderWithRouter(<About />);
+    // Procura uma tag pelo seu papel (role)
     const heading = screen.getByRole(
+      // heading level 2 = <h2></h2>
       'heading', {
         level: 2,
         name: 'About Pokédex',
@@ -23,6 +25,7 @@ describe('Requisito 2 - Testa <About.js />', () => {
 
   test('A página tem 2 parágrafos sobre a Pokédex', () => {
     renderWithRouter(<About />);
+    // Procura na tela os parágrafos
     const paragraph1 = screen.getByText(/This/i);
     const paragraph2 = screen.getByText(/One/i);
     expect(paragraph1).toBeInTheDocument();

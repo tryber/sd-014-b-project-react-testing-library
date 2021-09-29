@@ -21,9 +21,13 @@ describe('Requisito 1 - Testa <App.js />', () => {
   // component, o próximo vai voltar o pathname do anterior
 
   it('Verifica se home direciona para /', () => {
+    // Renderiza app e salva a url
     const { history } = renderWithRouter(<App />);
+    // Clica onde tiver o texto home
     fireEvent.click(screen.getByText(/home/i));
+    // Salva a url em string
     const { pathname } = history.location;
+    // Testa se a string da url é a esperada
     expect(pathname).toBe('/');
   });
 
@@ -43,7 +47,9 @@ describe('Requisito 1 - Testa <App.js />', () => {
 
   it('Verifica se uma URL desconhecida direciona para <NotFound />', () => {
     const { history } = renderWithRouter(<App />);
+    // Adiciona a url uma palavra qualquer
     history.push('/trybe/');
+    // Testa se mostra as palavras 'not found' na tela
     expect(screen.getByText(/not found/i));
   });
 });
