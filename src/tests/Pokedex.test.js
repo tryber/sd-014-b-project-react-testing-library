@@ -5,6 +5,8 @@ import renderWithRouter from './utils/renderWithRouter';
 import App from '../App';
 import pokemons from '../data';
 
+const POKEMON_NAME = 'pokemon-name';
+
 describe('5 - Testa o arquivo Pokedex.js', () => {
   it('Verifica se a página contém um h2 com o texto Encountered pokémons', () => {
     renderWithRouter(<App />);
@@ -21,7 +23,7 @@ describe('5 - Testa o arquivo Pokedex.js', () => {
     const nextPokemon = screen.getByTestId('next-pokemon');
     expect(nextPokemon).toBeInTheDocument();
 
-    const pokemonName = screen.getByTestId('pokemon-name');
+    const pokemonName = screen.getByTestId(POKEMON_NAME);
 
     pokemons.forEach(({ name }, index) => {
       if (index === pokemons.length - 1) {
@@ -36,30 +38,34 @@ describe('5 - Testa o arquivo Pokedex.js', () => {
   });
   it('Verifica se é mostrado apenas um pokémon por vez', () => {
     renderWithRouter(<App />);
-    const pokemonName = screen.getAllByTestId('pokemon-name');
+    const pokemonName = screen.getAllByTestId(POKEMON_NAME);
     expect(pokemonName.length).toBe(1);
   });
   it('Verifica se a pokédex tem botões de filtro', () => {
     renderWithRouter(<App />);
 
     const pokemonTypes = ['Electric', 'Fire', 'Bug',
-      'Poison', 'Pyshic', 'Normal', 'Dragon'];
+      'Poison', 'Psychic', 'Normal', 'Dragon'];
 
     const buttonsType = screen.getAllByTestId('pokemon-type-button');
-    const nextPokemon = screen.getByTestId('next-pokemon');
-
     buttonsType.forEach((type) => {
       expect(type).toBeInTheDocument();
     });
 
     pokemonTypes.forEach((type) => {
-      buttonsType.forEach((button) => {
-        userEvent.click(button);
-        const pokemonsByType = pokemons.filter((pokemon) => pokemon.type === type);
-        pokemonsByType.forEach((pokemon) => {
-          expect(pokemon.type).toBe(type);
-          userEvent.click(nextPokemon);
-        });
+      const buttonType = screen.getByRole('button', { name: type });
+      const pokemonsByType = pokemons.filter((pokemon) => pokemon.type === type);
+      userEvent.click(buttonType);
+
+      const nextPokemon = screen.getByTestId('next-pokemon');
+      const pokemonName = screen.getByTestId(POKEMON_NAME);
+      const pokemonType = screen.getByTestId('pokemon-type');
+
+      pokemonsByType.forEach((pokemon) => {
+        expect(pokemon.type).toBe(type);
+        expect(pokemonName.textContent).toBe(pokemon.name);
+        expect(pokemonType.textContent).toBe(pokemon.type);
+        userEvent.click(nextPokemon);
       });
     });
   });
