@@ -47,4 +47,11 @@ describe('Testa se o componente Pokedex.js', () => {
     expect(screen.getAllByRole('img')[1].src).toBe('https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
     screen.getAllByAltText('Pikachu location');
   });
+
+  it('Testa o checkbox', () => {
+    renderWithRouter(<App />);
+
+    fireEvent.click(screen.getByText(/details/i));
+    screen.getByText(/favoritado/i);
+  });
 });
