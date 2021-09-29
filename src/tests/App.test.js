@@ -4,7 +4,7 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Testa se o topo da aplicação contém links de navegação', () => {
-  test('Se possui os links com os textos Home, About e Favorite Pokémons', () => {
+  test('Se possui links com os textos "Home", "About" e "Favorite Pokémons"', () => {
     renderWithRouter(<App />);
 
     const home = screen.getByRole('link', { name: 'Home' });
