@@ -33,7 +33,7 @@ describe('Testa o componente App.js', () => {
   });
   test('Testa a rota da página não encontrada', () => {
     const { history } = renderWithRouter(<App />);
-    history.push('/badroute');
+    history.push('/badrouter');
     const notFound = screen.getByRole('heading',
       { level: 2, name: 'Page requested not found Crying emoji' });
     expect(notFound).toBeInTheDocument();
