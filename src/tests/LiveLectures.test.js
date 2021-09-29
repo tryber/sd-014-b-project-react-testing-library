@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { render, screen } from '@tesring-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
@@ -64,12 +64,9 @@ describe('PokeCards test', () => {
     expect(pikachuName).toBeInTheDocument();
   })
 
-
 });
 
-
 ///////////////////  AULA 1  //////////////////////  AULA 1  /////////////////////  AULA 1  ////////////////////
-
 
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
@@ -80,23 +77,23 @@ describe('Tela de inserção do email'), () => {
     // Acessa os elementos
     const { getByLabeltext } = render(<App/>);
     const inputEmail = getByLabeltext('Email');
-  
+
     // Realiza os teste
     expect(inputEmail).toBeInTheDocument();
     expect(inputEmail.type).toBe('email');
   });
-  
+
   it('Verifica que há dois botão', () => {
     const { getByRole } = render(<App/>);
     const button = getbyRole('button');
-  
+
     expect(button.length).toBe(2);
   });
-  
+
   it('Verifica que há dois botão', () => {
     const { getByTestId } = render(<App/>);
     const button = getbyRole('id-send');
-  
+
     expect(button).toBeInTheDocument();
     expect(button).toHaveValue('Enviar');
   });
@@ -111,7 +108,6 @@ describe('Tela de inserção do email'), () => {
     fireEvent.change(emailInput, { target: { value: 'alberto@teste.com' }});
     fireEvent.click(sendButton);
 
-
     // Fazendo o teste
     expect(emailInput.value).toBe('');
     expect(userEmail.textContent).toBe('Valor: alberto@teste.com');
@@ -122,7 +118,6 @@ describe('Tela de inserção do email'), () => {
 
 funcaoA = jest.fn().mockImplementation((a,b) => console.log('Finge que chamou funcaoB'));
 funcaoA = jest.fn((a,b) => console.log('Finge que chamou a funcaoB com {a} + {b}'))
-
 
 const meuObjeto = { json: () => console.log('Oi!') };
 meuObjeto.Json() // => retorna o console.log
@@ -148,7 +143,7 @@ test('Verifica que, quando recebo uma piada, mostro ela na tela', async () => {
   });
 
   const { findByText } = render(<App />)
-  await findByText('yeah'); // =>   await findByText('yeah'); // => 
+  await findByText('yeah'); // =>   await findByText('yeah'); // =>
   // ou
   await waitFor(() => getByText('yeah')); //   await waitFor(() => findByText('yeah'));
 });
@@ -161,7 +156,6 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
 import { render } from '@testing-library/react';
-
 
 const renderWithRouter = (componnet) => {
   const history = createMemoryHistory();
@@ -212,4 +206,4 @@ describe('teste da aplicação toda', () => {
     expect(aboutOnly).toBeInTheDocument();
   });
 });
-
+ */
