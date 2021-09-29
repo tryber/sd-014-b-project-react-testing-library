@@ -51,8 +51,9 @@ describe('6 - Teste o componente Pokemon', () => {
       <Pokemon pokemon={ data[0] } isFavorite />,
     );
 
-    const checkboxFavorite = screen.getByRole('img',
+    const imgFavorite = screen.getByRole('img',
       { name: `${name} is marked as favorite` });
-    expect(checkboxFavorite).toBeInTheDocument();
+    expect(imgFavorite).toBeInTheDocument();
+    expect(imgFavorite).toHaveAttribute('src', '/star-icon.svg');
   });
 });
