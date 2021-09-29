@@ -4,7 +4,7 @@ import renderWithRouter from './Helpers/RenderRouter';
 import { About } from '../components';
 
 describe('O componente \'About\' sobre a pokédex:', () => {
-  test('renderiza na tela mostrando um título e 2 parágrafos explicativos', () => {
+  test('deve renderizar um título, dois parágrafos explicativos e uma imagem', () => {
     renderWithRouter(<About />);
 
     const headingTitle = screen.getByRole('heading', { name: 'About Pokédex' });
