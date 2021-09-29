@@ -13,16 +13,12 @@ describe(('Requisito 3 - Testa o componente <FavoritePokemons />'), () => {
   });
 
   test('Se houver pokémons favoritados, mostra os cards', () => {
-    // Peguei do data.js o id do Pikachu
-    const idPikachu = 25;
-    // Importei pokemons do data
-    // e filtrei pelo id do Pikachu. Por quê?
-    // Porque FavoritePokemons precisa receber
-    // um array pra fazer map
-    const pokemonFilter = pokemons.filter(
-      ({ id }) => id === idPikachu,
-    );
-    renderWithRouter(<FavoritePokemons pokemons={ pokemonFilter } />);
-    expect(screen.getByText('Pikachu')).toBeInTheDocument();
+    renderWithRouter(<FavoritePokemons pokemons={ pokemons } />);
+    // Número de pokémons
+    const numberOfPokemons = 9;
+    // Tamanho do array de pokémons na tela se todos favoritados
+    const { length } = screen.getAllByTestId('pokemon-name');
+    // Testa se esse tamanho é igual ao número de pokémons
+    expect(length).toBe(numberOfPokemons);
   });
 });
