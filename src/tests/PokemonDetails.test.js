@@ -6,10 +6,10 @@ import renderWithRouter from '../renderWithRouter';
 describe('Testa se o componente Pokedex.js', () => {
   // Funções a serem utilizadas nos testes
   const getPokemon = (name) => screen.getByText(`${name} Details`);
-  const getAlt = (name) => screen.getByAltText(`${name} sprite`);
+  // const getAlt = (name) => screen.getByAltText(`${name} sprite`);
 
-  const pikachuUrl = '/pokemons/25';
-  const charmanderUrl = '/pokemons/4';
+  // const pikachuUrl = '/pokemons/25';
+  // const charmanderUrl = '/pokemons/4';
 
   it('Testa as informações detalhadas do card detalhes', () => {
     renderWithRouter(<App />);
@@ -36,6 +36,9 @@ describe('Testa se o componente Pokedex.js', () => {
       level: 2,
     }));
     expect(screen.getByText(/The flame on its tail/));
+  });
 
+  it('Testa se a parte dos mapas aparece corretamente', () => {
+    fireEvent.click(screen.getByText(/details/i));
   });
 });

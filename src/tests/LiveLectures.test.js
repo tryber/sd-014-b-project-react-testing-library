@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 import { render, screen } from '@tesring-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
@@ -206,4 +206,4 @@ describe('teste da aplicação toda', () => {
     expect(aboutOnly).toBeInTheDocument();
   });
 });
- */
+
