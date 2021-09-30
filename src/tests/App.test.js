@@ -27,7 +27,7 @@ describe('Testa o componente <App.js />', () => {
     expect(pathname).toBe('/');
   });
 
-  it('Teste se a aplicação é redirecionada para a página de About', () => {
+  it('Testa se a aplicação é redirecionada para a página de About', () => {
     const { history } = renderWithRouter(<App />);
 
     const linkAbout = screen.getByRole('link', { name: 'About' });
@@ -36,7 +36,7 @@ describe('Testa o componente <App.js />', () => {
     expect(pathname).toBe('/about');
   });
 
-  it('Teste se a aplicação é redirecionada para a página de Pokémons Favoritados', () => {
+  it('Testa se a aplicação é redirecionada para a página de Pokémons Favoritados', () => {
     const { history } = renderWithRouter(<App />);
 
     const linkFavoritePokemons = screen.getByRole('link', { name: 'Favorite Pokémons' });
@@ -45,7 +45,7 @@ describe('Testa o componente <App.js />', () => {
     expect(pathname).toBe('/favorites');
   });
 
-  it('Teste se a aplicação é redirecionada para a página Not Found', () => {
+  it('Testa se a aplicação é redirecionada para a página Not Found', () => {
     const { history } = renderWithRouter(<App />);
 
     history.push('/pagina-não-encontrada');
