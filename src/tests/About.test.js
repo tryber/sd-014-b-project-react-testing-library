@@ -7,6 +7,9 @@ test('Testa se a página contém informações sobre a Pokedex', () => {
   renderWithRouter(<About />);
   const pokedex = screen.getByText('About Pokédex');
   expect(pokedex).toBeInTheDocument();
+
+  const info = screen.getAllByText(/pokédex/i);
+  expect(info.length).toBe(2);
 });
 
 test('Testa se a página contém um h2 com o texto "About Pokémon"', () => {
