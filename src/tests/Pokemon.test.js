@@ -11,7 +11,7 @@ describe('6 - Renderize o card de um pokemon', () => {
   const regExName2 = new RegExp(String.raw`${pokemonByType.name} details`, 'i');
 
   test('Se o card é renderizado corretamente', () => {
-    const { history } = renderRoute('/');
+    renderRoute('/');
 
     userEvent.click(screen.getByRole('link', { name: /details/i }));
 
