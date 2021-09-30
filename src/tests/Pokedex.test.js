@@ -54,6 +54,7 @@ describe('Requisito 5', () => {
     const buttonALL = screen.getByRole('button', {
       name: 'All',
     });
+
     userEvent.click(buttonALL);
     const picachu = screen.getByText('Pikachu');
     expect(picachu).toBeInTheDocument();
