@@ -8,7 +8,10 @@ beforeEach(() => RenderWithRouter(<App />));
 
 describe('Testa o componente Pokedex.js', () => {
   test('se a página contém um heading h2 com o texto `Encountered pokémons`', () => {
-    const title = screen.getByRole('heading', { level: 2, name: 'Encountered pokémons' });
+    const title = screen.getByRole('heading', {
+      level: 2,
+      name: 'Encountered pokémons',
+    });
     expect(title).toBeInTheDocument();
   });
 
@@ -17,7 +20,9 @@ describe('Testa o componente Pokedex.js', () => {
     const firstPokemon = screen.getByText(/Pikachu/);
     expect(firstPokemon).toBeInTheDocument();
 
-    const nextPokemonButton = screen.getByRole('button', { name: 'Próximo pokémon' });
+    const nextPokemonButton = screen.getByRole('button', {
+      name: 'Próximo pokémon',
+    });
     expect(nextPokemonButton).toBeInTheDocument();
 
     userEvent.click(nextPokemonButton);
@@ -40,7 +45,9 @@ describe('Testa o componente Pokedex.js', () => {
   });
 
   test('se a Pokédex contém um botão para resetar o filtro', () => {
-    const allButton = screen.getByRole('button', { name: 'All' });
+    const allButton = screen.getByRole('button', {
+      name: 'All',
+    });
     expect(allButton).toBeInTheDocument();
 
     userEvent.click(allButton);
