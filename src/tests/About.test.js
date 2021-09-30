@@ -27,7 +27,7 @@ describe('2 - Testa o componente About.js', () => {
     renderWithRouter(<About />);
 
     const textPokedexInfo = screen.getAllByText(/Pokédex/i);
-    expect(textPokedexInfo.length).toBe(2);
+    expect(textPokedexInfo).toHaveLength(2);
   });
 
   test(' Verifica se a página contém imagem de uma Pokédex', () => {
