@@ -18,8 +18,8 @@ describe(('Requisito 4 -Testa o componente <NotFound />'), () => {
   it(('Testa se a página mostra a imagem do Pikachu chorando'), () => {
     renderWithRouter(<NotFound />);
     // Tem vários img. Não posso procurar por getByRole
-    // Possopegar pelo alt, então:
-    const img = screen.getByAltText(/Pikachu/i);
+    // Posso pegar pelo alt, então:
+    const img = screen.getByAltText(/Pikachu/i); // A imagem começa com um texto "Pikachu..."
     expect(img.src).toBe('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });

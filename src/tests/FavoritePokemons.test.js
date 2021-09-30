@@ -12,7 +12,7 @@ describe(('Requisito 3 - Testa o componente <FavoritePokemons />'), () => {
     expect(screen.getByText('No favorite pokemon found')).toBeInTheDocument();
   });
 
-  test('Se houver pokémons favoritados, mostra os cards', () => {
+  test(('Se houver pokémons favoritados, mostra os cards'), () => {
     renderWithRouter(<FavoritePokemons pokemons={ pokemons } />);
     // Número de pokémons
     const numberOfPokemons = 9;
