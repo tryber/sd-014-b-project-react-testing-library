@@ -36,11 +36,13 @@ describe('Teste o componente <FavoritePokemons.js />', () => {
     const pokemonWeight = screen.getByTestId('pokemon-weight');
     const linkDetails = screen.getByRole('link', { name: 'More details' });
     const pokemonImg = screen.getByAltText('Pikachu sprite');
+    const pokemonsCard = screen.getAllByTestId('pokemon-weight');
 
     expect(pokemonName).toHaveTextContent('Pikachu');
     expect(pokemonType).toHaveTextContent('Electric');
     expect(pokemonWeight).toHaveTextContent('Average weight: 6.0 kg');
     expect(linkDetails).toBeInTheDocument('More details');
     expect(pokemonImg).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+    expect(pokemonsCard.length).toBe(1);
   });
 });
