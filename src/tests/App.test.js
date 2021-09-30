@@ -5,7 +5,7 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Requisito 1 - topo da aplicação', () => {
-  test('Verifica se o link tem "About Pokédex", "Favorite Pokemóns" e "Home"', () => {
+  test('Verifica se o link tem "About", "Favorite Pokemóns" e "Home"', () => {
     renderWithRouter(<App />);
 
     const homeText = screen.getByRole('link', { name: 'Home' });
@@ -38,4 +38,12 @@ test('Se a apl é direcionada à página favorites ao clicar em Favorites Pokém
   const favoriteText = screen.getByRole('link', { name: 'Favorite Pokémons' });
   userEvent.click(favoriteText);
   expect(history.location.pathname).toBe('/favorites');
+});
+
+test('Se a apl é direcionada à página Not Found ao clicar em outra URL', () => {
+  const { history } = renderWithRouter(<App />);
+  history.push('/PageRequestedNotFound');
+  const notFound = screen.getByRole('heading', { level: 2 });
+  userEvent.click(notFound);
+  expect(notFound).toBeInTheDocument();
 });
