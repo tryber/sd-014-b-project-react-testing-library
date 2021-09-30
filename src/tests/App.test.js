@@ -47,9 +47,6 @@ describe('test component App', () => {
   test('if the application is redirected to the Not Found page', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/rotainxistente');
-    /* const emoji = screen.getByRole('img', {
-      name: 'Crying emoji',
-    }); */
     const title = screen.getByRole('heading', {
       level: 2,
       name: /Page requested not found/i,
