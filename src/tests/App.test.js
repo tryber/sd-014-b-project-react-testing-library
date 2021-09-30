@@ -1,14 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import { Router } from 'react-router-dom';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { createMemoryHistory } from 'history';
 import React from 'react';
 import App from '../App';
+import renderWithRouter from './renderWithRouter';
 
 describe('Testando o componente App.js', () => {
   test(' se o topo da aplicação contém um conjunto fixo de links de navegação', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
+    renderWithRouter(<App />);
 
     const homeLink = screen.getByRole('link', { name: 'Home' });
     expect(homeLink).toBeInTheDocument();
@@ -21,24 +19,21 @@ describe('Testando o componente App.js', () => {
   });
 
   test('se ao clicar em "Home" é redirecionado para a URL "/"', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
+    const { history } = renderWithRouter(<App />);
     const homeLink = screen.getByRole('link', { name: 'Home' });
     userEvent.click(homeLink);
     expect(history.location.pathname).toBe('/');
   });
 
   test('ao clicar em "About" é redirecionado para a URL "/about"', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
+    const { history } = renderWithRouter(<App />);
     const aboutLink = screen.getByRole('link', { name: 'About' });
     userEvent.click(aboutLink);
     expect(history.location.pathname).toBe('/about');
   });
 
   test('ao clicar em "Favorite Pokémons" é redirecionado para a URL "/favorites"', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
+    const { history } = renderWithRouter(<App />);
     const favoriteLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
     userEvent.click(favoriteLink);
     expect(history.location.pathname).toBe('/favorites');
