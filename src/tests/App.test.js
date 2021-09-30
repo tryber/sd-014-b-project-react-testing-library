@@ -31,10 +31,6 @@ describe('Testando o componente App', () => {
   test('testa se ao clicar em Home é renderizada a URL /about', () => {
     const { history } = renderWithRouter(<App />);
 
-    // const linkNavAbout = screen.getByRole('link', {name: 'About'});
-    // console.log(linkNavAbout)
-    // userEvent.click(getByText('About'));
-
     const pathname = screen.getByRole('link', { name: 'About' });
 
     fireEvent.click(pathname);
