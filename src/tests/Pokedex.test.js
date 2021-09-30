@@ -17,12 +17,13 @@ describe('5 - Rederize uma pokedex em "Home" e implemente suas funcionalidades',
     const filterBtns = screen.getAllByTestId('pokemon-type-button');
     const typesNumber = allPokeTypes.length;
     const allPokesBtn = screen.getByRole('button', { name: /all/i });
-    const nextPokeBtns = screen.getByTestId('next-pokemon');
+    const nextPokeBtn = screen.getByTestId('next-pokemon');
     const heading = screen
       .getByRole('heading', { level: 2, name: /encountered pokémons/i });
 
     expect(allPokesBtn).toBeInTheDocument();
-    expect(nextPokeBtns).toBeInTheDocument();
+    expect(nextPokeBtn).toBeInTheDocument();
+    expect(nextPokeBtn).toHaveTextContent(/próximo/i);
     expect(heading).toBeInTheDocument();
     expect(filterBtns).toHaveLength(typesNumber);
   });
