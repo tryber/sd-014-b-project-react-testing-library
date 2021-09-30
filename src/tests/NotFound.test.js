@@ -18,5 +18,6 @@ describe('Testa o componente NotFound', () => {
     const altText = 'Pikachu crying because the page requested was not found';
     const gif = screen.getByAltText(altText);
     expect(gif).toBeInTheDocument();
+    expect(gif).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
