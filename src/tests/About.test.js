@@ -26,5 +26,5 @@ test('Verifica se a página contém a imagem de uma Pokédex', () => {
   const pokedexImage = screen.getByRole('img');
   expect(pokedexImage).toBeInTheDocument();
   expect(pokedexImage).toHaveAttribute('src',
-    'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png' );
+    'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
 });
