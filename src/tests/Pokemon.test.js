@@ -49,11 +49,12 @@ describe('Testando o componente "Pokemon.js"', () => {
     const { history } = renderWithRouter(<App />);
     const LinkMoreDetails = screen.getByRole('link', { name: 'More details' });
     expect(LinkMoreDetails).toBeInTheDocument();
+    const pokemonName = `${data[0].name}`;
     const pokemonId = `${data[0].id}`;
     history.push(`/pokemons/${pokemonId}`);
     const checkbox = screen.getByRole('checkbox');
     userEvent.click(checkbox);
-    const starIcon = screen.getByAltText(/marked as favorite/i);
+    const starIcon = screen.getByAltText(`${pokemonName} is marked as favorite`);
     expect(starIcon).toBeInTheDocument();
     expect(starIcon).toHaveAttribute('src', '/star-icon.svg');
   });
