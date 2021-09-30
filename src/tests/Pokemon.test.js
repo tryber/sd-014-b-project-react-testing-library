@@ -7,20 +7,6 @@ import App from '../App';
 const moreDetailsText = 'More details';
 
 describe('Testa o componente Pokemon.js', () => {
-  test('se existe um ícone de estrela nos Pokémons favoritados', () => {
-    RenderWithRouter(<App />);
-    const detailsButton = screen.getByRole('link', {
-      name: moreDetailsText,
-    });
-    userEvent.click(detailsButton);
-
-    const favoriteInput = screen.getByRole('checkbox');
-    userEvent.click(favoriteInput);
-
-    const img = screen.getByAltText(/Pikachu is marked/);
-    expect(img).toHaveAttribute('src', '/star-icon.svg');
-  });
-
   test('se é renderizado um card com as informações de determinado pokémon', () => {
     RenderWithRouter(<App />);
     const namePokemon = screen.getByTestId('pokemon-name');
