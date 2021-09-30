@@ -27,4 +27,14 @@ describe('Teste do componente Pokedex', () => {
     const allPokemons = screen.getAllByTestId('pokemon-name');
     expect(allPokemons.length).toStrictEqual(1);
   });
+
+  it('deveriam existir botões de filtro e os mesmos devem filtrar os pokemons', () => {
+    renderWithRouter(<App />);
+    const filterButtons = screen.getAllByTestId('pokemon-type-button');
+    filterButtons.forEach((button) => {
+      userEvent.click(button);
+      const pokemonType = screen.getByTestId('pokemon-type');
+      expect(button.innerHTML).toEqual(pokemonType.innerHTML);
+    });
+  });
 });
