@@ -13,12 +13,14 @@ test('A página deve conter um título "About Pokédex"', () => {
 
 test('Deve possuir dois paragrafos com texto sobre a pokedex', () => {
   render(<About />);
-  const paragraphs = screen.getAllByTestId('info-pokedex');
+  const paragraph1 = screen.getByText(/This application simulates a Pokédex/i);
+  const paragraph2 = screen.getByText(/One can filter Pokémons by type/i);
 
-  expect(paragraphs.length).toBe(2);
+  expect(paragraph1).toBeInTheDocument();
+  expect(paragraph2).toBeInTheDocument();
 });
 
-test('Deve possuir dois paragrafos com texto sobre a pokedex', () => {
+test('Deve possuir uma imagem da Pokédex', () => {
   render(<About />);
   const img = screen.getByAltText('Pokédex');
   const pathImage = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
