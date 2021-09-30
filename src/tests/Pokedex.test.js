@@ -6,6 +6,7 @@ import App from '../App';
 
 describe('Teste do componente Pokedex', () => {
   const POKEMON_TYPE_TESTID = 'pokemon-type';
+  const POKEMON_NAME_TESTID = 'pokemon-name';
   beforeEach(() => renderWithRouter(<App />));
 
   it('deveria conter um <h2> com o texto `Encountered pokémons`', () => {
@@ -17,15 +18,15 @@ describe('Teste do componente Pokedex', () => {
   });
 
   it('deveria mostrar o próximo Pokemon ao clicar em Próximo pokémon', () => {
-    const { innerHTML: firstPokemon } = screen.getByTestId(POKEMON_TYPE_TESTID);
+    const { innerHTML: firstPokemon } = screen.getByTestId(POKEMON_NAME_TESTID);
     const nextButton = screen.getByRole('button', { name: 'Próximo pokémon' });
     userEvent.click(nextButton);
-    const { innerHTML: secondPokemon } = screen.getByTestId(POKEMON_TYPE_TESTID);
+    const { innerHTML: secondPokemon } = screen.getByTestId(POKEMON_NAME_TESTID);
     expect(firstPokemon).not.toStrictEqual(secondPokemon);
   });
 
   it('deveria haver apenas 1 pokemon na página', () => {
-    const allPokemons = screen.getAllByTestId('pokemon-name');
+    const allPokemons = screen.getAllByTestId(POKEMON_NAME_TESTID);
     expect(allPokemons.length).toStrictEqual(1);
   });
 
@@ -36,5 +37,13 @@ describe('Teste do componente Pokedex', () => {
       const pokemonType = screen.getByTestId(POKEMON_TYPE_TESTID);
       expect(button.innerHTML).toStrictEqual(pokemonType.innerHTML);
     });
+  });
+
+  it('deveria existir um botão que reseta o filtro', () => {
+    const allButton = screen.getByRole('button', { name: 'All' });
+    const { innerHTML: firstPokemon } = screen.getByTestId(POKEMON_TYPE_TESTID);
+    userEvent.click(allButton);
+    const { innerHTML: secondPokemon } = screen.getByTestId(POKEMON_TYPE_TESTID);
+    expect(firstPokemon).toStrictEqual(secondPokemon);
   });
 });
