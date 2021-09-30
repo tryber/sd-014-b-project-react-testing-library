@@ -6,6 +6,7 @@ import pokemons from '../data';
 
 describe('Testa o componente Pokedex', () => {
   const nextBtnText = 'Próximo pokémon';
+  const testIdPokemonName = 'pokemon-name';
   test('a página deve conter um h2 com Encountered pokémons', () => {
     renderWithRouter(<App />);
     const h2 = screen.getByRole('heading', { level: 2, name: 'Encountered pokémons' });
@@ -53,20 +54,30 @@ describe('Testa o componente Pokedex', () => {
 
   test('deve ser mostrado apenas um pokemon por vez', () => {
     renderWithRouter(<App />);
-    const testIdName = 'pokemon-name';
-    let pokemonElement = screen.getByTestId(testIdName);
+    let pokemonElement = screen.getByTestId(testIdPokemonName);
     expect(pokemonElement).toHaveTextContent(pokemons[0].name);
     const nextBtn = screen.getByText(nextBtnText);
     fireEvent.click(nextBtn);
     expect(pokemonElement).not.toHaveTextContent(pokemons[0].name);
 
-    pokemonElement = screen.getByTestId(testIdName);
+    pokemonElement = screen.getByTestId(testIdPokemonName);
     expect(pokemonElement).toHaveTextContent(pokemons[1].name);
     fireEvent.click(nextBtn);
     expect(pokemonElement).not.toHaveTextContent(pokemons[1].name);
 
-    pokemonElement = screen.getByTestId(testIdName);
+    pokemonElement = screen.getByTestId(testIdPokemonName);
     expect(pokemonElement).toHaveTextContent(pokemons[2].name);
+  });
+
+  test('o botão all deve mostrar todos os pokemons', () => {
+    renderWithRouter(<App />);
+    const allBtn = screen.getByRole('button', { name: 'All' });
+    expect(allBtn).toBeInTheDocument();
+    const nextBtn = screen.getByRole('button', { name: nextBtnText });
+    fireEvent.click(nextBtn);
+    fireEvent.click(allBtn);
+    const pokemonElement = screen.getByTestId(testIdPokemonName);
+    expect(pokemonElement).toHaveTextContent(pokemons[0].name);
   });
 
   test('deve ser exibido os botões de filtro', () => {
@@ -78,6 +89,9 @@ describe('Testa o componente Pokedex', () => {
       'Fire', 'Normal',
       'Dragon',
     ];
+    const buttons = screen.getAllByTestId('pokemon-type-button');
+    const BUTTONS_QUANTITY = 7;
+    expect(buttons.length).toBe(BUTTONS_QUANTITY);
     const allBtn = screen.getByRole('button', { name: 'All' });
     expect(allBtn).toBeInTheDocument();
     types.forEach((type) => {
