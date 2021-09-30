@@ -43,17 +43,17 @@ describe('5 - Testa o arquivo Pokedex.js', () => {
   it('Verifica se a pokédex tem botões de filtro', () => {
     renderWithRouter(<App />);
 
-    const pokemonTypes = ['Electric', 'Fire', 'Bug',
-      'Poison', 'Psychic', 'Normal', 'Dragon'];
-
     const buttonsType = screen.getAllByTestId('pokemon-type-button');
+
     buttonsType.forEach((type) => {
       expect(type).toBeInTheDocument();
     });
 
-    pokemonTypes.forEach((type) => {
-      const buttonType = screen.getByRole('button', { name: type });
-      const pokemonsByType = pokemons.filter((pokemon) => pokemon.type === type);
+    buttonsType.forEach((button) => {
+      const buttonType = screen.getByRole('button', { name: button.textContent });
+      const pokemonsByType = pokemons.filter((pokemon) => (
+        pokemon.type === button.textContent
+      ));
       userEvent.click(buttonType);
 
       const nextPokemon = screen.getByTestId('next-pokemon');
@@ -61,7 +61,7 @@ describe('5 - Testa o arquivo Pokedex.js', () => {
       const pokemonType = screen.getByTestId('pokemon-type');
 
       pokemonsByType.forEach((pokemon) => {
-        expect(pokemon.type).toBe(type);
+        expect(pokemon.type).toBe(button.textContent);
         expect(pokemonName.textContent).toBe(pokemon.name);
         expect(pokemonType.textContent).toBe(pokemon.type);
         userEvent.click(nextPokemon);
