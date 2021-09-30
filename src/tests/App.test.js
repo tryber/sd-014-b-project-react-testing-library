@@ -6,7 +6,7 @@ import App from '../App';
 describe('Testando o componente App', () => {
   test(`O topo da aplicação deve conter os links
   denavegação Home, About e Favorite Pokémons`, () => {
-    // const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
     const linkNavHome = screen.getByRole('link', { name: 'Home' });
     const linkNavAbout = screen.getByRole('link', { name: 'About' });
     const linkNavFav = screen.getByRole('link', { name: 'Favorite Pokémons' });
@@ -61,10 +61,12 @@ describe('Testando o componente App', () => {
 
     const emoj = screen.getByLabelText('Crying emoji', { selector: 'span' });
     // console.log(emoj);
-    const title = screen.getByRole('heading', {
-      name: 'Page requested not found',
-      level: 2,
-    });
+    // const title = screen.getByRole('heading', {
+    //   name: 'Page requested not found',
+    //   level: 2,
+    // });
+
+    const title = screen.getByText('Page requested not found');
 
     expect(title).toBeInTheDocument();
     expect(emoj).toBeInTheDocument();
