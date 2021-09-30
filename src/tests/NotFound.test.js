@@ -18,7 +18,7 @@ describe('4 - Testa o componente NotFound.js ', () => {
     renderWithRouter(<NotFound />);
 
     const imagePikachuNotFound = screen.getByRole('img', {
-      name: 'Pikachu crying because the page requested was not found',
+      name: /Pikachu crying because the page requested was not found/i,
     });
 
     const UrlImagePikachuNotFound = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
