@@ -11,7 +11,7 @@ test('Testa se a página contém informações sobre a Pokedex', () => {
 
 test('Testa se a página contém um h2 com o texto "About Pokémon"', () => {
   renderWithRouter(<About />);
-  const tag = screen.getByRole('heading', { name: 'About Pokédex' });
+  const tag = screen.getByRole('heading', { level: 2, name: 'About Pokédex' });
   expect(tag).toBeInTheDocument();
 });
 
