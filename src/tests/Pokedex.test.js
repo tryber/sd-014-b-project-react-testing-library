@@ -5,6 +5,7 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Teste do componente Pokedex', () => {
+  const POKEMON_TYPE_TESTID = 'pokemon-type';
   it('deveria conter um <h2> com o texto `Encountered pokémons`', () => {
     renderWithRouter(<App />);
     const title = screen.getByRole('heading', {
@@ -16,10 +17,11 @@ describe('Teste do componente Pokedex', () => {
 
   it('deveria mostrar o próximo Pokemon ao clicar em Próximo pokémon', () => {
     renderWithRouter(<App />);
+    const { innerHTML: firstPokemon } = screen.getByTestId(POKEMON_TYPE_TESTID);
     const nextButton = screen.getByRole('button', { name: 'Próximo pokémon' });
     userEvent.click(nextButton);
-    const nextPokemon = screen.getByText('Charmander');
-    expect(nextPokemon).toBeInTheDocument();
+    const { innerHTML: secondPokemon } = screen.getByTestId(POKEMON_TYPE_TESTID);
+    expect(firstPokemon).not.toStrictEqual(secondPokemon);
   });
 
   it('deveria haver apenas 1 pokemon na página', () => {
@@ -33,8 +35,8 @@ describe('Teste do componente Pokedex', () => {
     const filterButtons = screen.getAllByTestId('pokemon-type-button');
     filterButtons.forEach((button) => {
       userEvent.click(button);
-      const pokemonType = screen.getByTestId('pokemon-type');
-      expect(button.innerHTML).toEqual(pokemonType.innerHTML);
+      const pokemonType = screen.getByTestId(POKEMON_TYPE_TESTID);
+      expect(button.innerHTML).toStrictEqual(pokemonType.innerHTML);
     });
   });
 });
