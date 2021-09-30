@@ -50,4 +50,16 @@ describe('Teste para links e rotas no App.js', () => {
     userEvent.click(Favorite);
     expect(history.location.pathname).toBe('/favorites');
   });
+  it('ao digitar uma rota inexistente cai em NotFound', () => {
+    const history = createMemoryHistory();
+    render(
+      <Router history={ history }>
+        <App />
+      </Router>,
+    );
+    history.push('/qualquer-coisa');
+
+    const notFoud = screen.getByText('Page requested not found');
+    expect(notFoud).toBeInTheDocument();
+  });
 });
