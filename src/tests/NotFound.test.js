@@ -13,4 +13,13 @@ describe('testa o componente NotFound.js', () => {
     });
     expect(headingText).toBeInTheDocument();
   });
+
+  test(`se página mostra a imagem
+  https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif`, () => {
+    const { history } = RenderWithRouter(<App />);
+    history.push('/uma-pagina-inexistente');
+    const img = screen.getAllByRole('img')[1];
+    expect(img).toHaveAttribute('src',
+      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+  });
 });
