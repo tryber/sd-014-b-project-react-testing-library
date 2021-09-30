@@ -23,7 +23,7 @@ describe('testanto se o Pokedex esta funcionando corretamente', () => {
 
   it('Testa se só mostra um pokemon por vez', () => {
     renderWithRouter(<App />);
-    const title = screen.getAllByTestId(pokemonName);
+    const title = screen.getAllByTestId('pokemon-name');
     expect(title.length).toBe(1);
   });
 
