@@ -5,6 +5,8 @@ import App from '../App';
 import renderWithRouter from '../components/renderWithRouter';
 import pokemons from '../data';
 
+const pokemonName = 'pokemon-name';
+
 describe('testanto se o Pokedex esta funcionando corretamente', () => {
   it('Testa se página contém um heading h2 com o texto Encountered pokémons', () => {
     renderWithRouter(<App />);
@@ -21,7 +23,7 @@ describe('testanto se o Pokedex esta funcionando corretamente', () => {
 
   it('Testa se só mostra um pokemon por vez', () => {
     renderWithRouter(<App />);
-    const title = screen.getAllByTestId('pokemon-name');
+    const title = screen.getAllByTestId(pokemonName);
     expect(title.length).toBe(1);
   });
 
@@ -43,10 +45,10 @@ describe('testanto se o Pokedex esta funcionando corretamente', () => {
       userEvent.click(btnSelect);
       // Passo 4- percorrer o array filtrado e verificar se o nome do
       // pokemon é renderizado
-      const name = screen.getByTestId('pokemon-name');
+      const name = screen.getByTestId(pokemonName);
       const btnNext = screen.getByRole('button', { name: 'Próximo pokémon' });
       filterPokemon.forEach((element) => {
-        expect(element.name).toHaveTextContent(name);
+        expect(element.name).toContain(name);
         userEvent.click(btnNext);
       });
     });
@@ -59,7 +61,7 @@ describe('testanto se o Pokedex esta funcionando corretamente', () => {
 
     userEvent.click(btnAll);
 
-    const name = screen.getByTestId('pokemon-name');
+    const name = screen.getByTestId(pokemonName);
     expect(name).toHaveTextContent('Pikachu');
   });
 });
