@@ -21,4 +21,10 @@ describe('Teste do componente Pokedex', () => {
     const nextPokemon = screen.getByText('Charmander');
     expect(nextPokemon).toBeInTheDocument();
   });
+
+  it('deveria haver apenas 1 pokemon na página', () => {
+    renderWithRouter(<App />);
+    const allPokemons = screen.getAllByTestId('pokemon-name');
+    expect(allPokemons.length).toStrictEqual(1);
+  });
 });
