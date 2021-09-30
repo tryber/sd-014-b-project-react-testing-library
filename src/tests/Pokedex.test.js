@@ -39,26 +39,24 @@ describe('Requisito 5', () => {
       expect(button).toBeInTheDocument();
     });
   });
-  
+
   test('Pokemon corresponde ao tipo selecionado', () => {
     renderWithRouter(<App />);
     const buttonsType = screen.getAllByTestId('pokemon-type-button');
-    
-    buttonsType.forEach((button) => {
-      userEvent.click(button)
-      const pokemonOnScreen = screen.getByTestId('pokemon-type')
-      expect(pokemonOnScreen.textContent).toBe(button.textContent) 
-    })
 
-  })
-  
+    buttonsType.forEach((button) => {
+      userEvent.click(button);
+      const pokemonOnScreen = screen.getByTestId('pokemon-type');
+      expect(pokemonOnScreen.textContent).toBe(button.textContent);
+    });
+  });
+
   test('Teste se a Pokédex contém um botão para resetar o filtro', () => {
     renderWithRouter(<App />);
     const buttonAll = screen.getByText(/All/i);
     expect(buttonAll).toBeInTheDocument();
-    userEvent.click(buttonAll)
-    const pokemonOnScreen = screen.getByTestId('pokemon-name')
-    expect(pokemonOnScreen.textContent).toBe('Pikachu')
+    userEvent.click(buttonAll);
+    const pokemonOnScreen = screen.getByTestId('pokemon-name');
+    expect(pokemonOnScreen.textContent).toBe('Pikachu');
   });
-
 });
