@@ -63,7 +63,7 @@ describe('Test Pokedex', () => {
     const number = 7;
     const typePokemonButton = screen.getAllByTestId('pokemon-type-button');
     expect(typePokemonButton.length).toBe(number);
-    // A partir da seleção de um botão de tipo, a Pokédex deve circular somente pelos pokémons daquele tipo;
+    // A partir da seleção de um botão de tipo, a Pokédex deve circular somente pelos pokémons daquele tipo
     typePokemonButton.forEach((button, index) => {
       userEvent.click(button);
       const textType = screen.getByTestId('pokemon-type');
