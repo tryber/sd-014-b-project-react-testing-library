@@ -8,7 +8,7 @@ import data from '../data';
 const renderWithRouter = (comp) => {
   const history = createMemoryHistory();
   return ({
-    ...render(<Router history={history}>{comp}</Router>), history,
+    ...render(<Router history={ history }>{comp}</Router>), history,
   });
 };
 
@@ -16,7 +16,7 @@ describe('Teste o componente <Pokemon.js />', () => {
   test('É renderizado um card com as informações de determinado pokémon.',
     () => {
       const { name, type, averageWeight: { value, measurementUnit }, image } = data[0];
-      renderWithRouter(<Pokemon pokemon={data[0]} isFavorite={false} />);
+      renderWithRouter(<Pokemon pokemon={ data[0] } isFavorite={ false } />);
 
       expect(screen.getByTestId('pokemon-name')).toHaveTextContent(name);
       expect(screen.getByTestId('pokemon-type')).toHaveTextContent(type);
@@ -29,7 +29,7 @@ describe('Teste o componente <Pokemon.js />', () => {
     () => {
       const { id } = data[0];
       renderWithRouter(
-        <Pokemon pokemon={data[0]} isFavorite={false} />,
+        <Pokemon pokemon={ data[0] } isFavorite={ false } />,
       );
 
       const details = screen.getByRole('link', { name: 'More details' });
