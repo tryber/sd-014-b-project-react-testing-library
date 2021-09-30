@@ -1,15 +1,18 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import About from '../components/About';
+import App from '../App';
 import renderWithRouter from '../renderWithRouter';
 
 test('Testa se a página contém informações sobre a Pokedex', () => {
-  renderWithRouter(<About />);
-  const pokedex = screen.getByText('About Pokédex');
-  expect(pokedex).toBeInTheDocument();
+  const { history } = renderWithRouter(<App />);
+  history.push('/about');
 
-  const info = screen.getAllByText(/pokédex/i);
-  expect(info.length).toBe(2);
+  const { pathname } = history.location;
+  expect(pathname).toBe('/about');
+
+  const title = screen.getByRole('heading', { level: 2, name: 'About Pokédex' });
+  expect(title).toBeInTheDocument();
 });
 
 test('Testa se a página contém um h2 com o texto "About Pokémon"', () => {
