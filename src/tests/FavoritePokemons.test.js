@@ -32,8 +32,7 @@ test('Se aparece o cards de pokemons favoritos', () => {
       image: 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
       moreInfo: 'https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Pok%C3%A9mon)',
       name: 'Pikachu',
-      // eslint-disable-next-line max-len
-      summary: 'This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.',
+      summary: 'This intelligent Pokémon ...',
       type: 'Electric',
     },
   ];
