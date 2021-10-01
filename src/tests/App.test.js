@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../components/renderWithRouter';
 import App from '../App';
 
-describe('Testando a aplicação - Testa o conjunto de links', () => {
+describe('Testando a aplicação', () => {
   test('Testa se os links para Home, About e Favorite Pokémons são exibidos', () => {
     renderWithRouter(<App />);
 
