@@ -36,7 +36,7 @@ describe('Requisito 7: ', () => {
 
     const gameLocationsH2 = screen.getByRole('heading', {
       level: 2,
-      name: /Game Locations of/i,
+      name: /Game Locations of Pikachu/i,
     });
     expect(gameLocationsH2).toBeInTheDocument();
 
