@@ -47,10 +47,10 @@ describe('Teste do componente App.js', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/zzzz');
 
-    const NotFoundTitle = screen.getByRole('heading', {
+    const notFoundTitle = screen.getByRole('heading', {
       level: 2,
       name: 'Page requested not found Crying emoji',
     });
-    expect(NotFoundTitle).toBeInTheDocument();
+    expect(notFoundTitle).toBeInTheDocument();
   });
 });
