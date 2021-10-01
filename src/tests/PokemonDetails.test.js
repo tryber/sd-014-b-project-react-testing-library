@@ -35,11 +35,10 @@ describe('Teste o componente <PokemonDetails.js />', () => {
 
   test(`Teste se as informações detalhadas do Pokémon
     selecionado são mostradas na tela`, () => {
-    renderWithRouter(<App pokemons={ pokemons } />);
+    renderWithRouter(<App />);
     const pokemonLinkDetails = screen.getByRole('link', { name: LINK_DETAILS });
     userEvent.click(pokemonLinkDetails);
-    // const pathPokemonDetails = history.location.pathname;
-    // expect(pathPokemonDetails).toBe('/pokemons/25');
+
     const pokemonDetailsTitle = screen.getByRole('heading', {
       level: 2,
       name: 'Pikachu Details',
@@ -58,7 +57,7 @@ describe('Teste o componente <PokemonDetails.js />', () => {
 
   test(`Teste se existe na página uma seção com
     os mapas contendo as localizações do pokémon`, () => {
-    renderWithRouter(<App pokemons={ pokemons } />);
+    renderWithRouter(<App />);
     const pokemonLinkDetails = screen.getByRole('link', { name: LINK_DETAILS });
     userEvent.click(pokemonLinkDetails);
 
@@ -77,7 +76,7 @@ describe('Teste o componente <PokemonDetails.js />', () => {
 
   test(`Teste se o usuário pode favoritar um pokémon
     através da página de detalhes`, () => {
-    renderWithRouter(<App pokemons={ pokemons } />);
+    renderWithRouter(<App />);
     const pokemonLinkDetails = screen.getByRole('link', { name: LINK_DETAILS });
     userEvent.click(pokemonLinkDetails);
 
