@@ -103,13 +103,13 @@ describe('Testa se o componente Pokedex:', () => {
     renderWithRouter();
     const buttonNextPoke = screen.getByRole('button', { name: 'Próximo pokémon' });
     expect(buttonNextPoke).toBeInTheDocument();
-    const firstPoke = screen.getByText(pokemons[0].name);
+    const firstPoke = screen.getByText('Charmander');
     expect(firstPoke).toBeInTheDocument();
     userEvent.click(buttonNextPoke);
-    const secondPoke = screen.getByText(pokemons[1].name);
+    const secondPoke = screen.getByText('Ekans');
     expect(secondPoke).toBeInTheDocument();
     userEvent.click(buttonNextPoke);
-    const thirdPoke = screen.getByText(pokemons[2].name);
+    const thirdPoke = screen.getByText('Rapidash');
     expect(thirdPoke).toBeInTheDocument();
     userEvent.click(buttonNextPoke);
     expect(firstPoke).toBeInTheDocument();
