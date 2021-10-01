@@ -16,7 +16,7 @@ describe('Testa o componente <Pokedex />', () => {
   test('Se o próximo Pokémon é exibido clicando no botão "Próximo pokémon"', () => {
     renderWithRouter(<App />);
 
-    const nextPokemon = screen.getByTestId('next-pokemon', { name: 'Próximo pokémon' });
+    const nextPokemon = screen.getByTestId('next-pokemon');
     expect(nextPokemon).toBeInTheDocument();
 
     const pokemonName = screen.getByTestId('pokemon-name');
