@@ -3,18 +3,18 @@ import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 
-function renderWithRouter(component) { 
+function renderWithRouter(component) {
   const customHistory = createMemoryHistory();
   const selectorsRTL = render(
-    <Router history={customHistory} >
+    <Router history={ customHistory }>
       { component }
-    </Router>
+    </Router>,
   );
 
   return {
     ...selectorsRTL,
     history: customHistory,
-  }
-};
+  };
+}
 
 export default renderWithRouter;
