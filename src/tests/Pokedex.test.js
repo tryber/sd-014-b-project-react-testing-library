@@ -52,10 +52,19 @@ describe('Testa se o componente Pokedex:', () => {
     expect(typeButtons.length).toBe(NUM_OF_TYPE_BUTTONS);
     expect(typeButtons[0]).toHaveTextContent('Electric');
 
+    expect(screen.getByTestId('next-pokemon')).toBeEnabled();
+
     const poisonButton = screen.getByRole('button', { name: 'Poison' });
     userEvent.click(poisonButton);
     const ekansPoke = screen.getByText('Ekans');
     expect(ekansPoke).toBeInTheDocument();
+
+    userEvent.click(typeButtons[0]);
+    expect(screen.getByTestId('next-pokemon')).toBeDisabled();
+    userEvent.click(typeButtons[2]);
+    expect(screen.getByTestId('next-pokemon')).toBeDisabled();
+    userEvent.click(typeButtons[4]);
+    expect(screen.getByTestId('next-pokemon')).toBeEnabled();
   });
 
   test('contém um botão para resetar o filtro', () => {
