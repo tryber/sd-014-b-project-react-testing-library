@@ -126,6 +126,7 @@ describe('Testa se o componente Pokedex:', () => {
     renderWithRouter();
     const NUM_OF_TYPE_BUTTONS = 2;
     const typeButtons = screen.getAllByTestId('pokemon-type-button');
+    expect(screen.getByText('All')).toHaveTextContent('All');
     expect(typeButtons.length).toBe(NUM_OF_TYPE_BUTTONS);
     expect(typeButtons[0]).toHaveTextContent('Fire');
 
@@ -148,8 +149,9 @@ describe('Testa se o componente Pokedex:', () => {
     renderWithRouter();
     const allButton = screen.getByRole('button', { name: 'All' });
     expect(allButton).toBeInTheDocument();
-
+    userEvent.click(allButton);
     const nextPoke = screen.getByRole('button', { name: 'Próximo pokémon' });
+    expect(nextPoke).toBeEnabled();
     userEvent.click(nextPoke);
     expect(screen.getByTestId('pokemon-type')).toHaveTextContent('Poison');
     userEvent.click(nextPoke);
