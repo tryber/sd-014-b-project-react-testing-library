@@ -16,7 +16,7 @@ describe('Test Pokedex', () => {
   test('Teste se página contém um heading h2 com o texto Encountered pokémons', () => {
     const getText = screen.getByRole('heading', {
       level: 2,
-      value: 'Encountered pokémons',
+      name: 'Encountered pokémons',
     });
     expect(getText).toBeInTheDocument();
   });
