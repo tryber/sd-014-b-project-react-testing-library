@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './RenderWithRouter';
 import App from '../App';
-import data from '../data';
+import pokemons from '../data';
 
 const numberOfButtons = 7;
 
@@ -50,10 +50,8 @@ describe('5 - Teste o componente <Pokedex.js />', () => {
 
   test('Teste se é mostrado apenas um Pokémon por vez', () => {
     renderWithRouter(<App />);
-    const pikachu = screen.getByText(/Pikachu/i);
-    expect(pikachu).toBeInTheDocument();
-    const dragonair = screen.queryByText(/Dragonair/i);
-    expect(dragonair).not.toBeInTheDocument();
+    expect(screen.getAllByTestId('pokemon-name')).toHaveLength(1);
+    expect(screen.getAllByRole('link', { name: /details/i })).toHaveLength(1);
   });
 
   // Nesta parte eu consultei o repositório do Luiz Gustavo
@@ -62,10 +60,17 @@ describe('5 - Teste o componente <Pokedex.js />', () => {
     renderWithRouter(<App />);
     const buttons = screen.getAllByTestId('pokemon-type-button');
     expect(buttons).toHaveLength(numberOfButtons);
-    data.forEach(({ type }) => {
+    pokemons.forEach(({ type }) => {
       const buttonType = screen.getByRole('button', { name: `${type}` });
       expect(buttonType).toBeInTheDocument();
     });
+    userEvent.click(buttons[0]);
+    const pikachu = screen.getByText('Pikachu');
+    expect(pikachu).toBeInTheDocument();
+
+    userEvent.click(buttons[1]);
+    const charmander = screen.getByText('Charmander');
+    expect(charmander).toBeInTheDocument();
   });
 
   test('Teste se a Pokédex contém um botão para resetar o filtro', () => {
