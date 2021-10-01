@@ -17,6 +17,7 @@ describe('Testa o componente <Pokedex />', () => {
     renderWithRouter(<App />);
 
     const nextPokemon = screen.getByTestId('next-pokemon');
+    expect(nextPokemon).toHaveTextContent(/Próximo pokémon/i);
     expect(nextPokemon).toBeInTheDocument();
 
     const pokemonName = screen.getByTestId('pokemon-name');
