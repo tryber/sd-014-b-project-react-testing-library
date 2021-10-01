@@ -51,10 +51,6 @@ describe('Requisito 6: ', () => {
     const starFavorite = screen.getByAltText('Pikachu is marked as favorite');
     expect(starFavorite).toBeInTheDocument();
 
-    // const src = '/star-icon.svg';
     expect(starFavorite).toHaveAttribute('src', '/star-icon.svg');
-    // const noFavorite = screen.queryByAltText('Pikachu is marked as favorite');
-    // userEvent.click(checkbox);
-    // expect(noFavorite).not.toBeInTheDocument();
   });
 });
