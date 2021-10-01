@@ -8,17 +8,16 @@ import pokemons from '../data';
 
 const renderWithRouter = () => {
   const history = createMemoryHistory();
-  return ({
-    ...render(
+  return (
+    render(
       <Router history={ history }>
         <Pokedex
           pokemons={ pokemons }
-          isPokemonFavoriteById={ { isFavorite: true } }
+          isPokemonFavoriteById={ { isPokemonFavoriteById: true } }
         />
       </Router>,
-    ),
-    history,
-  });
+    )
+  );
 };
 
 describe('Testa se o componente Pokedex:', () => {
