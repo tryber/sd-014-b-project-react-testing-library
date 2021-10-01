@@ -1,11 +1,12 @@
 import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
+
 import App from '../App';
 import renderWithRouter from './utils/renderWithRouter';
 import pokemons from '../data';
 
 describe('Requisito 5 - Testa o componente <Pokedex.js />', () => {
-  it('Testa se página contém um heading h2 com o texto Encountered pokémons', () => {
+  test('Se página contém um heading h2 com o texto Encountered pokémons', () => {
     renderWithRouter(<App />);
     const expectedHeading = screen.getByRole(
       'heading', {
@@ -16,7 +17,7 @@ describe('Requisito 5 - Testa o componente <Pokedex.js />', () => {
     expect(expectedHeading).toBeInTheDocument();
   });
 
-  it('Testa se apenas um pokémon é exibido ao clicar em Próximo Pokémon', () => {
+  test('Se apenas um pokémon é exibido ao clicar em Próximo Pokémon', () => {
     renderWithRouter(<App />);
     const expectedClickButton = screen.getByRole(
       'button', {
