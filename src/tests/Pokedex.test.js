@@ -42,14 +42,11 @@ describe('5 - Testa o arquivo Pokedex.js', () => {
   });
   it('Verifica se a pokédex tem botões de filtro', () => {
     renderWithRouter(<App />);
-
     const buttonsType = screen.getAllByTestId('pokemon-type-button');
 
-    buttonsType.forEach((type) => {
-      expect(type).toBeInTheDocument();
-    });
-
     buttonsType.forEach((button) => {
+      expect(button).toBeInTheDocument();
+
       const buttonType = screen.getByRole('button', { name: button.textContent });
       const pokemonsByType = pokemons.filter((pokemon) => (
         pokemon.type === button.textContent
