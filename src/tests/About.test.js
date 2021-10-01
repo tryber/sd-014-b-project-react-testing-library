@@ -31,7 +31,3 @@ describe('Testando o About', () => {
     expect(pokedexImage.src).toBe('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
 });
-
-// Acessa o item
-// Interage, se houver necessidade
-// Faz o teste
