@@ -9,7 +9,7 @@ describe('Teste o componente NotFound', () => {
     const notFoundText = screen.getByRole('heading', { level: 2 });
     expect(notFoundText).toHaveTextContent('Page requested not found');
   });
-  it('página mostra a imagem ', () => {
+  it('página mostra a imagem do pikachu triste', () => {
     render(<NotFound />);
 
     const image = screen.getByAltText(
