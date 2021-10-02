@@ -7,7 +7,8 @@ describe('Requisito 02', () => {
     'Se a página contém as informações sobre a Pokédex',
     () => {
       render(<About />);
-      const title = screen.getByText('This application simulates a Pokédex, a digital encyclopedia containing all Pokémons');
+      const title = screen.getByText('This application simulates a Pokédex,'
+      + ' a digital encyclopedia containing all Pokémons');
 
       expect(title).toBeInTheDocument();
     },
