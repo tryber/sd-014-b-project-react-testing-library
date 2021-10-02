@@ -13,7 +13,7 @@ describe('Testa o componente About', () => {
     expect(textH2).toBeInTheDocument();
   });
 
-  test('se a página contém dois parágrafos com texto sobre a Pokédex', () => {;
+  test('se a página contém dois parágrafos com texto sobre a Pokédex', () => {
     const textParagraph = screen.getAllByText(/Pokémons/i);
     expect(textParagraph.length).toBe(2);
   });
