@@ -11,6 +11,11 @@ describe('se a página contém as informações sobre a Pokédex', () => {
     });
     expect(titleText).toBeInTheDocument();
   });
-  // it('deveria exibir dois parágrafos com texto sobre a Pokédex', () => { });
-  // it('deveria exibir a seguinte imagem de uma Pokédex', () => { });
+  it('deveria exibir dois parágrafos com texto sobre a Pokédex', () => {
+    render(<About />);
+    const firstParagraph = screen.getByText(/This application simulates/i);
+    const secondParagraph = screen.getByText(/One can filter Pokémons/i);
+    expect(firstParagraph).toBeInTheDocument();
+    expect(secondParagraph).toBeInTheDocument();
+  });
 });
