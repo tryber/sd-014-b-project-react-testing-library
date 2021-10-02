@@ -16,7 +16,6 @@ describe('Testa o About.js', () => {
 
     const paragOne = screen.getByText(/This application simulates a Pokédex/i);
     expect(paragOne).toBeInTheDocument();
-    
     const paragTwo = screen.getByText(/One can filter Pokémons by type/i);
     expect(paragTwo).toBeInTheDocument();
   });
