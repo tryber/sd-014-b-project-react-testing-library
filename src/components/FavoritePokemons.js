@@ -40,6 +40,7 @@ class FavoritePokemons extends React.Component {
     const { notFound } = FavoritePokemons;
     const { pokemons } = this.props;
     const isEmpty = pokemons.length === ZERO;
+    console.log(pokemons);
 
     return (
       <div>
