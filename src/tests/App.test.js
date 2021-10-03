@@ -3,7 +3,7 @@ import { screen, fireEvent } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
-describe('Testa o componente App.js', () => {
+describe('Testa o componente AAp.js', () => {
   test('se o topo da aplicação contém um conjunto fixo de links de navegação',
     () => {
       renderWithRouter(<App />);
@@ -16,8 +16,20 @@ describe('Testa o componente App.js', () => {
       expect(favoriteLink).toBeInTheDocument();
     });
 
+  test(`se a aplicação é redirecionada para a página inicial, 
+  na URL / ao clicar no link Home da barra de navegação`, () => {
+    const { history } = renderWithRouter(<App />);
+    const homeLink = screen.getByRole('link', { name: 'Home' });
+
+    fireEvent.click(homeLink);
+
+    const { pathname } = history.location;
+
+    expect(pathname).toBe('/');
+  });
+
   test(`se a aplicação é redirecionada para a página de About,
-    na URL /about, ao clicar no link About da barra de navegação`, () => {
+   na URL /about, ao clicar no link About da barra de navegação`, () => {
     const { history } = renderWithRouter(<App />);
     const aboutLink = screen.getByRole('link', { name: 'About' });
 
@@ -29,7 +41,7 @@ describe('Testa o componente App.js', () => {
   });
 
   test(`se a aplicação é redirecionada para a página de Pokémons Favoritados,
-    na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação`,
+   na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação`,
   () => {
     const { history } = renderWithRouter(<App />);
     const favoriteLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
@@ -42,13 +54,12 @@ describe('Testa o componente App.js', () => {
   });
 
   test(`se a aplicação é redirecionada para a página Not Found ao entrar em uma
-    URL desconhecida`, () => {
+   URL desconhecida`, () => {
     const { history } = renderWithRouter(<App />);
 
-    history.push('/fgo');
+    history.push('/trybe');
 
-    const notFound = screen.getByText(/Page requested not found /i);
-
+    const notFound = screen.getByText(/Page requested not found/i);
     expect(notFound).toBeInTheDocument();
   });
 });
