@@ -7,8 +7,8 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
 
-describe('Teste o componente <App.js />', () => {
-  it(`Teste se o topo da aplicação
+describe('Testa o componente <App.js />', () => {
+  it(`Testa se o topo da aplicação
   contém um conjunto fixo de links de navegação.`, () => {
     renderWithRouter(<App />);
     const links = screen.getAllByRole('link');
@@ -18,7 +18,7 @@ describe('Teste o componente <App.js />', () => {
   });
 
   // src, alt: https://stackoverflow.com/a/51334009
-  it(`Teste se a aplicação é redirecionada para a página inicial,
+  it(`Testa se a aplicação é redirecionada para a página inicial,
   na URL / ao clicar no link Home da barra de navegação.`, () => {
     const { history } = renderWithRouter(<App />);
     const links = screen.getAllByRole('link');
@@ -26,7 +26,7 @@ describe('Teste o componente <App.js />', () => {
     expect(history.location.pathname).toBe('/');
   });
 
-  it(`Teste se a aplicação é redirecionada para a página de About,
+  it(`Testa se a aplicação é redirecionada para a página de About,
   na URL /about, ao clicar no link About da barrade navegação.`, () => {
     const { history } = renderWithRouter(<App />);
     const links = screen.getAllByRole('link');
@@ -34,7 +34,7 @@ describe('Teste o componente <App.js />', () => {
     expect(history.location.pathname).toBe('/about');
   });
 
-  it(`Teste se a aplicação é redirecionada para a página de Pokémons Favoritados,
+  it(`Testa se a aplicação é redirecionada para a página de Pokémons Favoritados,
   na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação.`, () => {
     const { history } = renderWithRouter(<App />);
     const links = screen.getAllByRole('link');
@@ -42,7 +42,7 @@ describe('Teste o componente <App.js />', () => {
     expect(history.location.pathname).toBe('/favorites');
   });
 
-  it(`Teste se a aplicação é redirecionada para a página
+  it(`Testa se a aplicação é redirecionada para a página
   Not Found ao entrar em uma URL desconhecida.`, () => {
     const { history } = renderWithRouter(<App />);
     history.push('lorem-ipsum');
