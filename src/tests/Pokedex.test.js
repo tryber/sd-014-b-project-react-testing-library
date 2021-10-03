@@ -21,7 +21,7 @@ describe('TEste Pokedex.js', () => {
 
   it('Outro pokemon aparece qnd clica Prox Pokemon', () => {
     renderWithRouter(<App />);
-    const next = screen.getByTestId('next-pokemon');
+    const next = screen.getByRole('button', { name: 'Próximo pokémon' }); // peguei do repo do Michael Caxias
     expect(next).toBeInTheDocument();
 
     const pokeName = screen.getByTestId(POKEMON_NAME);
