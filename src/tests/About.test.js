@@ -5,10 +5,6 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Testando o componente About', () => {
-  it('se a página contém as informações sobre a Pokédex.', () => {
-
-  });
-
   it('se a página contém um heading h2 com o texto About Pokédex.', () => {
     renderWithRouter(<App />);
     const about = screen.getByText('About');
