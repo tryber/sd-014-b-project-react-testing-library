@@ -9,10 +9,10 @@ describe('Testando o componente App', () => {
     renderWithRouter(<App />);
     const home = screen.getByText('Home');
     const about = screen.getByText('About');
-    const favorite = screen.getByText('Favorite Pokémons');
+    const favorites = screen.getByText('Favorite Pokémons');
     expect(home).toBeInTheDocument();
     expect(about).toBeInTheDocument();
-    expect(favorite).toBeInTheDocument();
+    expect(favorites).toBeInTheDocument();
   });
 
   it(`se a aplicação é redirecionada para a página inicial,
@@ -27,8 +27,8 @@ describe('Testando o componente App', () => {
   it(`se a aplicação é redirecionada para a página de About,
   na URL /about, ao clicar no link About da barra de navegação.`, () => {
     const { history } = renderWithRouter(<App />);
-    const home = screen.getByText('About');
-    userEvent.click(home);
+    const about = screen.getByText('About');
+    userEvent.click(about);
     const { pathname } = history.location;
     expect(pathname).toBe('/about');
   });
@@ -36,8 +36,8 @@ describe('Testando o componente App', () => {
   it(`se a aplicação é redirecionada para a página de Pokémons Favoritados,
   na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação.`, () => {
     const { history } = renderWithRouter(<App />);
-    const home = screen.getByText('Favorite Pokémons');
-    userEvent.click(home);
+    const favorites = screen.getByText('Favorite Pokémons');
+    userEvent.click(favorites);
     const { pathname } = history.location;
     expect(pathname).toBe('/favorites');
   });
