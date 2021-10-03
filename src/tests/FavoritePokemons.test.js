@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import FavoritePokemons from '../components/FavoritePokemons';
 
-const favoritePokémons = [
+const favoritePokemons = [
   {
     id: 25,
     name: 'Pikachu',
@@ -24,8 +24,9 @@ const favoritePokémons = [
         map: 'https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png',
       },
     ],
-    summary: `This intelligent 
-    Pokémon roasts hard berries with electricity to make them tender enough to eat.`,
+    summary:
+     `This intelligent 
+     Pokémon roasts hard berries with electricity to make them tender enough to eat.`,
   },
   {
     id: 4,
@@ -62,9 +63,9 @@ const favoritePokémons = [
 
 const noFavorites = [];
 
-describe('Testa se o componente FavoritePokemons.js', () => {
-  test(`se é exibido na tela a mensagem 
-    No favorite pokemon found, se a pessoa não tiver pokémons favoritos`, () => {
+describe('Testa o componente FavoritePokemons.js', () => {
+  test(`se é exibido na tela a mensagem
+   No favorite pokemon found, se a pessoa não tiver pokémons favoritos`, () => {
     renderWithRouter(<FavoritePokemons
       pokemons={ noFavorites }
     />);
@@ -74,7 +75,7 @@ describe('Testa se o componente FavoritePokemons.js', () => {
 
   test('se é exibido todos os cards de pokémons favoritados', () => {
     renderWithRouter(<FavoritePokemons
-      pokemon={ favoritePokémons }
+      pokemons={ favoritePokemons }
     />);
 
     const pokemons = screen.getAllByTestId('pokemon-name').length;
