@@ -5,8 +5,6 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 import pokemons from '../data';
 
-const POKEMON_NAME = 'pokemon-name';
-
 describe('TEste Pokedex.js', () => {
   it('verifica se tem h2 com texto', () => {
     renderWithRouter(<App />);
@@ -23,7 +21,7 @@ describe('TEste Pokedex.js', () => {
     const next = screen.getByTestId('next-pokemon');
     expect(next).toBeInTheDocument();
 
-    const pokeName = screen.getByTestId(POKEMON_NAME);
+    const pokeName = screen.getByTestId('pokemon-name');
 
     pokemons.forEach(({ name }, index) => {
       if (index === pokemons.length - 1) {
@@ -39,7 +37,7 @@ describe('TEste Pokedex.js', () => {
 
   it('Verifica se vem um poke por vez', () => {
     renderWithRouter(<App />);
-    const pokeName = screen.getAllByTestId(POKEMON_NAME);
+    const pokeName = screen.getAllByTestId('pokemon-name');
     expect(pokeName.length).toBe(1);
   });
 
@@ -61,7 +59,7 @@ describe('TEste Pokedex.js', () => {
       userEvent.click(buttonType);
 
       const nextPokemon = screen.getByTestId('next-pokemon');
-      const pokemonName = screen.getByTestId(POKEMON_NAME);
+      const pokemonName = screen.getByTestId('pokemon-name');
       const pokemonType = screen.getByTestId('pokemon-type');
 
       filterPokeType.forEach((pokemon) => {
