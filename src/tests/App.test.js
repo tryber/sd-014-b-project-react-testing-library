@@ -17,11 +17,36 @@ describe('Testando o componente App', () => {
 
   it(`se a aplicação é redirecionada para a página inicial,
   na URL / ao clicar no link Home da barra de navegação.`, () => {
-    renderWithRouter(<App />);
     const { history } = renderWithRouter(<App />);
     const home = screen.getByText('Home');
     userEvent.click(home);
     const { pathname } = history.location;
     expect(pathname).toBe('/');
+  });
+
+  it(`se a aplicação é redirecionada para a página de About,
+  na URL /about, ao clicar no link About da barra de navegação.`, () => {
+    const { history } = renderWithRouter(<App />);
+    const home = screen.getByText('About');
+    userEvent.click(home);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/about');
+  });
+
+  it(`se a aplicação é redirecionada para a página de Pokémons Favoritados,
+  na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação.`, () => {
+    const { history } = renderWithRouter(<App />);
+    const home = screen.getByText('Favorite Pokémons');
+    userEvent.click(home);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/favorites');
+  });
+
+  it(`se a aplicação é redirecionada para a página Not Found
+  ao entrar em uma URL desconhecida.`, () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/pagina/que-nao-existe/');
+    const noMatch = screen.getByText('Page requested not found');
+    expect(noMatch).toBeInTheDocument();
   });
 });
