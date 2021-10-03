@@ -3,8 +3,8 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import About from '../components/About';
 
-describe('Testa se o componente About.js', () => {
-  test('se a página contém um heading h2 com o text About Pokédex', () => {
+describe('Testa o componente About.js', () => {
+  test('se a página contém um heading h2 com o texto About Pokédex', () => {
     renderWithRouter(<About />);
     const aboutTitle = screen.getByRole('heading', {
       level: 2,
@@ -17,11 +17,8 @@ describe('Testa se o componente About.js', () => {
   test('se a página contém dois parágrafos com texto sobre a Pokédex', () => {
     renderWithRouter(<About />);
 
-    const firstParagrapher = screen.getByText(/This/i);
-    const secondParagrapher = screen.getByText(/One/i);
-
-    expect(firstParagrapher).toBeInTheDocument();
-    expect(secondParagrapher).toBeInTheDocument();
+    expect(screen.getByText(/This/i)).toBeInTheDocument();
+    expect(screen.getByText(/One/i)).toBeInTheDocument();
   });
 
   test('se a página contém a seguinte imagem de uma Pokédex', () => {
