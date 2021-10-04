@@ -49,7 +49,7 @@ describe('Testa o componente Pokemon', () => {
     const checkBoxfavorits = screen.getByRole('checkbox');
     userEvent.click(checkBoxfavorits);
 
-    const imgStar = screen.getByRole('img', { name: 'Pikachu is marked as favorite' });
+    const imgStar = screen.getByAltText('Pikachu is marked as favorite');
     expect(imgStar.getAttribute('src')).toEqual('/star-icon.svg');
   });
 });
