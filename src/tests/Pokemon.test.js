@@ -55,7 +55,7 @@ describe('Testando componente Pokemon', () => {
     const favoritar = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
     userEvent.click(favoritar);
 
-    const img = screen.getByAltText(/is marked as favorite/);
+    const img = screen.getByAltText(/Pikachu is marked as favorite/);
     expect(img).toHaveAttribute('src', '/star-icon.svg');
   });
 });
