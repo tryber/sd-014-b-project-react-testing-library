@@ -11,10 +11,10 @@ describe('Requisito 6 - Pokemon test', () => {
     expect(pokeName).toHaveTextContent('Pikachu');
 
     const pokeType = screen.getByTestId('pokemon-type');
-    expect(pokeType).toBeInTheDocument('Eletric');
+    expect(pokeType).toHaveTextContent('Electric');
 
     const pokeWheight = screen.getByTestId('pokemon-weight');
-    expect(pokeWheight).toBeInTheDocument(/Average weight: 6.0 kg/);
+    expect(pokeWheight).toHaveTextContent(/Average weight: 6.0 kg/);
 
     const pokeImage = screen.getByAltText(/sprite/);
     expect(pokeImage).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
