@@ -39,14 +39,6 @@ describe('Teste o componente Pokemon', () => {
     expect(pathname).toBe(patch);
   });
 
-  it('Teste também se a URL exibida no navegador muda para /pokemon/<id>', () => {
-    const { history } = renderWithRouter(<App />);
-    const pokemonsDetails = screen.getByText(detailsButton);
-    userEvent.click(pokemonsDetails);
-    const { pathname } = history.location;
-    expect(pathname).toBe(patch);
-  });
-
   it('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
     renderWithRouter(<App />);
 
