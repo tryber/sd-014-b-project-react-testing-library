@@ -45,7 +45,7 @@ describe('Testa o componenete App', () => {
   na URL /favorites, ao clicar no link Favorite Pokémons da barra de navegação`, () => {
     const { history } = renderWithRouter(<App />);
 
-    const favorites = screen.getByText('Favorites Pokémons');
+    const favorites = screen.getByText('Favorite Pokémons');
     expect(favorites).toBeInTheDocument();
 
     fireEvent.click(favorites);
