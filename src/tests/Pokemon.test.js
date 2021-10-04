@@ -21,7 +21,7 @@ describe('testes nos dados do card do pokemon', () => {
   test('peso do pokemon', () => {
     renderWithRouter(<App />);
     const weight = screen.getByTestId('pokemon-weight');
-    expect(weight).toHaveTextContent(/6.0 kg/);
+    expect(weight).toHaveTextContent('Average weight: 6.0 kg');
   });
 
   test('imagem do pokemon', () => {
@@ -51,7 +51,7 @@ describe('testes nos dados do card do pokemon', () => {
     const checkAsFavorite = screen.getByLabelText('Pokémon favoritado?');
     fireEvent.click(checkAsFavorite);
 
-    const yellowStar = screen.getByAltText(/marked as favorite/);
+    const yellowStar = screen.getByAltText(/Pikachu is marked as favorite/);
     expect(yellowStar).toBeInTheDocument();
     expect(yellowStar).toHaveAttribute(
       'src',
