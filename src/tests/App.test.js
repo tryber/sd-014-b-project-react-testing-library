@@ -26,7 +26,8 @@ describe('Testing App.js', () => {
     expect(pathname).toBe('/');
   });
 
-  test('should be redirected to the about page when clicked on About on the navbar', () => {
+  test(`should be redirected to the about page when clicked 
+  on About on the navbar`, () => {
     const { history } = RouterRender(<App />);
     const aboutLink = screen.getByRole('link', { name: 'About' });
 
@@ -37,7 +38,8 @@ describe('Testing App.js', () => {
     expect(pathname).toBe('/about');
   });
 
-  it('should be redirected to the Favorite Pokemonm page when clicked on Favorite on the navbar', () => {
+  it(`should be redirected to the Favorite Pokémon page when clicked 
+  on Favorite on the navbar`, () => {
     const { history } = RouterRender(<App />);
     const favoriteLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
 
