@@ -1,5 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
@@ -16,5 +17,27 @@ describe('Teste o componente <Pokedex.js />', () => {
     renderWithRouter(<App />);
     const buttonInThePage = screen.getByRole('button', { name: /Próximo pokémon/i });
     expect(buttonInThePage).toBeInTheDocument();
+    userEvent.click(buttonInThePage);
+    const pokemon2 = screen.getByRole('img', { name: /Charmander sprite/i });
+    expect(pokemon2).toBeInTheDocument();
+    userEvent.click(buttonInThePage);
+    const pokemon3 = screen.getByRole('img', { name: /Caterpie sprite/i });
+    expect(pokemon3).toBeInTheDocument();
+    const seven = 7;
+    for (let index = 0; index < seven; index += 1) {
+      userEvent.click(buttonInThePage);
+    }
+    const pokemon1 = screen.getByRole('img', { name: /Pikachu sprite/i });
+    expect(pokemon1).toBeInTheDocument();
+  });
+  it('se a Pokédex tem os botões de filtro.', () => {
+    renderWithRouter(<App />);
+    expect(screen.getByRole('button', { name: /Electric/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Fire/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Bug/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Poison/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Psychic/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Normal/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Dragon/i })).toBeInTheDocument();
   });
 });
