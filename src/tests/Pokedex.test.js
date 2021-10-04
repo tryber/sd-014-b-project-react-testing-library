@@ -40,4 +40,12 @@ describe('Testando componente Pokedex.js', () => {
     const charmander = screen.getByText(/Charmander/);
     expect(charmander).toBeInTheDocument();
   });
+
+  test('se existe botão All, sem filtros', () => {
+    renderWithRouter(<App />);
+    const botaoAll = screen.getByRole('button', { name: 'All' });
+    userEvent.click(botaoAll);
+    const pikachu = screen.getByText('Pikachu');
+    expect(pikachu).toBeInTheDocument();
+  });
 });
