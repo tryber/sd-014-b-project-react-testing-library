@@ -40,4 +40,15 @@ describe('Teste o componente <Pokedex.js />', () => {
     expect(screen.getByRole('button', { name: /Normal/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Dragon/i })).toBeInTheDocument();
   });
+  it('se a Pokédex contém um botão para resetar o filtro', () => {
+    renderWithRouter(<App />);
+    const buttonReset = screen.getByRole('button', { name: /All/i });
+    expect(buttonReset).toBeInTheDocument();
+    userEvent.click(buttonReset);
+    const pikachu = screen.getByTestId('pokemon-name');
+    expect(pikachu.innerHTML).toBe('Pikachu');
+    expect(screen.getByRole('button', { name: /Electric/i })).toBeInTheDocument();
+    const seven = 7;
+    expect(screen.getAllByTestId('pokemon-type-button').length).toBe(seven);
+  });
 });
