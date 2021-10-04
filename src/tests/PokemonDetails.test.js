@@ -54,6 +54,5 @@ describe('Testa componente PokemonDetails', () => {
     expect(checkFavorite).toBeChecked();
     userEvent.click(checkFavorite);
     expect(checkFavorite).not.toBeChecked();
-
   });
 });
