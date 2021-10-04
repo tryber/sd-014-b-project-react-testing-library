@@ -31,6 +31,12 @@ describe('Testando componente Pokemon', () => {
     expect(tipoPikachu.length).toStrictEqual(2);
   });
 
+  test('se o peso do pokemon aparece', () => {
+    renderWithRouter(<App />);
+    const pesoPokemon = screen.getByText('Average weight: 6.0 kg');
+    expect(pesoPokemon).toBeInTheDocument();
+  });
+
   test('se o card do Pokémon indicado na Pokédex contém um link de navegação', () => {
     renderWithRouter(<App />);
     const linkMaisInf = screen.getByRole('link', { name: 'More details' });
