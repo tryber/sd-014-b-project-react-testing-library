@@ -38,7 +38,7 @@ describe('Tests the App.js application', () => {
       const { pathname } = history.location;
       expect(pathname).toBe('/about');
     });
-    test('`Pokémons Favoritados` page when the `Favorite Pokémons` link is clicked', () => {
+    test('`Pokémons Favoritados` page when `Favorite Pokémons` link is clicked', () => {
       const { history } = renderWithRouter(<App />);
       const link = screen.getByRole('link', { name: 'Favorite Pokémons' });
       userEvent.click(link);

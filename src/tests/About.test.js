@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import About from '../components';
+import { About } from '../components';
 
 describe('Tests the About.js application', () => {
   test('page has the informations about the Pokédex', () => {
