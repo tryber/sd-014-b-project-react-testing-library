@@ -1,4 +1,5 @@
-// Referência, PR do Rafael Veiga
+// Referência, PR do Rafael Veiga, tinha esquecido de criar uma função com render
+// com router e de utilizar o history para navegação.
 // src: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/30/files
 
 import React from 'react';
