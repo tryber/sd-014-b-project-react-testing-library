@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import About from '../components/About';
+import About from '../components';
 
 describe('Tests the About.js application', () => {
   test('page has the informations about the Pokédex', () => {
@@ -16,7 +16,8 @@ describe('Tests the About.js application', () => {
   test('page has 2 paragraphes with text about the Pokédex', () => {
     render(<About />);
     const paragraphes = screen.getAllByText(/Pokémons/);
-    expect(paragraphes).toHaveLength(2);
+    const EXPECTED_LENGTH = 2;
+    expect(paragraphes).toHaveLength(EXPECTED_LENGTH);
   });
   test('page has Pokédex image', () => {
     render(<About />);
