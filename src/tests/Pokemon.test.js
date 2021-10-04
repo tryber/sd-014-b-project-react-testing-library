@@ -14,7 +14,7 @@ describe('Teste o componente <Pokemon.js />', () => {
 
     expect(name.textContent).toBe('Pikachu');
     expect(type).toHaveTextContent('Electric');
-    expect(weight).toHaveTextContent('6.0 kg');
+    expect(weight).toHaveTextContent('Average weight: 6.0 kg');
 
     const img = screen.getByAltText(/Pikachu sprite/i);
 
