@@ -50,6 +50,7 @@ describe('Testando componente Pokemon', () => {
     renderWithRouter(<App />);
     const linkMaisInf = screen.getByRole('link', { name: 'More details' });
     userEvent.click(linkMaisInf);
+    expect(linkMaisInf).toHaveAttribute('href', '/pokemons/25');
 
     const favoritar = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
     userEvent.click(favoritar);
