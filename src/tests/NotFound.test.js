@@ -19,7 +19,7 @@ describe('NotFound.js testcase', () => {
     const img = screen.getAllByRole('img');
     expect(img[1]).toHaveAttribute(
       'src',
-      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif'
+      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif',
     );
   });
 });
