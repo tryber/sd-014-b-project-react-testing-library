@@ -12,6 +12,13 @@ describe('Testando componente Pokemon', () => {
       'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
   });
 
+  test('se o nome corresponde ao Pokemon', () => {
+    renderWithRouter(<App />);
+    const altPikachu = screen.getByRole('img');
+    expect(altPikachu).toHaveAttribute('alt',
+      'Pikachu sprite');
+  });
+
   test('se o nome do pokemon esta correto', () => {
     renderWithRouter(<App />);
     const nomePikachu = screen.getByText('Pikachu');
@@ -33,4 +40,15 @@ describe('Testando componente Pokemon', () => {
     expect(summary).toBeInTheDocument();
   });
 
+  test('se aparece uma estrela no pokemon favorito', () => {
+    renderWithRouter(<App />);
+    const linkMaisInf = screen.getByRole('link', { name: 'More details' });
+    userEvent.click(linkMaisInf);
+
+    const favoritar = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
+    userEvent.click(favoritar);
+
+    const img = screen.getByAltText(/is marked as favorite/);
+    expect(img).toHaveAttribute('src', '/star-icon.svg');
+  });
 });
