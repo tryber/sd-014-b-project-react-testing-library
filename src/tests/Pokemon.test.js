@@ -18,6 +18,7 @@ describe('Testando o componente Pokemon', () => {
     expect(pokeName).toHaveTextContent('Pikachu');
     expect(pokeType).toHaveTextContent('Electric');
     expect(pokeWeight).toHaveTextContent('Average weight: 6.0 kg');
+    expect(pokeImg).toHaveAttribute('alt', 'Pikachu sprite');
     expect(pokeImg).toHaveAttribute(
       'src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
     );
@@ -27,8 +28,8 @@ describe('Testando o componente Pokemon', () => {
   + 'exibir detalhes deste Pokémon. O link deve possuir a URL /pokemons/<id>, '
   + 'onde <id> é o id do Pokémon exibido.', () => {
     renderWithRouter(<App />);
-    const moreDetailsLink = screen.getByText(moreDetString);
-    expect(moreDetailsLink).toBeInTheDocument();
+    const moreDetailsLink = screen.getByRole('link', { name: 'More details' });
+    // expect(moreDetailsLink).toBeInTheDocument();
     expect(moreDetailsLink).toHaveAttribute('href', pokeSrcIdString);
   });
 
@@ -37,8 +38,8 @@ describe('Testando o componente Pokemon', () => {
     renderWithRouter(<App />);
     const moreDetailsLink = screen.getByText(moreDetString);
     userEvent.click(moreDetailsLink);
-    const detailsText = screen.getByText('Pikachu Details');
-    expect(detailsText).toBeInTheDocument();
+    const detailsText = screen.getAllByRole('heading', { level: 2 });
+    expect(detailsText[0].textContent).toBe('Pikachu Details');
   });
 
   it('se a URL exibida no navegador muda para /pokemon/<id>, onde <id>'
@@ -56,7 +57,8 @@ describe('Testando o componente Pokemon', () => {
     userEvent.click(moreDetailsLink);
     const favCheckbox = screen.getByRole('checkbox');
     userEvent.click(favCheckbox);
-    const starIcon = screen.getByAltText('Pikachu is marked as favorite');
-    expect(starIcon).toHaveAttribute('src', '/star-icon.svg');
+    const starIcon = screen.getAllByRole('img');
+    expect(starIcon[1]).toHaveAttribute('src', '/star-icon.svg');
+    expect(starIcon[1].alt).toBe('Pikachu is marked as favorite');
   });
 });
