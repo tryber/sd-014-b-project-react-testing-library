@@ -31,7 +31,3 @@ describe('Testando o Favorite Pokémons', () => {
     expect(detailsLink).toBeInTheDocument();
   });
 });
-
-// Acessa o item
-// Interage, se houver necessidade
-// Faz o teste
