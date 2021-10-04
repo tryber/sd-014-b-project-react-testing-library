@@ -7,16 +7,16 @@ import pokemons from '../data';
 const testIdPokemonName = 'pokemon-name';
 const moreDetailsText = 'More details';
 const favoriteLabelText = 'Pokémon favoritado?';
+const pikachuPage = '/pokemons/25';
+
 describe('Testa as informações detalhadas do Pokémon selecionado são mostradas na tela.',
   () => {
     test('a página deve conter um texto <name> Details', () => {
-      renderWithRouter(<App />);
+      const { history } = renderWithRouter(<App />);
+      history.push(pikachuPage);
 
-      const moreDetailsBtn = screen.getByText(moreDetailsText);
-      fireEvent.click(moreDetailsBtn);
-
-      const pokemonName = screen.getByTestId(testIdPokemonName);
-      const h2 = screen.getByText(`${pokemonName.textContent} Details`);
+      const pokemonName = screen.getByTestId(testIdPokemonName).textContent;
+      const h2 = screen.getByText(`${pokemonName} Details`);
       expect(h2).toBeInTheDocument();
     });
 
@@ -29,9 +29,8 @@ describe('Testa as informações detalhadas do Pokémon selecionado são mostrad
     });
 
     test('a seção de detalhes deve conter um heading h2 com o texto Summary', () => {
-      renderWithRouter(<App />);
-      const moreDetailsBtn = screen.getByText(moreDetailsText);
-      fireEvent.click(moreDetailsBtn);
+      const { history } = renderWithRouter(<App />);
+      history.push(pikachuPage);
 
       const h2 = screen.getByRole('heading', { name: 'Summary' });
       expect(h2).toBeInTheDocument();
@@ -39,14 +38,12 @@ describe('Testa as informações detalhadas do Pokémon selecionado são mostrad
 
     test('deve conter um parágrafo com o resumo do Pokémon específico sendo visualizado',
       () => {
-        renderWithRouter(<App />);
+        const { history } = renderWithRouter(<App />);
+        history.push(pikachuPage);
 
-        const moreDetailsBtn = screen.getByText(moreDetailsText);
-        fireEvent.click(moreDetailsBtn);
-
-        const pokemonName = screen.getByTestId(testIdPokemonName);
+        const pokemonName = screen.getByTestId(testIdPokemonName).textContent;
         const currentSummary = pokemons
-          .find(({ name }) => name === pokemonName.textContent).summary;
+          .find(({ name }) => name === pokemonName).summary;
         const summaryElement = screen.getByText(currentSummary);
         expect(summaryElement).toBeInTheDocument();
       });
@@ -59,13 +56,12 @@ describe(
       `Na seção de detalhes deverá existir um heading h2 com o texto
       Game Locations of <name>; onde <name> é o nome do Pokémon exibido.`,
       () => {
-        renderWithRouter(<App />);
+        const { history } = renderWithRouter(<App />);
+        history.push(pikachuPage);
 
-        const moreDetailsBtn = screen.getByText(moreDetailsText);
-        fireEvent.click(moreDetailsBtn);
-        const pokemonName = screen.getByTestId(testIdPokemonName);
+        const pokemonName = screen.getByTestId(testIdPokemonName).textContent;
         const h2 = screen
-          .getByRole('heading', { name: `Game Locations of ${pokemonName.textContent}` });
+          .getByRole('heading', { name: `Game Locations of ${pokemonName}` });
         expect(h2).toBeInTheDocument();
       },
     );
@@ -73,14 +69,12 @@ describe(
     test(
       'Devem ser exibidos o nome da localização e uma imagem do mapa em cada localização',
       () => {
-        renderWithRouter(<App />);
+        const { history } = renderWithRouter(<App />);
+        history.push(pikachuPage);
 
-        const moreDetailsBtn = screen.getByText(moreDetailsText);
-        fireEvent.click(moreDetailsBtn);
-
-        const pokemonName = screen.getByTestId(testIdPokemonName);
+        const pokemonName = screen.getByTestId(testIdPokemonName).textContent;
         const locations = pokemons
-          .find(({ name }) => name === pokemonName.textContent).foundAt
+          .find(({ name }) => name === pokemonName).foundAt
           .map(({ location }) => location);
         locations.forEach((local) => {
           const locationElement = screen.getByText(local);
@@ -92,17 +86,15 @@ describe(
     test(
       'A imagem da localização deve ter um atributo src com a URL da localização; ',
       () => {
-        renderWithRouter(<App />);
+        const { history } = renderWithRouter(<App />);
+        history.push(pikachuPage);
 
-        const moreDetailsBtn = screen.getByText(moreDetailsText);
-        fireEvent.click(moreDetailsBtn);
-
-        const pokemonName = screen.getByTestId(testIdPokemonName);
+        const pokemonName = screen.getByTestId(testIdPokemonName).textContent;
         const imgElements = screen
-          .queryAllByAltText(`${pokemonName.textContent} location`);
+          .queryAllByAltText(`${pokemonName} location`);
         expect(imgElements).toBeTruthy();
         const imgs = pokemons
-          .find(({ name }) => name === pokemonName.textContent).foundAt
+          .find(({ name }) => name === pokemonName).foundAt
           .map(({ map }) => map);
 
         imgs.forEach((img) => {
@@ -113,16 +105,14 @@ describe(
 
     test('a imagem da localização deve ter um atributo alt com o texto <name> location',
       () => {
-        renderWithRouter(<App />);
+        const { history } = renderWithRouter(<App />);
+        history.push(pikachuPage);
 
-        const moreDetailsBtn = screen.getByText(moreDetailsText);
-        fireEvent.click(moreDetailsBtn);
-
-        const pokemonName = screen.getByTestId(testIdPokemonName);
+        const pokemonName = screen.getByTestId(testIdPokemonName).textContent;
         const imgElements = screen
-          .queryAllByAltText(`${pokemonName.textContent} location`);
+          .queryAllByAltText(`${pokemonName} location`);
         const imgsLength = pokemons
-          .find(({ name }) => name === pokemonName.textContent).foundAt
+          .find(({ name }) => name === pokemonName).foundAt
           .map(({ map }) => map).length;
 
         expect(imgElements.length).toBe(imgsLength);
@@ -133,10 +123,8 @@ describe(
 describe(
   'Testa se o usuário pode favoritar um pokémon através da página de detalhes', () => {
     test('A página deve exibir um checkbox que permite favoritar o Pokémon', () => {
-      renderWithRouter(<App />);
-
-      const moreDetailsBtn = screen.getByText(moreDetailsText);
-      fireEvent.click(moreDetailsBtn);
+      const { history } = renderWithRouter(<App />);
+      history.push(pikachuPage);
 
       const favoriteBtn = screen.getByLabelText(favoriteLabelText);
       expect(favoriteBtn).toBeInTheDocument();
@@ -147,7 +135,7 @@ describe(
         e remover respectivamente o Pokémon da lista de favoritos;`,
       () => {
         const { history } = renderWithRouter(<App />);
-        history.push('/pokemons/25');
+        history.push(pikachuPage);
         const pokemonName = screen.getByTestId(testIdPokemonName).textContent;
         const favoriteBtn = screen.getByLabelText(favoriteLabelText);
         fireEvent.click(favoriteBtn);
@@ -170,7 +158,7 @@ describe(
 
     test('O label do checkbox deve conter o texto Pokémon favoritado?', () => {
       const { history } = renderWithRouter(<App />);
-      history.push('/pokemons/25');
+      history.push(pikachuPage);
       screen.getByLabelText(favoriteLabelText);
     });
   },
