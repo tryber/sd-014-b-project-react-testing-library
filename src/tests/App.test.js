@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './RenderWithRouter';
 
-describe('Testa se a página contém os links de navegação', () => {
+describe('Testa se a página contém os links de navegação:', () => {
   test('se os links Home, About e Favorite Pokémons existem.', () => {
     renderWithRouter(<App />);
 
