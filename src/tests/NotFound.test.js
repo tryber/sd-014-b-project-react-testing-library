@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
-describe('Testando o componente FavoritePokemons', () => {
+describe('Testando o componente NotFound', () => {
   it('se página contém um heading h2 com o texto Page requested not found 😭', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/pagina/que-nao-existe/');
