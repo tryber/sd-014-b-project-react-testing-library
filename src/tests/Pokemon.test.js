@@ -5,6 +5,9 @@ import renderWithRouter from './RenderWithRouter';
 import App from '../App';
 
 describe('Testa o componente Pokemon', () => {
+  const pikachuPath = '/pokemons/25';
+  const moreDetails = 'More details';
+
   test('Se é renderizado um card com as informações de determinado pokémon.', () => {
     renderWithRouter(<App />);
 
@@ -23,25 +26,25 @@ describe('Testa o componente Pokemon', () => {
    contém um link de navegação para exibir detalhes deste Pokémon`, () => {
     renderWithRouter(<App />);
 
-    const buttonDetails = screen.getByRole('link', { name: 'More details' });
+    const buttonDetails = screen.getByRole('link', { name: moreDetails });
 
-    expect(buttonDetails.href).toContain('/pokemons/25');
+    expect(buttonDetails.href).toContain(pikachuPath);
   });
 
   test(`se ao clicar no link de navegação do Pokémon,
    é feito o redirecionamento da aplicação para a página de detalhes de Pokémon`, () => {
     const { history } = renderWithRouter(<App />);
 
-    const buttonDetails = screen.getByRole('link', { name: 'More details' });
+    const buttonDetails = screen.getByRole('link', { name: moreDetails });
     userEvent.click(buttonDetails);
 
-    expect(history.location.pathname).toBe('/pokemons/25');
+    expect(history.location.pathname).toBe(pikachuPath);
   });
 
   test('se existe um ícone de estrela nos Pokémons favoritados.', () => {
     renderWithRouter(<App />);
 
-    const buttonDetails = screen.getByRole('link', { name: 'More details' });
+    const buttonDetails = screen.getByRole('link', { name: moreDetails });
     userEvent.click(buttonDetails);
     const checkbox = screen.getByRole('checkbox');
     userEvent.click(checkbox);
