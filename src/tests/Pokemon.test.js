@@ -45,7 +45,6 @@ describe('Testa o componente Pokedex.js', () => {
     fireEvent.click(link);
     const { pathname } = history.location;
     expect(pathname).toBe('/pokemons/25');
-
   });
 
   test('Testa se existe um ícone de estrela nos Pokémons favoritados.', () => {
