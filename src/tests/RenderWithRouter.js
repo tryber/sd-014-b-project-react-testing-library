@@ -3,16 +3,11 @@ import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 
-const history = createMemoryHistory();
-
-function renderWithRouter(component) {
-  const seletores = render(
-    <Router history={ history }>
-      { component }
-    </Router>,
-  );
-
-  return { ...seletores, history };
-}
+const renderWithRouter = (component) => {
+  const history = createMemoryHistory();
+  return ({
+    ...render(<Router history={ history }>{component}</Router>), history,
+  });
+};
 
 export default renderWithRouter;
