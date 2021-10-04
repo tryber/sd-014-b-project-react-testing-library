@@ -8,7 +8,7 @@ describe('Testa o componente NotFound', () => {
     () => {
       const { history } = renderWithRouter(<App />);
       history.push('/page/not-found123/');
-      const msg = screen.getByRole('heading', { level: 2 });
+      const msg = screen.getByText('Page requested not found');
       expect(msg).toBeInTheDocument();
     });
 
