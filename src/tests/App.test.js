@@ -25,8 +25,8 @@ describe('Testa o componenete App', () => {
     expect(home).toBeInTheDocument();
 
     fireEvent.click(home);
-    const pathName = history.location.pathname;
-    expect(pathName).toBe('/');
+    const { pathname } = history.location;
+    expect(pathname).toBe('/');
   });
 
   it(`Teste se a aplicação é redirecionada para a página de
@@ -37,8 +37,8 @@ describe('Testa o componenete App', () => {
     expect(about).toBeInTheDocument();
 
     fireEvent.click(about);
-    const pathName = history.location.pathname;
-    expect(pathName).toBe('/about');
+    const { pathname } = history.location;
+    expect(pathname).toBe('/about');
   });
 
   it(`Teste se a aplicação é redirecionada para a página de Pokémons Favoritados,
@@ -49,8 +49,8 @@ describe('Testa o componenete App', () => {
     expect(favorites).toBeInTheDocument();
 
     fireEvent.click(favorites);
-    const pathName = history.location.pathname;
-    expect(pathName).toBe('/favorites');
+    const { pathname } = history.location;
+    expect(pathname).toBe('/favorites');
   });
 
   it(`Teste se a aplicação é redirecionada para a página Not
@@ -59,7 +59,7 @@ describe('Testa o componenete App', () => {
 
     history.push('/página_inexistente');
 
-    const notFound = screen.getByText('Page requested not found 😭');
+    const notFound = screen.getByText('Page requested not found');
     expect(notFound).toBeInTheDocument();
   });
 });
