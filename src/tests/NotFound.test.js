@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import NotFound from '../components/NotFound';
-import FavoritePokemons from '../components/FavoritePokemons';
 
 describe('requisito 4', () => {
   test('se tem uma pagina h2 com texto', () => {
