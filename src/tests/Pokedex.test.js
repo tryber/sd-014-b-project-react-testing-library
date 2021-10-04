@@ -11,4 +11,10 @@ describe('Teste o componente <Pokedex.js />', () => {
     );
     expect(titleText).toBeInTheDocument();
   });
+  it(`se é exibido o próximo Pokémon da lista
+  quando o botão Próximo pokémon é clicado.`, () => {
+    renderWithRouter(<App />);
+    const buttonInThePage = screen.getByRole('button', { name: /Próximo pokémon/i });
+    expect(buttonInThePage).toBeInTheDocument();
+  });
 });
