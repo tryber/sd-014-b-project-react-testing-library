@@ -36,7 +36,7 @@ describe('Teste os componentes de "App"', () => {
 
   test('se ao ir para uma URL desconhecida exibe a página Not Found', () => {
     const { history } = renderWithRouter(<App />);
-    history.push('/rota-inexistente');
+    history.push('/non-existing-route');
 
     const notFoundImage = screen
       .getByAltText('Pikachu crying because the page requested was not found');
