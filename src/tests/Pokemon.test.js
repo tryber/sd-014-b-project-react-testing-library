@@ -4,8 +4,6 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
-const moreDetails = 'More details';
-
 describe('Testa o componente Pokemon', () => {
   test('se é renderizado um card com as informações de determinado pokémon', () => {
     renderWithRouter(<App />);
@@ -23,27 +21,21 @@ describe('Testa o componente Pokemon', () => {
     expect(pokemonImg.getAttribute('alt')).toEqual('Pikachu sprite');
   });
 
-  test('se o card tem um link para exibir detalhes do Pokémon', () => {
+  test(`se o card tem um link para exibir detalhes do Pokémon,
+  e se esse link redireciona para pagina de detalhes do pokemon selecionado`, () => {
     const { history } = renderWithRouter(<App />);
-    const linkMoreDetails = screen.getByRole('link', { name: moreDetails });
-    expect(linkMoreDetails).toBeInTheDocument();
+    const moreDetails = screen.getByRole('link', { name: 'More details' });
+    expect(moreDetails).toBeInTheDocument();
 
     userEvent.click(linkMoreDetails);
-    expect(history.location.pathname).toEqual('/pokemons/25');
-  });
-
-  test('se clicar no link, é redirecionado para a página de detalhes de Pokémon.', () => {
-    renderWithRouter(<App />);
-    const linkMoreDetails = screen.getByRole('link', { name: moreDetails });
-    userEvent.click(linkMoreDetails);
-
     const h2 = screen.getByRole('heading', { level: 2, name: 'Pikachu Details' });
     expect(h2).toBeInTheDocument();
+    expect(history.location.pathname).toEqual('/pokemons/25');
   });
 
   test('se existe um ícone de estrela nos Pokémons favoritados.', () => {
     renderWithRouter(<App />);
-    const linkMoreDetails = screen.getByRole('link', { name: moreDetails });
+    const linkMoreDetails = screen.getByRole('link', { name: 'More details' });
     userEvent.click(linkMoreDetails);
 
     const checkBoxfavorits = screen.getByRole('checkbox');
