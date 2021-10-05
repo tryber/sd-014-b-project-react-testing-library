@@ -53,7 +53,7 @@ class App extends Component {
 
   renderPokemonDetails(match) {
     const { isPokemonFavoriteById } = this.state;
-
+	console.log(match);
     return (
       <PokemonDetails
         isPokemonFavoriteById={ isPokemonFavoriteById }
