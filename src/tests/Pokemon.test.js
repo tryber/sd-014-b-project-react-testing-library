@@ -12,12 +12,17 @@ describe('Testa o componente Pokemon', () => {
     const pokemonName = screen.getByTestId('pokemon-name');
     const pokemonType = screen.getByTestId('pokemon-type');
     const pokemonWeigth = screen.getByTestId('pokemon-weight');
-    const pokemonImg = screen.getByRole('img');
-    const url = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
 
     expect(pokemonName).toHaveTextContent('Pikachu');
     expect(pokemonType).toHaveTextContent('Electric');
     expect(pokemonWeigth).toHaveTextContent('Average weight: 6.0');
+  });
+
+  test('se é renderizado as imagen do pokemon em questão', () => {
+    renderWithRouter(<App />);
+
+    const pokemonImg = screen.getByRole('img');
+    const url = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
     expect(pokemonImg.getAttribute('src')).toEqual(url);
     expect(pokemonImg.getAttribute('alt')).toEqual('Pikachu sprite');
   });
