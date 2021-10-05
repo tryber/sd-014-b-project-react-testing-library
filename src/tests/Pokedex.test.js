@@ -9,6 +9,7 @@ describe('requisito 5', () => {
     renderWithRouter(<App />);
     const textEncPoke = screen.getByRole('heading', { level: 2 });
     expect(textEncPoke).toBeInTheDocument();
+    expect(textEncPoke).toHaveTextContent('Encountered pokémons');
   });
 
   test('se é exibido o proximo poke depois de clicar', () => {
