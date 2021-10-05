@@ -24,8 +24,8 @@ describe('Testa o componente Pokemon', () => {
   test(`se o card tem um link para exibir detalhes do Pokémon,
   e se esse link redireciona para pagina de detalhes do pokemon selecionado`, () => {
     const { history } = renderWithRouter(<App />);
-    const moreDetails = screen.getByRole('link', { name: 'More details' });
-    expect(moreDetails).toBeInTheDocument();
+    const linkMoreDetails = screen.getByRole('link', { name: 'More details' });
+    expect(linkMoreDetails).toBeInTheDocument();
 
     userEvent.click(linkMoreDetails);
     const h2 = screen.getByRole('heading', { level: 2, name: 'Pikachu Details' });
