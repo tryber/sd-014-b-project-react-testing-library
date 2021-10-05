@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../components/renderWithRouter';
 import App from '../App';
 
-describe('Testes requisito 4, teste do component NotFound', () => {
+describe('Testes requisito 5, teste do component Pokedex', () => {
   test('Testa secontem um heading h2 com o texto Encountered pokemons', () => {
     renderWithRouter(<App />);
 
