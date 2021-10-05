@@ -1,1 +1,11 @@
-test('', () => {});
+import React from 'react';
+import { screen } from '@testing-library/react';
+import renderWithRouter from '../helpers/renderWithRouter';
+import { PokemonDetails } from '../components';
+
+describe('Testando o componente PokemonDetails.js', () => {
+  it('', () => {
+    renderWithRouter(<PokemonDetails />);
+    expect(screen.getByText('Summary')).toBeInTheDocument();
+  });
+});
