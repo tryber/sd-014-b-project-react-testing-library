@@ -15,6 +15,14 @@ describe('Testa o Pokedex.js', () => {
     expect(pokedexTitle).toBeInTheDocument();
   });
 
+  test('se é exibido o próximo Pokémon quando o botão Próximo pokémon é clicado.', () => {
+    renderWithRouter(<App />);
+
+    const nextPokemon = screen.getByRole('button', { name: 'Próximo pokémon' });
+    expect(nextPokemon).toBeInTheDocument();
+    userEvent.click(nextPokemon);
+  });
+
   test('se é exibido um pokemon por vez', () => {
     renderWithRouter(<App />);
 
