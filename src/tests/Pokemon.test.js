@@ -32,6 +32,8 @@ describe('Testando o componente <Pokemon.js>', () => {
     const checkFavoritePokemon = screen.getByRole('checkbox');
     userEvent.click(checkFavoritePokemon);
 
+    // testing2
+
     const favIconStar = screen.getByAltText(/Pikachu is marked/);
     expect(favIconStar).toHaveAttribute('src', '/star-icon.svg');
   });
