@@ -22,6 +22,8 @@ describe('Testando o componente Pokedex.js', () => {
     renderWithRouter(<App />);
     const firstPokemon = screen.getByTestId(POKE_NAME_TESTID);
     const nextPokeBtn = screen.getByTestId(NEXT_POKE_TESTID);
+
+    expect(nextPokeBtn.textContent).toBe('Próximo pokémon');
     expect(firstPokemon.textContent).toBe('Pikachu');
     userEvent.click(nextPokeBtn);
     const secondPokemon = screen.getByTestId(POKE_NAME_TESTID);
