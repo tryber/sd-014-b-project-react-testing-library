@@ -1,67 +1,30 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import renderWithRouter from '../components/renderWithRouter';
-import App from '../App';
+import { render, screen } from '@testing-library/react';
+import About from '../components/About';
 
-describe('Testando requisito 1, testando os links do app', () => {
-  test('Testa se os links home,about e favorites estão sendo exibidos na pagina inicial',
-    () => {
-      renderWithRouter(<App />);
+describe('testando requisito 2, teste about', () => {
+  test('Testa se existe um heading h2 com o texto About Pokedex', () => {
+    render(<About />);
 
-      const linkHome = screen.getByRole('link', { name: 'Home' });
-      expect(linkHome).toBeInTheDocument();
-
-      const linkAbout = screen.getByRole('link', { name: 'About' });
-      expect(linkAbout).toBeInTheDocument();
-
-      const linkFavorites = screen.getByRole('link', { name: 'Favorite Pokémons' });
-      expect(linkFavorites).toBeInTheDocument();
-    });
-
-  test('Testa se o usuario é direcionado para a pagina home ao clicar no link',
-    () => {
-      const { history } = renderWithRouter(<App />);
-      const linkHome = screen.getByRole('link', { name: 'Home' });
-
-      userEvent.click(linkHome);
-
-      expect(history.location.pathname).toBe('/');
-    });
-
-  test('Testa se o usuario é direcionado para a pagina about ao clicar no link',
-    () => {
-      const { history } = renderWithRouter(<App />);
-      const linkAbout = screen.getByRole('link', { name: 'About' });
-
-      userEvent.click(linkAbout);
-
-      expect(history.location.pathname).toBe('/about');
-    });
-
-  test('Testa se o usuario é direcionado para a pagina favorites ao clicar no link',
-    () => {
-      const { history } = renderWithRouter(<App />);
-      const linkFavorites = screen.getByRole('link', { name: 'Favorite Pokémons' });
-
-      userEvent.click(linkFavorites);
-
-      expect(history.location.pathname).toBe('/favorites');
-    });
-
-  test(`Testa se o usuario é redirecionado a página not found caso nao for uma rota
-   correspondete`,
-  () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/404-not-found');
-
-    expect(history.location.pathname).toBe('/404-not-found');
-
-    const notFound404 = screen.getByRole('heading', {
+    const aboutPokedex = screen.getByRole('heading', {
       level: 2,
-      name: 'Page requested not found Crying emoji',
-    });
+      name: 'About Pokédex' });
 
-    expect(notFound404).toBeInTheDocument();
+    expect(aboutPokedex).toBeInTheDocument();
   });
+  test('Testa se contem 2 paragrafos com o texto About Pokedex', () => {
+    render(<About />);
+
+    const firstParargaph = screen.getByText(/this/i);
+    expect(firstParargaph).toBeInTheDocument();
+
+    const secondParagraph = screen.getByText(/one/i);
+    expect(secondParagraph).toBeInTheDocument();
+  }); // https://testing-library.com/docs/queries/about/#textmatch
+  test('Testa se contem a imagem especifica citada de uma pokedex', () => {
+    render(<About />);
+
+    const image = screen.getByRole('img');
+    expect(image.src).toBe('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
+  }); // pode usar .src para acessar a prorpiedade src do item
 });
