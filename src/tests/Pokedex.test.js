@@ -30,7 +30,7 @@ describe('Testa o Pokedex.js', () => {
     expect(btnFilters.length).toBe(qtdBtn);
     // Ref.: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/64/commits/4c71e7e389e04457633dd65a72d1316d7e53e18a
     pokemons.forEach(({ type }) => {
-      const pokemonTypeBtn = screen.getByRole('button', { name: type });
+      const pokemonTypeBtn = screen.getByRole('button', { name: `${type}` });
       expect(pokemonTypeBtn).toBeInTheDocument();
     });
   });
