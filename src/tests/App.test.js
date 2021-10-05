@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../components/renderWithRouter';
 import App from '../App';
 
-describe('Testando requisito 1, testando os links do app', () => {
+describe('Testando requisito 1, testando o component app', () => {
   test('Testa se os links home,about e favorites estão sendo exibidos na pagina inicial',
     () => {
       renderWithRouter(<App />);
