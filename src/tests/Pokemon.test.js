@@ -36,8 +36,10 @@ describe('Testa o componente Pokemon', () => {
     const moreDetails = screen.getByRole('link', { name: textMoreDetails });
     userEvent.click(moreDetails);
 
-    const h2 = screen.getByRole('heading', { level: 2, name: 'Pikachu Details' });
-    expect(h2).toBeInTheDocument();
+    const pokemonDetails = screen.getByRole('heading',
+      { level: 2,
+        name: 'Pikachu Details' });
+    expect(pokemonDetails).toBeInTheDocument();
   });
 
   test('se existe um ícone de estrela nos Pokémons favoritados.', () => {
