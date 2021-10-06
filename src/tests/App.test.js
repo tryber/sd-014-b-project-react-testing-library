@@ -3,8 +3,8 @@ import { screen, fireEvent } from '@testing-library/react';
 import renderWithRouter from '../components/renderWithRouter';
 import App from '../App';
 
-describe('Teste do componente <App.js />', () => {
-  it('Teste se topo da aplicação contém um conjunto fixo de links de navegação.', () => {
+describe('Testes do componente <App.js />', () => {
+  it('O topo da aplicação contém um conjunto fixo de links de navegação.', () => {
     renderWithRouter(<App />);
     const links = screen.getAllByRole('link');
 
@@ -13,7 +13,7 @@ describe('Teste do componente <App.js />', () => {
     expect(links[2].textContent).toBe('Favorite Pokémons');
   });
 
-  it('Aplicação vai para a página inicial', () => {
+  it('A aplicação é redirecionada para a página inicial', () => {
     const { history } = renderWithRouter(<App />);
     const homeLink = screen.getByText(/Home/i);
 
@@ -23,7 +23,7 @@ describe('Teste do componente <App.js />', () => {
     expect(pathName).toBe('/');
   });
 
-  it('Aplicação vai para a página "About"', () => {
+  it('A aplicação é redirecionada para a página de "About"', () => {
     const { history } = renderWithRouter(<App />);
     const aboutLink = screen.getByText(/About/i);
 
@@ -33,7 +33,7 @@ describe('Teste do componente <App.js />', () => {
     expect(pathName).toBe('/about');
   });
 
-  it('Aplicação vai para a página "Pokémons Favoritados"', () => {
+  it('A aplicação é redirecionada para a página de "Pokémons Favoritados"', () => {
     const { history } = renderWithRouter(<App />);
     const favoritesLink = screen.getByText(/Favorite Pokémons/i);
 
@@ -43,7 +43,7 @@ describe('Teste do componente <App.js />', () => {
     expect(pathName).toBe('/favorites');
   });
 
-  it('Aplicação vai para a página "Not Found"', () => {
+  it('A aplicação é redirecionada para a página "Not Found"', () => {
     const { history } = renderWithRouter(<App />);
 
     history.push('/not-found');
