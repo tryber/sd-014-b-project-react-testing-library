@@ -18,17 +18,30 @@ describe('03 - Teste o componente <FavoritePokemons.js />', () => {
   test('b) Se são exibidos todos os cards de pokémons favoritados.', () => {
     renderWithRouter(<App />);
 
-    const pokemonDetails = screen.getByRole('link', { name: 'More details' });
-    userEvent.click(pokemonDetails);
+    const pokemonNames = [];
+    const AMOUNT_OF_POKEMONS = 9;
 
-    const favoriteCheckbox = screen
-      .getByRole('checkbox', { name: 'Pokémon favoritado?' });
-    userEvent.click(favoriteCheckbox);
+    for (let index = 1; index <= AMOUNT_OF_POKEMONS; index += 1) {
+      userEvent.click(screen.getByRole('link', { name: 'More details' }));
 
-    const favoritesLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
-    userEvent.click(favoritesLink);
+      pokemonNames.push(screen.getByTestId('pokemon-name').innerHTML);
+      userEvent.click(screen.getByRole('checkbox', { name: 'Pokémon favoritado?' }));
 
-    const favoriteCard = screen.getByRole('link', { name: 'More details' });
-    expect(favoriteCard).toBeInTheDocument();
+      if (index < AMOUNT_OF_POKEMONS) {
+        userEvent.click(screen.getByRole('link', { name: 'Home' }));
+        for (let index2 = 1; index2 <= index; index2 += 1) {
+          userEvent.click(screen.getByTestId('next-pokemon'));
+        }
+      }
+    }
+
+    userEvent.click(screen.getByRole('link', { name: 'Favorite Pokémons' }));
+
+    const amountOfCards = screen.getAllByTestId('pokemon-name');
+    expect(amountOfCards.length).toBe(pokemonNames.length);
+    pokemonNames.forEach((pokemonName) => {
+      const nameParagraph = screen.getByText(pokemonName);
+      expect(nameParagraph).toBeInTheDocument();
+    });
   });
 });
