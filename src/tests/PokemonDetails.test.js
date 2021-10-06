@@ -3,7 +3,6 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from '../components/renderWithRouter';
-import pokemons from '../data';
 
 describe('Testa o PokemonDetails', () => {
   test('Testa se as informações detalhadas são mostradas na tela', () => {
