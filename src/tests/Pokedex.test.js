@@ -5,7 +5,7 @@ import renderWithRouter from './services/renderWithRouter';
 import App from '../App';
 
 describe('Testa o componente <Pokedex.js />', () => {
-  it('Verifica se o título "Encoutered pokémons" foi renderizado', () => {
+  it('Deveria renderizar o título "Encoutered pokémons"', () => {
     renderWithRouter(<App />);
     const pokedexHeading = screen
       .getByRole('heading', { level: 2, name: 'Encountered pokémons' });
@@ -20,7 +20,8 @@ describe('Testa o componente <Pokedex.js />', () => {
     typeButtons.forEach((button) => expect(button).toBeInTheDocument());
   });
 
-  it('Deveria ', () => {
+  it(`Deveria renderizar os pokemons corretamente,
+   de acordo com o tipo selecionado`, () => {
     renderWithRouter(<App />);
     const fireBttn = screen.getByRole('button', { name: 'Fire' });
     const allBttn = screen.getByRole('button', { name: 'All' });

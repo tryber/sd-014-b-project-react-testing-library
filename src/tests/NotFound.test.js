@@ -1,22 +1,21 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
 import NotFound from '../components/NotFound';
 import renderWithRouter from './services/renderWithRouter';
 
-describe('', () => {
-  it('', () => {
+describe('Testa o componente "NotFound.js"', () => {
+  it('Deveria  renderizar o título da página', () => {
     renderWithRouter(<NotFound />);
 
     const heading = screen.getByRole('heading', {
       level: 2,
+      name: 'Page requested not found Crying emoji',
     });
 
     expect(heading).toBeInTheDocument();
-    expect(heading).toHaveTextContent('Page requested not found');
   });
 
-  it('', () => {
+  it('Deveria renderizar a imagem de um Pikachu chorando', () => {
     renderWithRouter(<NotFound />);
 
     const pikachuGif = screen.getByAltText(
