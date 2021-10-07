@@ -24,7 +24,7 @@ describe('Requisito 6', () => {
     fireEvent.click(btns[1]);
     expect(poke).toHaveTextContent('Charmander');
     expect(type).toHaveTextContent('Fire');
-    expect(weight).toHaveTextContent('Average weight:');
+    expect(weight).toHaveTextContent('Average weight: ');
     expect(weight).toHaveTextContent('kg');
   });
 
