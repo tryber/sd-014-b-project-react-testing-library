@@ -14,18 +14,25 @@ describe('Requisito 6', () => {
     const weight = screen.getByTestId('pokemon-weight');
     const src = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
     const srcText = screen.getByRole('img', { name: 'Pikachu sprite' });
+    const pikachu = {
+      id: 25,
+      name: 'Pikachu',
+      type: 'Electric',
+      averageWeight: {
+        value: '6.0',
+        measurementUnit: 'kg',
+      },
+      image: 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
+    };
+    const { averageWeight } = pikachu;
+    const { value, measurementUnit } = averageWeight;
 
     expect(poke).toHaveTextContent('Pikachu');
     expect(type).toHaveTextContent('Electric');
-    expect(weight).toHaveTextContent('Average weight:');
-    expect(weight).toHaveTextContent('kg');
-    expect(srcText.src).toBe(src);
-
-    fireEvent.click(btns[1]);
-    expect(poke).toHaveTextContent('Charmander');
-    expect(type).toHaveTextContent('Fire');
     expect(weight).toHaveTextContent('Average weight: ');
-    expect(weight).toHaveTextContent('kg');
+    expect(weight).toHaveTextContent(' kg');
+    expect(srcText.src).toBe(src);
+    expect(weight).toHaveTextContent(`Average weight: ${value} ${measurementUnit}`);
   });
 
   test('se contem link com mais detalhes', () => {
