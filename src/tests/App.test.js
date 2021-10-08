@@ -20,4 +20,8 @@ describe('Testa a aplicação App', () => {
     expect(aboutLink).toBeInTheDocument();
     expect(favPokeLink).toBeInTheDocument();
   });
+
+  test('Se é direcionada para a página Not Found ao entrar em URL desconhecida', () => {
+    renderWithRouter(<App />);
+  });
 });
