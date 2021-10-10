@@ -18,6 +18,7 @@ describe('Teste se a página contém as informações sobre a Pokédex.', () => 
     expect(screen.getByText(/One/i)).toBeInTheDocument();
   });
   it('Teste se a página contém a seguinte imagem de uma Pokédex', () => {
+    RenderWithRouter(<About />);
     const image = screen.getByRole('img');
     expect(image).toHaveAttribute(
       'src',
