@@ -38,4 +38,4 @@ describe('Testa o componente Pokemon.js', () => {
     expect(favoriteStar).toBeInTheDocument();
     expect(favoriteStar).toHaveAttribute('src', '/star-icon.svg');
   });
-});
+}); //
