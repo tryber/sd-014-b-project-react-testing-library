@@ -12,4 +12,9 @@ describe('Teste se a página contém as informações sobre a Pokédex.', () => 
     });
     expect(aboutHeading).toBeInTheDocument();
   });
+  it('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
+    RenderWithRouter(<About />);
+    expect(screen.getByText(/This/i)).toBeInTheDocument();
+    expect(screen.getByText(/One/i)).toBeInTheDocument();
+  });
 });
