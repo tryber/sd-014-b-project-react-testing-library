@@ -6,7 +6,7 @@ import { createMemoryHistory } from 'history';
 export default function renderWithRouter(component) {
   const customHistory = createMemoryHistory();
   const renderObject = render(
-    <Router history= { customHistory }>
+    <Router history={ customHistory }>
       { component }
     </Router>,
   );
