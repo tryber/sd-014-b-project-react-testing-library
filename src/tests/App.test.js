@@ -22,7 +22,7 @@ describe('Testa o primeiro requisito',
     test('Verifica se a aplicação é redirecionada para a página inicial, na URL /`',
       () => {
         const { history } = renderWithRouter(<App />);
-        const homeLink= screen.getByRole('link', { name: 'Home' });
+        const homeLink = screen.getByRole('link', { name: 'Home' });
 
         userEvent.click(homeLink);
         expect(history.location.pathname).toBe('/');
@@ -37,16 +37,18 @@ describe('Testa o primeiro requisito',
         expect(history.location.pathname).toBe('/about');
       });
 
-    test(`Verifica se a aplicação é redirecionada para a página de Pokémons Favoritados'`, () => {
-      const { history } = renderWithRouter(<App />);
-      const favoriteLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
+    test('Verifica se a aplicação é redirecionada para a página de Pokémons Favoritados',
+      () => {
+        const { history } = renderWithRouter(<App />);
+        const favoriteLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
 
-      userEvent.click(favoriteLink);
-      expect(history.location.pathname).toBe('/favorites');
-    });
+        userEvent.click(favoriteLink);
+        expect(history.location.pathname).toBe('/favorites');
+      });
 
-    test(`Verifica se a aplicação é redirecionada para a página Not Found'`, () => {
-      const { history } = renderWithRouter(<App />);
-      history.push('/url não encontrada');
-    });
+    test('Verifica se a aplicação é redirecionada para a página Not Found',
+      () => {
+        const { history } = renderWithRouter(<App />);
+        history.push('/url não encontrada');
+      });
   });
