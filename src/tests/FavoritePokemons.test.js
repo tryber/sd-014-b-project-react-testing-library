@@ -62,7 +62,7 @@ describe('Teste o componente <FavoritePokemons.js />', () => {
   it(`Teste se é exibido na tela a mensagem No favorite pokemon found,
   se a pessoa não tiver pokémons favoritos`, () => {
     RenderWithRouter(<FavoritePokemons pokemons={ favoriteless } />);
-    expect(screen.getByText(/No favorite pokemon faound/i)).toBeInTheDocument();
+    expect(screen.getByText(/No favorite pokemon found/i)).toBeInTheDocument();
   });
   it('Teste se é exibido todos os cards de pokémons favoritados.', () => {
     RenderWithRouter(<FavoritePokemons pokemons={ favoritePokemons } />);
