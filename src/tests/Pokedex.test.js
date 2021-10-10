@@ -28,4 +28,25 @@ describe('Teste o componente <Pokedex.js />', () => {
     const renderizedPokemon = screen.getAllByTestId('pokemon-name');
     expect(renderizedPokemon.length).toBe(1);
   });
+  it('Teste se a Pokédex tem os botões de filtro', () => {
+    RenderWithRouter(<App />);
+    const BUTTONS_QUANTITY = 7;
+    const allButton = screen.getByRole('button', { name: 'All' });
+    expect(allButton).toBeInTheDocument();
+    const pokemonsTypeButtons = screen.getAllByTestId('pokemon-type-button');
+    expect(pokemonsTypeButtons.length).toBe(BUTTONS_QUANTITY);
+
+    pokemons.forEach(({ type }) => {
+      const typeButton = screen.getByRole('button', { name: `${type}` });
+      expect(typeButton).toBeInTheDocument();
+    });
+  });
+  it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
+    RenderWithRouter(<App />);
+    const allButton = screen.getByRole('button', { name: 'All' });
+    expect(allButton).toBeInTheDocument();
+    fireEvent.click(allButton);
+    const pikachu = screen.getByText(/pikachu/i);
+    expect(pikachu).toBeInTheDocument();
+  });
 });
