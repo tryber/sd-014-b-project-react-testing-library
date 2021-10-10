@@ -4,8 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './RenderWithRouter';
 import App from '../App';
 
-describe('Testa o primeiro requisito',
-  () => {
+describe('Testa o primeiro requisito', () => {
     test('verifica se o texto dos links estão corretos', () => {
       renderWithRouter(<App />);
 
