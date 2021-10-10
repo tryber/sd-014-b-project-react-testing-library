@@ -6,7 +6,8 @@ const About = () => (
     <h2>{ `About ` + `Pokédex` }</h2>
     <section>
       <p>
-        
+        This application simulates a Pokédex, a
+        digital encyclopedia containing all Pokémon
       </p>
       <p>One can filter Pokémons by type, and see more details for each one of them</p>
       <img
