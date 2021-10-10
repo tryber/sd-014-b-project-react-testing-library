@@ -1,9 +1,9 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 // import Pokedex from '../components/Pokedex';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
-import userEvent from '@testing-library/user-event';
 // import pokemons from '../data';
 
 describe(' Teste o componente <Pokedex.js />', () => {
