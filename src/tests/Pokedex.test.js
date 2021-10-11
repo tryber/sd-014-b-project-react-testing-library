@@ -1,18 +1,10 @@
 import React from 'react';
-import { screen, render } from '@testing-library/react';
-import { Router } from 'react-router';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { createMemoryHistory } from 'history';
+import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 const POKEMON_NAME = 'pokemon-name';
-
-const renderWithRouter = (component) => {
-  const history = createMemoryHistory();
-  return ({
-    ...render(<Router history={ history }>{component}</Router>), history,
-  });
-};
 
 describe('Teste o componente <Pokedex.js />', () => {
   test('Se página contém um heading h2 com o texto `Encountered pokémons`', () => {
