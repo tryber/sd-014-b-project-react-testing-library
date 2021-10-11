@@ -1,9 +1,34 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import About from '../components/About';
+import renderWithRouter from '../components/renderWithRouter';
+import { screen } from '@testing-library/react';
+import FavoritePokemons from '../components/FavoritePokemons';
 
-describe('', () => {
-  it('', () => {
-    //
+describe('Teste o componente <FavoritePokemons.js />', () => {
+  it('Teste se é exibido na tela a mensagem No favorite pokemon found, se a pessoa não tiver pokémons favoritos.', () => {
+    renderWithRouter(<FavoritePokemons />);
+    const notFoundText = screen.getByText('No favorite pokemon found');
+    // const img = screen.getByRole('img');
+    // expect(img).not.toBeInTheDocument();
+  });
+  it('Teste se é exibido todos os cards de pokémons favoritados.', () => {
+    const Pokemons = [
+      {
+        id: 25,
+        name: 'Pikachu',
+        type: 'Electric',
+        averageWeight: {
+          value: '6.0',
+          measurementUnit: 'kg',
+        },
+      }
+    ];
+
+    renderWithRouter(<FavoritePokemons pokemons={ Pokemons }/>);
+    const pokeName = screen.getByText('Pikachu');
+    const pokeType = screen.getByText('Electric'); 
+    const pokeWeight = screen.getByText('Average weight: 6.0 kg');
+    expect(pokeName).toBeInTheDocument();
+    expect(pokeType).toBeInTheDocument();
+    expect(pokeWeight).toBeInTheDocument();
   });
 });
