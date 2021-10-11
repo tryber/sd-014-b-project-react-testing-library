@@ -4,6 +4,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
+import pokemons from '../data';
 // import pokemons from '../data';
 
 describe(' Teste o componente <Pokedex.js />', () => {
@@ -36,16 +37,18 @@ describe(' Teste o componente <Pokedex.js />', () => {
 
   it('Teste se a Pokédex tem os botões de filtro.', () => {
     renderWithRouter(<App />);
-    const buttonAll = screen.getByRole('button', {
-      name: 'All',
-    });
-    expect(buttonAll).toBeInTheDocument();
   });
 
   it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
     renderWithRouter(<App />);
-    const buttonType = screen.getAllByRole('button');
+    const buttonAll = screen.getByRole('button', {
+      name: 'All',
+    });
+    expect(buttonAll).toBeInTheDocument();
+    userEvent.click(buttonAll);
+    const pikachu = screen.getByText(/pikachu/i);
+    expect(pikachu).toBeInTheDocument();
     const NOVE = 9;
-    expect(buttonType.length).toBe(NOVE);
+    expect(pokemons.length).toBe(NOVE);
   });
 });
