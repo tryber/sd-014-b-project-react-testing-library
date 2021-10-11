@@ -4,7 +4,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
-// import pokemons from '../data';
+import pokemons from '../data';
 
 describe(' Teste o componente <Pokedex.js />', () => {
   it('Teste se página contém um heading h2 com o texto Encountered pokémons',
@@ -39,5 +39,13 @@ describe(' Teste o componente <Pokedex.js />', () => {
       name: 'All',
     });
     expect(buttonAll).toBeInTheDocument();
+  });
+
+  it(`Deve existir um botão de filtragem para cada tipo de Pokémon,
+    sem repetição. verificando se no total tem 9 botões.`, () => {
+    renderWithRouter(<App />);
+    const buttonType = screen.getAllByRole('button');
+    const NOVE = 9;
+    expect(buttonType.length).toBe(NOVE);
   });
 });
