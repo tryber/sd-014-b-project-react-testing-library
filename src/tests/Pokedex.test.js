@@ -24,13 +24,9 @@ describe('Testa o component Pokedex', () => {
     renderWithRouter(<App />);
     const buttonNextPokemon = screen.getByRole('button', { name: 'Próximo pokémon' });
     expect(buttonNextPokemon).toBeInTheDocument();
-    // Passo a passo para os proximos testes
-    // 1.Pegar a lista de pokemons
     Pokemons.forEach((pokemon) => {
       const namePokemon = screen.getByTestId('pokemon-name');
-      // 3. Após cada click verificar se o pokemon atual aparece na tela
       expect(namePokemon).toHaveTextContent(pokemon.name);
-      // 2.Para cada pokemon da lista clicar no botão proximo botão
       userEvent.click(buttonNextPokemon);
     });
   });
@@ -41,5 +37,13 @@ describe('Testa o component Pokedex', () => {
       const typePokemon = screen.getByRole('button', { name: pokemon.type });
       expect(typePokemon).toHaveTextContent(pokemon.type);
     });
+  });
+
+  test('se o botão "All" está na tela', () => {
+    renderWithRouter(<App />);
+    const buttonAll = screen.getByRole('button', { name: /all/i });
+    // Consultei o repositório do Naesser https://github.com/nasseralm de onde tirei a instpiração para usar o userEvent para clicar no botão All.
+    userEvent.click(buttonAll);
+    expect(buttonAll).toBeInTheDocument();
   });
 });
