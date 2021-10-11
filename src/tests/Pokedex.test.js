@@ -34,4 +34,12 @@ describe('Testa o component Pokedex', () => {
       userEvent.click(buttonNextPokemon);
     });
   });
+
+  test('se existe um botão de filtragem para cada tipo de Pokémon', () => {
+    renderWithRouter(<App />);
+    Pokemons.forEach((pokemon) => {
+      const typePokemon = screen.getByRole('button', { name: pokemon.type });
+      expect(typePokemon).toHaveTextContent(pokemon.type);
+    });
+  });
 });
