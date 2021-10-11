@@ -15,10 +15,8 @@ describe('02 - Teste o componente <About.js />', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/about');
 
-    const paragraphs = screen.getAllByTestId('paragraph');
-    expect(paragraphs).toHaveLength(2);
-    expect(paragraphs[0].name).not.toBe('');
-    expect(paragraphs[1].name).not.toBe('');
+    const paragraphs = screen.getAllByText(/Pokémons/);
+    expect(paragraphs.length - 1).toBe(2);
   });
   test('c) Se a página contém a imagem especificada de uma Pokédex', () => {
     const { history } = renderWithRouter(<App />);
