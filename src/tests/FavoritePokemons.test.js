@@ -1,12 +1,13 @@
 import React from 'react';
-import renderWithRouter from '../components/renderWithRouter';
 import { screen } from '@testing-library/react';
+import renderWithRouter from '../components/renderWithRouter';
 import FavoritePokemons from '../components/FavoritePokemons';
 
 describe('Teste o componente <FavoritePokemons.js />', () => {
-  it('Teste se é exibido na tela a mensagem No favorite pokemon found, se a pessoa não tiver pokémons favoritos.', () => {
+  it('É exibido No favorite pokemon found, se não tiver pokémons favoritos.', () => {
     renderWithRouter(<FavoritePokemons />);
     const notFoundText = screen.getByText('No favorite pokemon found');
+    expect(notFoundText).toBeInTheDocument();
     // const img = screen.getByRole('img');
     // expect(img).not.toBeInTheDocument();
   });
