@@ -1,5 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { useHistory } from 'react-router-dom';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 // import pokemons from '../data';
@@ -27,5 +29,17 @@ describe('Teste o componente <Pokemon.js />', () => {
     });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute('href', '/pokemons/25');
+  });
+
+  it(`Teste também se a URL exibida no navegador muda para /pokemon/<id>,
+  onde <id> é o id do Pokémon cujos detalhes se deseja ver`,
+  () => {
+    const { history } = renderWithRouter(<App />);
+    const link = screen.getByRole('link', {
+      name: 'More details',
+    });
+    expect(link).toBeInTheDocument();
+    userEvent.click(link);
+    expect(history.location.pathname).toBe('/pokemons/25');
   });
 });
