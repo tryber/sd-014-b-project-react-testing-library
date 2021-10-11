@@ -6,6 +6,7 @@ import App from '../App';
 // import pokemons from '../data';
 
 describe('Teste o componente <Pokemon.js />', () => {
+  const POKEMON_HEADING = 'More details';
   it('Teste se é renderizado um card com as informações de determinado pokémon.', () => {
     renderWithRouter(<App />);
     const pokemonName = screen.getByTestId('pokemon-name');
@@ -24,7 +25,7 @@ describe('Teste o componente <Pokemon.js />', () => {
   onde <id> é o id do Pokémon exibido`, () => {
     renderWithRouter(<App />);
     const link = screen.getByRole('link', {
-      name: 'More details',
+      name: POKEMON_HEADING,
     });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute('href', '/pokemons/25');
@@ -35,7 +36,7 @@ describe('Teste o componente <Pokemon.js />', () => {
   () => {
     const { history } = renderWithRouter(<App />);
     const link = screen.getByRole('link', {
-      name: 'More details',
+      name: POKEMON_HEADING,
     });
     expect(link).toBeInTheDocument();
     userEvent.click(link);
@@ -47,7 +48,7 @@ describe('Teste o componente <Pokemon.js />', () => {
   () => {
     renderWithRouter(<App />);
     const link = screen.getByRole('link', {
-      name: 'More details',
+      name: POKEMON_HEADING,
     });
     expect(link).toBeInTheDocument();
     userEvent.click(link);
