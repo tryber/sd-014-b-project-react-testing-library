@@ -26,4 +26,10 @@ describe(' Teste o componente <Pokedex.js />', () => {
     userEvent.click(nextButton);
     expect(screen.getByText(/charmander/i)).toBeInTheDocument();
   });
+
+  it('Teste se é mostrado apenas um Pokémon por vez.', () => {
+    renderWithRouter(<App />);
+    const pokemonCard = screen.getAllByTestId('pokemon-name');
+    expect(pokemonCard.length).toBe(1);
+  });
 });
