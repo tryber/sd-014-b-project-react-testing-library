@@ -39,6 +39,14 @@ describe('Testa o component Pokedex', () => {
     });
   });
 
+  test('se cada um dos botões de filtros funcionam ao clique', () => {
+    const testIdTypeButton = screen.getAllByTestId('pokemon-type-button');
+    testIdTypeButton.forEach((type) => {
+      userEvent.click(type);
+      expect(type).toBeInTheDocument();
+    });
+  });
+
   test('se o botão "All" está na tela', () => {
     renderWithRouter(<App />);
     const buttonAll = screen.getByRole('button', { name: /all/i });
