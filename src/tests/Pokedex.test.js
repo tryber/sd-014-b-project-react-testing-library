@@ -8,7 +8,7 @@ describe('Verifica o componente Pokedex', () => {
   test('Verifica se página contém um heading h2 com o texto Encountered pokémons', () => {
     renderWithRouter(<App />);
     const titleH2 = screen.getByRole('heading', {
-      level: 2, name: 'Encountered pokémons'
+      level: 2, name: 'Encountered pokémons',
     });
     expect(titleH2).toBeInTheDocument();
   });
