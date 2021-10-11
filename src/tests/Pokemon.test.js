@@ -35,6 +35,7 @@ describe('Req 6 - Testa o componente "Pokemon.js"', () => {
     expect(history.location.pathname).toBe('/pokemons/25');
   });
 
+  // ref: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/60/files
   it('Deve exibir um ícone de estrela nos Pokémons favoritados', () => {
     renderWithRouter(<App />);
 
