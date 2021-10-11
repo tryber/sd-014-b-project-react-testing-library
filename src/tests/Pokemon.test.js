@@ -16,6 +16,7 @@ describe('Teste o componente <Pokemon.js />', () => {
     const pokemonWeigth = screen.getByTestId('pokemon-weight');
     expect(pokemonWeigth.innerHTML).toBe('Average weight: 6.0 kg');
     const pokemonImg = screen.getByRole('img');
+    expect(pokemonImg).toBeInTheDocument();
     expect(pokemonImg).toHaveAttribute('src',
       'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
   });
