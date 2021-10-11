@@ -24,3 +24,5 @@ test('Se a página contém as informações sobre a Pokédex.', () => {
       + '800px-Gen_I_Pok%C3%A9dex.png',
   );
 });
+
+// https://testing-library.com/docs/queries/byrole/
