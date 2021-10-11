@@ -21,7 +21,7 @@ describe('Teste o componente <FavoritePokemons.js />', () => {
           value: '6.0',
           measurementUnit: 'kg',
         },
-      }
+      },
     ];
 
     renderWithRouter(<FavoritePokemons pokemons={ Pokemons }/>);
