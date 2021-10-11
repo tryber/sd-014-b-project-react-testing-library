@@ -6,7 +6,8 @@ import App from '../App';
 // import pokemons from '../data';
 
 describe('Teste o componente <Pokemon.js />', () => {
-  const POKEMON_HEADING = 'More details';
+  const MORE_DETAILS = 'More details';
+  const URL = '/pokemons/25';
   it('Teste se é renderizado um card com as informações de determinado pokémon.', () => {
     renderWithRouter(<App />);
     const pokemonName = screen.getByTestId('pokemon-name');
@@ -26,10 +27,10 @@ describe('Teste o componente <Pokemon.js />', () => {
   onde <id> é o id do Pokémon exibido`, () => {
     renderWithRouter(<App />);
     const link = screen.getByRole('link', {
-      name: POKEMON_HEADING,
+      name: MORE_DETAILS,
     });
     expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', '/pokemons/25');
+    expect(link).toHaveAttribute('href', URL);
   });
 
   it(`Teste também se a URL exibida no navegador muda para /pokemon/<id>,
@@ -37,22 +38,23 @@ describe('Teste o componente <Pokemon.js />', () => {
   () => {
     const { history } = renderWithRouter(<App />);
     const link = screen.getByRole('link', {
-      name: POKEMON_HEADING,
+      name: MORE_DETAILS,
     });
     expect(link).toBeInTheDocument();
     userEvent.click(link);
-    expect(history.location.pathname).toBe('/pokemons/25');
+    expect(history.location.pathname).toBe(URL);
   });
 
   it(`Teste se ao clicar no link de navegação do Pokémon,
   é feito o redirecionamento da aplicação para a página de detalhes de Pokémon`,
   () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
     const link = screen.getByRole('link', {
-      name: POKEMON_HEADING,
+      name: MORE_DETAILS,
     });
     expect(link).toBeInTheDocument();
     userEvent.click(link);
+    expect(history.location.pathname).toBe(URL);
     const pikachuDetails = screen.getByRole('heading', {
       level: 2,
       name: 'Pikachu Details',
@@ -63,7 +65,7 @@ describe('Teste o componente <Pokemon.js />', () => {
   it('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
     renderWithRouter(<App />);
     const link = screen.getByRole('link', {
-      name: POKEMON_HEADING,
+      name: MORE_DETAILS,
     });
     expect(link).toBeInTheDocument();
     userEvent.click(link);
@@ -72,5 +74,9 @@ describe('Teste o componente <Pokemon.js />', () => {
     userEvent.click(checkBox);
     const starImg = screen.getByAltText('Pikachu is marked as favorite');
     expect(starImg).toHaveAttribute('src', '/star-icon.svg');
+    const homeLink = screen.getByRole('link', { name: 'Home' });
+    userEvent.click(homeLink);
+    const starPokemonPrincipal = screen.getByAltText('Pikachu is marked as favorite');
+    expect(starPokemonPrincipal).toBeInTheDocument();
   });
 });
