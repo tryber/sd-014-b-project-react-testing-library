@@ -22,6 +22,14 @@ describe('Testa a aplicação App', () => {
   });
 
   test('Se é direcionada para a página Not Found ao entrar em URL desconhecida', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
+
+    history.push('/rota-que-nao-existe');
+
+    const notFoundText = screen.getByRole('heading', {
+      level: 2,
+      name: 'Page requested not found Crying emoji',
+    });
+    expect(notFoundText).toBeInTheDocument();
   });
 });

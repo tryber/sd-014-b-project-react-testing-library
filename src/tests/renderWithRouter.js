@@ -8,10 +8,10 @@ const renderWithRouter = (componentToRender) => {
   return {
     ...render(
       <Router history={ customHistory }>
-        {componentToRender}
+        { componentToRender }
       </Router>,
     ),
-    customHistory,
+    history: customHistory,
   };
 };
 
