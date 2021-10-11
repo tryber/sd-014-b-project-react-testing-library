@@ -6,22 +6,23 @@ import App from '../App';
 import Pokemons from '../data';
 
 describe('Testa o component Pokedex', () => {
-  test('se página contém um heading h2 com o texto "Encountered pokémons".', () => {
+  beforeEach(() => {
     renderWithRouter(<App />);
+  });
+
+  test('se página contém um heading h2 com o texto "Encountered pokémons".', () => {
     const titlePokedex = screen.getByRole('heading',
       { level: 2, name: 'Encountered pokémons' });
     expect(titlePokedex).toBeInTheDocument();
   });
 
   test('se existe um bottão com o texto "Próximo pokémon".', () => {
-    renderWithRouter(<App />);
     const buttonNextPokemon = screen.getByRole('button', { name: 'Próximo pokémon' });
     expect(buttonNextPokemon).toBeInTheDocument();
   });
 
   test(`se os próximos Pokémons da lista aparecem,
   um a um, ao clicar sucessivamente no botão`, () => {
-    renderWithRouter(<App />);
     const buttonNextPokemon = screen.getByRole('button', { name: 'Próximo pokémon' });
     expect(buttonNextPokemon).toBeInTheDocument();
     Pokemons.forEach((pokemon) => {
@@ -32,7 +33,6 @@ describe('Testa o component Pokedex', () => {
   });
 
   test('se existe um botão de filtragem para cada tipo de Pokémon', () => {
-    renderWithRouter(<App />);
     Pokemons.forEach((pokemon) => {
       const typePokemon = screen.getByRole('button', { name: pokemon.type });
       expect(typePokemon).toHaveTextContent(pokemon.type);
@@ -40,7 +40,6 @@ describe('Testa o component Pokedex', () => {
   });
 
   test('se cada um dos botões de filtros funcionam ao clique', () => {
-    renderWithRouter(<App />);
     const testIdTypeButton = screen.getAllByTestId('pokemon-type-button');
     testIdTypeButton.forEach((type) => {
       userEvent.click(type);
@@ -49,7 +48,6 @@ describe('Testa o component Pokedex', () => {
   });
 
   test('se o botão "All" está na tela', () => {
-    renderWithRouter(<App />);
     const buttonAll = screen.getByRole('button', { name: /all/i });
     // Consultei o repositório do Naesser https://github.com/nasseralm de onde tirei a instpiração para usar o userEvent para clicar no botão All.
     userEvent.click(buttonAll);
