@@ -12,21 +12,21 @@ describe('Teste o componente <App.js />', () => {
       expect(nav).toBeInTheDocument();
     });
 
-  test('Testa se o primeiro link possuí o texto Home', () => {
+  test('Testa se o primeiro link possuí o texto Home.', () => {
     renderWithRouter(<App />);
     const link = screen.getByRole('link', { name: 'Home' });
 
     expect(link).toBeInTheDocument();
   });
 
-  test('Testa se o segundo link possuí o texto About', () => {
+  test('Testa se o segundo link possuí o texto About.', () => {
     renderWithRouter(<App />);
     const link = screen.getByRole('link', { name: 'About' });
 
     expect(link).toBeInTheDocument();
   });
 
-  test('Testa se o terceiro link possuí o texto Favorite Pokémons', () => {
+  test('Testa se o terceiro link possuí o texto Favorite Pokémons.', () => {
     renderWithRouter(<App />);
     const link = screen.getByRole('link', { name: 'Favorite Pokémons' });
 
