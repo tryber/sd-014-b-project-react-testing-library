@@ -40,6 +40,7 @@ describe('Testa o component Pokedex', () => {
   });
 
   test('se cada um dos botões de filtros funcionam ao clique', () => {
+    renderWithRouter(<App />);
     const testIdTypeButton = screen.getAllByTestId('pokemon-type-button');
     testIdTypeButton.forEach((type) => {
       userEvent.click(type);
