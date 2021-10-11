@@ -12,7 +12,7 @@ class FavoritePokemons extends React.Component {
   static notFound() {
     return (
       <div>
-        <p>{`No favorite ` + `pokemon found`}</p>
+        <p>{ `No favorite ` + `pokemon found` }</p>
       </div>
     );
   }
@@ -31,7 +31,7 @@ class FavoritePokemons extends React.Component {
 
     return (
       <div className="favorite-pokemons">
-        {pokemons.map((pokemon) => renderFavoritePokemon(pokemon))}
+        { pokemons.map((pokemon) => renderFavoritePokemon(pokemon)) }
       </div>
     );
   }
@@ -44,7 +44,7 @@ class FavoritePokemons extends React.Component {
     return (
       <div>
         <h2>Favorite pokémons</h2>
-        {isEmpty ? notFound() : this.renderFavoritePokemons()}
+        { isEmpty ? notFound() : this.renderFavoritePokemons() }
       </div>
     );
   }
