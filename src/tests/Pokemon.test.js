@@ -32,7 +32,7 @@ describe('Testa a aplicação Pokemon', () => {
     userEvent.click(detailsLink);
     const pikachuDetails = screen.getByRole('heading', {
       level: 2,
-      name: /pikachu details/i,
+      name: 'Pikachu Details',
     });
     expect(pikachuDetails).toBeInTheDocument();
     expect(history.location.pathname).toBe(url);
