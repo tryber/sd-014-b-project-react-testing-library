@@ -9,12 +9,12 @@ describe('Testa a aplicação Pokemon', () => {
     renderWithRouter(<App />);
 
     const pokeName = screen.getByTestId('pokemon-name');
-    expect(pokeName).toHaveTextContent('Pikachu');
+    expect(pokeName.innerHTML).toBe('Pikachu');
     const pokeType = screen.getByTestId('pokemon-type');
-    expect(pokeType).toHaveTextContent('Electric');
+    expect(pokeType.innerHTML).toBe('Electric');
     const pokeWeight = screen.getByTestId('pokemon-weight');
-    expect(pokeWeight).toHaveTextContent('Average weight: 6.0 kg');
-    const pokeImg = screen.getByAltText(/sprite/i);
+    expect(pokeWeight.innerHTML).toBe('Average weight: 6.0 kg');
+    const pokeImg = screen.getByAltText('Pikachu sprite');
     expect(pokeImg).toBeInTheDocument();
     expect(pokeImg).toHaveAttribute('src',
       'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
@@ -47,7 +47,8 @@ describe('Testa a aplicação Pokemon', () => {
     userEvent.click(detailsLink);
     const favStar = screen.getByRole('checkbox');
     userEvent.click(favStar);
-    const imgStar = screen.getByAltText(/marked as favorite/);
+    const imgStar = screen.getByAltText('Pikachu is marked as favorite');
+    expect(imgStar).toBeInTheDocument();
     expect(imgStar).toHaveAttribute('src', '/star-icon.svg');
   });
 });
