@@ -1,6 +1,5 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import renderWithRouter from './utils/renderWithRouter';
 import About from '../components/About';
 
@@ -16,7 +15,7 @@ describe('Req 2 - Testa o componente "<About.js />', () => {
   });
 
   it('Deve renderizar dois parágrafos com texto sobre a Pokédex', () => {
-    renderWithRouter(<About />)
+    renderWithRouter(<About />);
 
     const paragraphs = screen.getAllByText(/pokémons/i);
     expect(paragraphs.length).toBe(2);
