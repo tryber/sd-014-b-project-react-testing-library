@@ -29,7 +29,15 @@ describe(' Teste o componente <Pokedex.js />', () => {
 
   it('Teste se é mostrado apenas um Pokémon por vez.', () => {
     renderWithRouter(<App />);
-    const pokemonCard = screen.getAllByTestId('pokemon-name');
-    expect(pokemonCard.length).toBe(1);
+    const pokemonArray = screen.getAllByTestId('pokemon-name');
+    expect(pokemonArray.length).toBe(1);
+  });
+
+  it('Teste se a Pokédex tem os botões de filtro.', () => {
+    renderWithRouter(<App />);
+    const buttonAll = screen.getByRole('button', {
+      name: 'All',
+    });
+    expect(buttonAll).toBeInTheDocument();
   });
 });
