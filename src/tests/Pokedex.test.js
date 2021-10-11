@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 import pokemons from '../data';
-// import pokemons from '../data';
 
 describe(' Teste o componente <Pokedex.js />', () => {
   it('Teste se página contém um heading h2 com o texto Encountered pokémons',
@@ -37,6 +36,13 @@ describe(' Teste o componente <Pokedex.js />', () => {
 
   it('Teste se a Pokédex tem os botões de filtro.', () => {
     renderWithRouter(<App />);
+    const buttonAll = screen.getByRole('button', {
+      name: 'All',
+    });
+    expect(buttonAll).toBeInTheDocument();
+    const TYPE_ARRAY_LENGHT = 7;
+    const typeButton = screen.getAllByTestId('pokemon-type-button');
+    expect(typeButton.length).toBe(TYPE_ARRAY_LENGHT);
   });
 
   it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
