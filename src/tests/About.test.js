@@ -3,12 +3,6 @@ import { render, screen } from '@testing-library/react';
 import About from '../components/About';
 
 describe('Testando o componente <About.js />.', () => {
-  // it('A página contém as informações sobre a Pokédex.', () => {
-  //   render(<About />);
-  //   const textPokemon = screen.getByText('Informações sobre a Pokedex');
-  //   expect(textPokemon).toBeInTheDocument();
-  // });
-
   it('A página contém um heading h2 com o texto About Pokédex.', () => {
     render(<About />);
     const textPokedex = screen.getByRole('heading', { name: 'About Pokédex', level: 2 });
