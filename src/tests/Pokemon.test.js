@@ -6,7 +6,7 @@ import App from '../App';
 
 const MORE_DETAILS = 'More details';
 
-describe('Teste o componente <Pokedex.js />', () => {
+describe('Teste o componente <Pokemon.js />', () => {
   test(
     'Teste se é renderizado um card com as informações de'
     + ' determinado pokémon.',
@@ -83,7 +83,7 @@ describe('Teste o componente <Pokedex.js />', () => {
       userEvent.click(favoritedPokemon);
       const starImage = screen.getAllByRole('img')
         .some((image) => image.getAttribute('src') === '/star-icon.svg'
-        && image.getAttribute('alt') === 'Pikachu is marked as favorite');
+          && image.getAttribute('alt') === 'Pikachu is marked as favorite');
 
       expect(starImage).toBeTruthy();
     },
