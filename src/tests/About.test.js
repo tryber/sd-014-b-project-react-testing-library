@@ -11,9 +11,9 @@ describe('Testando o componente <About.js />.', () => {
 
   it('A página contém um heading h2 com o texto About Pokédex.', () => {
     render(<About />);
-    const textPokedex = screen.getByRole('heading', { level: 2 });
-    expect(textPokedex).toBe('About Pokédex');
-
+    const textPokedex = screen.getByRole('heading', { name: 'About Pokédex', level: 2 });
+    expect(textPokedex).toBeInTheDocument();
+  });
   it('A página contém dois parágrafos com texto sobre a Pokédex.', () => {
     render(<About />);
     const pokedexParagraph1 = screen.getByText((content) => content
@@ -30,5 +30,4 @@ describe('Testando o componente <About.js />.', () => {
     expect(pokedexImage).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
     expect(pokedexImage).toHaveAttribute('alt', 'Pokédex');
   });
-  // .getByRole('heading');
 });
