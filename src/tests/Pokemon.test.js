@@ -1,22 +1,9 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
+import { screen, fireEvent } from '@testing-library/react';
 
-import {
-  render,
-  screen,
-  fireEvent,
-} from '@testing-library/react';
-import { createMemoryHistory } from 'history';
-
+import renderWithRouter from './renderWithRouter';
 import Pokemon from '../components/Pokemon';
 import data from '../data';
-
-const renderWithRouter = (component) => {
-  const history = createMemoryHistory();
-  return ({
-    ...render(<Router history={ history }>{component}</Router>), history,
-  });
-};
 
 describe('Testa o componente <Pokemon.js />', () => {
   it('Deveria renderizar um card com as informações de determinado pokémon', () => {
