@@ -60,3 +60,4 @@ describe('Testa o componente Pokemon', () => {
     expect(img.getAttribute('src')).toEqual('/star-icon.svg');
   });
 });
+// teste
