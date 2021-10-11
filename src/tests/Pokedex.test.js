@@ -15,7 +15,7 @@ describe('Verifica o componente Pokedex', () => {
 
   test('Verifica se é exibido o próximo Pokémon da lista', () => {
     renderWithRouter(<App />);
-    const nextPokemon = screen.getByText(/Próximo pokémon/);
+    const nextPokemon = screen.getByText('Próximo pokémon');
     expect(nextPokemon).toBeInTheDocument();
   });
 

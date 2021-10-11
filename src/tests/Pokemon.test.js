@@ -5,7 +5,7 @@ import App from '../App';
 import renderWithRouter from './RenderWithRouter';
 
 describe('Verifica o componente Pokemon', () => {
-  test('Verifica se é renderizado um card com as informações de determinado pokémon',
+  test('Verifica se é renderizado o card do pokémon',
     () => {
       renderWithRouter(<App />);
       const pikachuImage = screen.getByRole('img');
@@ -50,9 +50,6 @@ describe('Verifica o componente Pokemon', () => {
 
   test('Verifica se aparece uma estrela no pokemon favorito', () => {
     renderWithRouter(<App />);
-    const favoriteStar = screen.getByRole('link', { name: 'More details' });
-    userEvent.click(favoriteStar);
-    expect(favoriteStar).toHaveAttribute('href', '/pokemons/25');
     const favorite = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
     userEvent.click(favorite);
 
