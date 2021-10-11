@@ -28,7 +28,6 @@ describe('Testa a aplicação App', () => {
     const homeLink = screen.getByRole('link', {
       name: 'Home',
     });
-
     userEvent.click(homeLink);
     expect(history.location.pathname).toBe('/');
   });
@@ -39,7 +38,6 @@ describe('Testa a aplicação App', () => {
     const aboutLink = screen.getByRole('link', {
       name: 'About',
     });
-
     userEvent.click(aboutLink);
     expect(history.location.pathname).toBe('/about');
   });
@@ -50,7 +48,6 @@ describe('Testa a aplicação App', () => {
     const favPokeLink = screen.getByRole('link', {
       name: 'Favorite Pokémons',
     });
-
     userEvent.click(favPokeLink);
     expect(history.location.pathname).toBe('/favorites');
   });
@@ -59,7 +56,6 @@ describe('Testa a aplicação App', () => {
     const { history } = renderWithRouter(<App />);
 
     history.push('/rota-que-nao-existe');
-
     const notFoundText = screen.getByRole('heading', {
       level: 2,
       name: 'Page requested not found Crying emoji',
