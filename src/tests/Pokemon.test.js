@@ -26,4 +26,13 @@ describe('Teste o componente <Pokemon.js />', () => {
     expect(pokemonType.innerHTML).toBe('Average weight: 6.0 kg');
   });
 
+  it(`A imagem do Pokémon deve ser exibida. Ela deve conter um atributo src
+  com a URL da imagem e um atributo alt com o texto <name> sprite,
+  onde <name> é o nome do pokémon`,
+  () => {
+    renderWithRouter(<App />);
+    const pokemonType = screen.getByRole('img');
+    expect(pokemonType).toHaveAttribute('src',
+      'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+  });
 });
