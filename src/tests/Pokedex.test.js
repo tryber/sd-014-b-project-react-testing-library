@@ -17,7 +17,8 @@ describe(' Teste o componente <Pokedex.js />', () => {
       expect(heading).toBeInTheDocument();
     });
 
-  it('Se o próximo pokemon é o Charmander', () => {
+  it(`Teste se é exibido o próximo Pokémon da lista quando
+    o botão Próximo pokémon é clicado`, () => {
     renderWithRouter(<App />);
     const nextButton = screen.getByRole('button', {
       name: 'Próximo pokémon',
@@ -41,8 +42,7 @@ describe(' Teste o componente <Pokedex.js />', () => {
     expect(buttonAll).toBeInTheDocument();
   });
 
-  it(`Deve existir um botão de filtragem para cada tipo de Pokémon,
-    sem repetição. verificando se no total tem 9 botões.`, () => {
+  it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
     renderWithRouter(<App />);
     const buttonType = screen.getAllByRole('button');
     const NOVE = 9;
