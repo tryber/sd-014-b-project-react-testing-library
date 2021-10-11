@@ -7,8 +7,8 @@ import { Pokemon } from '../components';
 const setup = () => {
   const pokemon = {
     averageWeight: {
-      measurementUnit: '',
-      value: '',
+      measurementUnit: 'kg',
+      value: '60',
     },
     foundAt: [{
       location: '',
@@ -27,10 +27,14 @@ const setup = () => {
 describe('Testa o componente Ponkemon', () => {
   test('se é renderizado um card com as informações do pokémon.', () => {
     setup();
+    const namePokemon = screen.getByTestId('pokemon-name');
+    expect(namePokemon.innerHTML).toBe('pikachu');
     const imagemPokemon = screen.getByAltText('pikachu sprite');
     expect(imagemPokemon.src).toContain('url/enfjnv');
-    const pokemonInfo = screen.getByTestId('pokemon-type');
-    expect(pokemonInfo.innerHTML).toBe('eletrico');
+    const pokemonType = screen.getByTestId('pokemon-type');
+    expect(pokemonType.innerHTML).toBe('eletrico');
+    const pokemonWeight = screen.getByTestId('pokemon-weight');
+    expect(pokemonWeight.innerHTML).toBe('Average weight: 60 kg');
   });
 
   test('se o card contém um link de navegação para exibir mais detalhes', () => {
