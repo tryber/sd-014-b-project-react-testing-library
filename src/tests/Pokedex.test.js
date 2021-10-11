@@ -43,6 +43,12 @@ describe(' Teste o componente <Pokedex.js />', () => {
     const TYPE_ARRAY_LENGHT = 7;
     const typeButton = screen.getAllByTestId('pokemon-type-button');
     expect(typeButton.length).toBe(TYPE_ARRAY_LENGHT);
+    pokemons.forEach(({ type }) => {
+      const buttonTypeName = screen.getByRole('button', {
+        name: type,
+      });
+      expect(buttonTypeName).toBeInTheDocument();
+    });
   });
 
   it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
