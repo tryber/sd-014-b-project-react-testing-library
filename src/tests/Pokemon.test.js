@@ -1,7 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useHistory } from 'react-router-dom';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 // import pokemons from '../data';
@@ -41,5 +40,21 @@ describe('Teste o componente <Pokemon.js />', () => {
     expect(link).toBeInTheDocument();
     userEvent.click(link);
     expect(history.location.pathname).toBe('/pokemons/25');
+  });
+
+  it(`Teste se ao clicar no link de navegação do Pokémon,
+  é feito o redirecionamento da aplicação para a página de detalhes de Pokémon`,
+  () => {
+    renderWithRouter(<App />);
+    const link = screen.getByRole('link', {
+      name: 'More details',
+    });
+    expect(link).toBeInTheDocument();
+    userEvent.click(link);
+    const pikachuDetails = screen.getByRole('heading', {
+      level: 2,
+      name: 'Pikachu Details',
+    });
+    expect(pikachuDetails).toBeInTheDocument();
   });
 });
