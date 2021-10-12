@@ -48,4 +48,24 @@ describe('Testa o componente "Pokemon".', () => {
       userEvent.click(buttonNextPokemon);
     });
   });
+
+  test('se o link para mais detalhes do pokemon é exibido corretamente', () => {
+    pokemons.forEach((pokemon) => {
+      const linkMoreDetails = screen.getByRole('link', { name: 'More details' });
+      expect(linkMoreDetails).toBeInTheDocument();
+      expect(linkMoreDetails).toHaveAttribute('href', `/pokemons/${pokemon.id}`);
+      const buttonNextPokemon = screen.getByRole('button', { name: NEXT_POKEMON });
+      userEvent.click(buttonNextPokemon);
+    });
+  });
+
+  test('se existe um ícone de estrela nos Pokémons favoritados', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/pokemons/25');
+    const checkboxFavorite = screen.getByLabelText('Pokémon favoritado?');
+    userEvent.click(checkboxFavorite);
+
+    const igmStar = screen.getByRole('img', { name: /Pikachu is marked as favorite/i });
+    expect(igmStar).toHaveAttribute('src', '/star-icon.svg');
+  });
 });
