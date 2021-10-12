@@ -25,4 +25,26 @@ describe('Testa o componente "Pokemon".', () => {
       userEvent.click(buttonNextPokemon);
     });
   });
+
+  test('se o peso médio correto do pokemon aparece na tela', () => {
+    renderWithRouter(<App />);
+    pokemons.forEach((pokemon) => {
+      const pokemonName = screen.getByTestId('pokemon-weight');
+      expect(pokemonName.innerHTML).toBe(`Average weight: ${
+        pokemon.averageWeight.value} ${pokemon.averageWeight.measurementUnit}`);
+      const buttonNextPokemon = screen.getByRole('button', { name: 'Próximo pokémon' });
+      userEvent.click(buttonNextPokemon);
+    });
+  });
+
+  test('se a imagem do pokemon é exibida corretamente', () => {
+    renderWithRouter(<App />);
+    pokemons.forEach((pokemon) => {
+      const imgPokemon = screen.getByRole('img', { name: `${pokemon.name} sprite` });
+      expect(imgPokemon).toBeInTheDocument();
+      expect(imgPokemon.src).toStrictEqual(pokemon.image);
+      const buttonNextPokemon = screen.getByRole('button', { name: 'Próximo pokémon' });
+      userEvent.click(buttonNextPokemon);
+    });
+  });
 });
