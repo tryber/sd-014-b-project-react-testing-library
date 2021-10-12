@@ -9,10 +9,12 @@ const nextPokemon = 'next-pokemon';
 
 describe('Testa a funcionalidade do componente Pokedex', () => {
   it('verifica heading h2 com o texto "Encountered pokémons"', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
+
+    history.push('/');
 
     const heading = screen.getByRole('heading', {
-      level: 2, name: /encountered pokémons/i });
+      level: 2, name: 'Encountered pokémons' });
     expect(heading).toBeInTheDocument();
   });
 
@@ -22,15 +24,55 @@ describe('Testa a funcionalidade do componente Pokedex', () => {
     const pikachu = screen.getByText('Pikachu');
     expect(pikachu).toBeInTheDocument();
 
-    const next = screen.getByTestId(nextPokemon);
+    const next = screen.getByText('Próximo pokémon');
     expect(next).toBeInTheDocument();
+
     userEvent.click(next);
 
     const charmander = screen.getByText('Charmander');
     expect(charmander).toBeInTheDocument();
+
+    userEvent.click(next);
+
+    const caterpie = screen.getByText('Caterpie');
+    expect(caterpie).toBeInTheDocument();
+
+    userEvent.click(next);
+
+    const ekans = screen.getByText('Ekans');
+    expect(ekans).toBeInTheDocument();
+
+    userEvent.click(next);
+
+    const alakazam = screen.getByText('Alakazam');
+    expect(alakazam).toBeInTheDocument();
+
+    userEvent.click(next);
+
+    const mew = screen.getByText('Mew');
+    expect(mew).toBeInTheDocument();
+
+    userEvent.click(next);
+
+    const rapidash = screen.getByText('Rapidash');
+    expect(rapidash).toBeInTheDocument();
+
+    userEvent.click(next);
+
+    const snorlax = screen.getByText('Snorlax');
+    expect(snorlax).toBeInTheDocument();
+
+    userEvent.click(next);
+
+    const dragonair = screen.getByText('Dragonair');
+    expect(dragonair).toBeInTheDocument();
+
+    userEvent.click(next);
+
+    expect(pikachu).toBeInTheDocument();
   });
 
-  it(' é mostrado apenas um Pokémon por vez', () => {
+  it('mostra um Pokémon por vez', () => {
     renderWithRouter(<App />);
 
     const one = 1;
@@ -58,14 +100,17 @@ describe('Testa a funcionalidade do componente Pokedex', () => {
 
       userEvent.click(button);
 
-      const pokemonText = screen.getByTestId('pokemon-type').textContent;
-      expect(pokemonText).toBe(textButton);
+      const resetFilter = screen.getByRole('button', { name: /all/i });
+      expect(resetFilter).toBeInTheDocument();
+
+      const pokemonText = screen.getByTestId('pokemon-type');
+      expect(pokemonText).toHaveTextContent(textButton);
 
       userEvent.click(next);
     });
   });
 
-  it('a Pokédex contém um botão para resetar o filtro', () => {
+  it('verifica botão para resetar o filtro', () => {
     renderWithRouter(<App />);
 
     const resetFilter = screen.getByRole('button', { name: /All/i });
