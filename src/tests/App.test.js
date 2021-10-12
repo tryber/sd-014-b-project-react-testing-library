@@ -1,3 +1,4 @@
+// Algumas partes do projeto foram feitas com consulta de repositórios de colegas da Trybe
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import App from '../App';
