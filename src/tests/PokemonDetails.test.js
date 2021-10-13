@@ -1,5 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../uteis/renderWithRouter';
 import App from '../App';
 import pokemons from '../data';
@@ -38,5 +39,12 @@ describe('Testa o componente "PokemonDetails".', () => {
     const imgMap = screen.getAllByRole('img', { name: 'Pikachu location' });
     expect(imgMap[0]).toBeInTheDocument();
     expect(imgMap[0].src).toBe('https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
+  });
+
+  test('se o usuário pode favoritar um pokémon através da página de detalhes.', () => {
+    const checkboxFavorite = screen.getByLabelText('Pokémon favoritado?');
+    expect(checkboxFavorite.checked).toBe(false);
+    userEvent.click(checkboxFavorite);
+    expect(checkboxFavorite.checked).toBe(true);
   });
 });
