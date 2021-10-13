@@ -1,70 +1,56 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
-import renderWithRouter from '../components/renderWithRouter';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-describe('Testes do componente <PokemonDetails.js />', () => {
-  it('As informações detalhadas do Pokémon são mostradas na tela', () => {
+describe('Testa o componente PokemonDetails', () => {
+  const textMoreDetails = 'More details';
+  test('se as informações do Pokémon selecionado são mostradas na tela', () => {
     renderWithRouter(<App />);
-    const linkMoreDetails = screen.getByRole('link', { name: 'More details' });
+    const moreDetails = screen.getByRole('link', { name: textMoreDetails });
+    userEvent.click(moreDetails);
 
-    fireEvent.click(linkMoreDetails);
+    const textPokemonDetails = screen.getByText('Pikachu Details');
+    expect(textPokemonDetails).toBeInTheDocument();
+    expect(moreDetails).not.toBeInTheDocument();
 
-    const titlePage = screen.getByText('Pikachu Details');
-    const headingSummary = screen.getByRole('heading', { level: 2, name: 'Summary' });
-    const resumeParagraph = screen.getByText(/This intelligent Pokémon/i);
+    const abstractTitle = screen.getByRole('heading', { level: 2, name: 'Summary' });
+    expect(abstractTitle).toBeInTheDocument();
 
-    expect(titlePage).toBeInTheDocument();
-    expect(linkMoreDetails).not.toBeInTheDocument();
-    expect(headingSummary).toBeInTheDocument();
-    expect(headingSummary.textContent).toBe('Summary');
-    expect(resumeParagraph).toBeInTheDocument();
+    const text = /This intelligent Pokémon roasts hard berries with electricity to make/;
+    const pokemonSummary = screen.getByText(text);
+    expect(pokemonSummary).toBeInTheDocument();
   });
 
-  it('Existe na página uma seção de mapas contendo as localizações do pokémon', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/pokemons/10');
+  test('se existe na página uma seção com os mapas das localizações do pokémon', () => {
+    renderWithRouter(<App />);
+    const moreDetails = screen.getByRole('link', { name: textMoreDetails });
+    userEvent.click(moreDetails);
 
-    const altPokemon = 'Caterpie location';
-    const headingLocations = screen.getByRole('heading',
-      { level: 2, name: 'Game Locations of Caterpie' });
-    const locationsImg = screen.getAllByAltText(altPokemon);
-    const NUM_LOCATIONS = 4;
+    const h2 = screen.getByRole('heading',
+      {
+        level: 2,
+        name: 'Game Locations of Pikachu' });
+    expect(h2).toBeInTheDocument();
 
-    expect(headingLocations).toBeInTheDocument();
-    expect(headingLocations.textContent).toBe('Game Locations of Caterpie');
-    expect(locationsImg).toHaveLength(NUM_LOCATIONS);
-
-    expect(locationsImg[0].src).toBe('https://cdn2.bulbagarden.net/upload/7/76/Johto_Route_30_Map.png');
-    expect(locationsImg[0].alt).toBe(altPokemon);
-    expect(screen.getByText('Johto Route 30')).toBeInTheDocument();
-
-    expect(locationsImg[1].src).toBe('https://cdn2.bulbagarden.net/upload/2/2b/Johto_Route_31_Map.png');
-    expect(locationsImg[1].alt).toBe(altPokemon);
-    expect(screen.getByText('Johto Route 31')).toBeInTheDocument();
-
-    expect(locationsImg[2].src).toBe('https://cdn2.bulbagarden.net/upload/a/ae/Johto_Ilex_Forest_Map.png');
-    expect(locationsImg[2].alt).toBe(altPokemon);
-    expect(screen.getByText('Ilex Forest')).toBeInTheDocument();
-
-    expect(locationsImg[3].src).toBe('https://cdn2.bulbagarden.net/upload/4/4e/Johto_National_Park_Map.png');
-    expect(locationsImg[3].alt).toBe(altPokemon);
-    expect(screen.getByText('Johto National Park')).toBeInTheDocument();
+    const pikachuLocation = screen.getAllByAltText('Pikachu location');
+    expect(pikachuLocation.length).toEqual(2);
+    expect(pikachuLocation[0].getAttribute('src')).toEqual('https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
+    expect(pikachuLocation[1].getAttribute('src')).toEqual('https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
   });
 
-  it('O usuário pode favoritar um pokémon através da página de detalhes', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/pokemons/23');
+  test('se o usuário pode favoritar um pokémon através da página de detalhes', () => {
+    renderWithRouter(<App />);
+    const moreDetails = screen.getByRole('link', { name: textMoreDetails });
+    userEvent.click(moreDetails);
 
-    const checkFav = screen.getByLabelText('Pokémon favoritado?');
+    const favoriteCheckBox = screen.getByLabelText('Pokémon favoritado?');
+    userEvent.click(favoriteCheckBox);
+    const imgStar = screen.getByAltText('Pikachu is marked as favorite');
+    expect(imgStar).toBeInTheDocument();
 
-    expect(checkFav).toBeInTheDocument();
-
-    fireEvent.click(checkFav);
-    const starImg = screen.getByRole('img', { name: 'Ekans is marked as favorite' });
-    expect(starImg).toBeInTheDocument();
-
-    fireEvent.click(checkFav);
-    expect(starImg).not.toBeInTheDocument();
+    userEvent.click(favoriteCheckBox);
+    expect(imgStar).not.toBeInTheDocument();
   });
 });
