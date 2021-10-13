@@ -1,0 +1,19 @@
+{
+  "name": "sd-014-b-project-react-testing-library",
+  "version": "1.0.0",
+  "description": "Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tryber/sd-014-b-project-react-testing-library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tryber/sd-014-b-project-react-testing-library/issues"
+  },
+  "homepage": "https://github.com/tryber/sd-014-b-project-react-testing-library#readme"
+}
