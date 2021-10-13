@@ -9,4 +9,11 @@ describe('Testa o componente <FavoritePokemons.js />', () => {
     const mensage = screen.getByText('No favorite pokemon found');
     expect(mensage).toBeInTheDocument();
   });
+
+  test('Testa se é exibido todos os cards de pokémons favoritados', () => {
+    const pokemons = [{ id: 1, name: '', type: '', averageWeight: {}, image: '' }];
+    renderWithRouter(<FavoritePokemons pokemons={ pokemons} />);
+    const favorite = screen.getByRole('link', { name: 'More details' });
+    expect(favorite.href).toContain('/pokemons/1');
+  });
 });
