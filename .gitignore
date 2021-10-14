@@ -23,6 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 yarn.lock
+
 # VSCode repo settings
 .vscode
 
@@ -30,3 +31,5 @@ yarn.lock
 .stryker-tmp
 package-lock.json
 package-lock.json
+yarn.lock
+yarn.lock
