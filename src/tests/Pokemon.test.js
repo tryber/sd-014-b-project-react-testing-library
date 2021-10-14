@@ -93,7 +93,7 @@ describe('Teste o componente <Pokemon.js />', () => {
       userEvent.click(detailsLink);
     });
 
-    it('asas', () => {
+    it('Teste se existe um ícone de estrela nos Pokémons favoritados.', () => {
       renderWithRouter(<Pokemon pokemon={ pokemon } isFavorite />);
       const favIcon = screen.getByRole('img',
         { name: 'Pikachu is marked as favorite' });
