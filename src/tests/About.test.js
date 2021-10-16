@@ -1,12 +1,10 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
-import About from '../components/About';
 
 describe('Testando o componente <About.js />.', () => {
   test('Teste se a página contém as informações sobre a Pokédex.',
     () => {
-      renderWithRouter(<About />);
+      renderWithRouter('/about');
       const textPt1 = 'This application simulates a Pokédex, ';
       const textPt2 = 'a digital encyclopedia containing all Pokémons';
       const allText = `${textPt1}${textPt2}`;
@@ -18,14 +16,14 @@ describe('Testando o componente <About.js />.', () => {
 
   test('Testando se a página contém um heading h2 com o texto About Pokédex.',
     () => {
-      renderWithRouter(<About />);
+      renderWithRouter('/about');
       const h2 = screen.getByRole('heading', { name: 'About Pokédex' });
       expect(h2).toBeInTheDocument();
     });
 
   test('Testando se a página contém dois parágrafos com texto sobre a Pokédex.',
     () => {
-      renderWithRouter(<About />);
+      renderWithRouter('/about');
       const textPt1 = 'This application simulates a Pokédex, ';
       const textPt2 = 'a digital encyclopedia containing all Pokémons';
       const allText = `${textPt1}${textPt2}`;
@@ -43,7 +41,7 @@ describe('Testando o componente <About.js />.', () => {
 
   test('Teste se a página contém a seguinte imagem de uma Pokédex.',
     () => {
-      renderWithRouter(<About />);
+      renderWithRouter('/about');
       const img = screen.getByRole('img');
 
       expect(img).toBeInTheDocument();
