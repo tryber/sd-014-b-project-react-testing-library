@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import About from '../components/About';
 
-describe('Página about', () => {
+describe('Component about', () => {
   it('Teste se a página contém as informações sobre a Pokédex', () => {
     render(<About />);
     const aboutPage = screen.getByTestId('about-page');
@@ -27,3 +27,5 @@ describe('Página about', () => {
     expect(aboutImage.src).toContain('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
 });
+
+// Referência para testar o link da imagem: https://stackoverflow.com/questions/60509527/jestreact-native-testing-library-how-to-test-an-image-src
