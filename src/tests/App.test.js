@@ -15,7 +15,6 @@ describe('Testa o componente App.js', () => {
 
     const favPokemons = screen.getByRole('link', { name: 'Favorite Pokémons' });
     expect(favPokemons).toBeInTheDocument();
-
   });
 
   it('Testa se a aplicação é redirecionada para a página inicial', () => {
