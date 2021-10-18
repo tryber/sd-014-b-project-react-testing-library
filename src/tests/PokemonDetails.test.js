@@ -63,7 +63,6 @@ describe('Requisito 7 - Teste o componente PokemonDetails', () => {
     const imgLocations = screen.getAllByAltText('Charmander location');
     imgLocations.forEach((map) => {
       expect(map).toBeInTheDocument();
-
     });
   });
 });
