@@ -60,9 +60,30 @@ describe('Requisito 7 - Teste o componente PokemonDetails', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/pokemons/4');
 
+    const numberLocations = 4;
+
     const imgLocations = screen.getAllByAltText('Charmander location');
-    imgLocations.forEach((map) => {
-      expect(map).toBeInTheDocument();
-    });
+    expect(imgLocations.length).toBe(numberLocations);
+  });
+
+  test('deveria exibir um mapa com nome da localização e uma imagem do mapa', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/pokemons/23');
+
+    const imgLocations = screen.getByAltText('Ekans location');
+    expect(imgLocations.src).toBe('https://cdn2.bulbagarden.net/upload/e/ec/Johto_Goldenrod_City_Map.png');
+    expect(imgLocations.alt).toBe('Ekans location');
+
+    const textImg = screen.getByText('Goldenrod Game Corner');
+    expect(textImg).toBeInTheDocument();
+  });
+
+  test('verifique se o usuário pode favoritar um pokémon'
+  + 'através da página de detalhes', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/pokemons/23');
+
+    const checkbox = screen.getByLabelText('Pokémon favoritado?');
+    expect(checkbox).toBeInTheDocument();
   });
 });
