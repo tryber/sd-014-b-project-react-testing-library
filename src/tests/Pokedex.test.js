@@ -17,7 +17,7 @@ describe('Teste o componente Pokedex', () => {
   it('Teste se é exibido o próximo Pokémon ao clicar em "Próximo pokémon"', () => {
     renderWithRouter(<App />);
     const nextButton = screen.getByTestId('next-pokemon');
-
+    expect(nextButton).toBeInTheDocument();
     userEvent.click(nextButton);
     const nextPokemon = screen.getByText(/Charmander/i);
     expect(nextPokemon).toBeInTheDocument();
