@@ -21,10 +21,6 @@ describe('Requisito 5 - Teste o componente Pokedex', () => {
     expect(buttonNext).toBeInTheDocument();
   });
 
-  // test('se é mostrado um pokemon de cada vez', () => {
-  //   const nextPokémon = screen.getByTestId('pokemon-name');
-  // });
-
   test('se a pokédex tem botões de filtro', () => {
     renderWithRouter(<App />);
 
@@ -34,11 +30,22 @@ describe('Requisito 5 - Teste o componente Pokedex', () => {
 
   test('se existe um botão de filtro para cada tipo de pokémon', () => {
     renderWithRouter(<App />);
+    const types = [
+      'Electric',
+      'Fire',
+      'Bug',
+      'Poison',
+      'Psychic',
+      'Normal',
+      'Dragon',
+    ];
 
     const numberTypes = 7;
 
     const totalButtons = screen.getAllByTestId('pokemon-type-button');
     expect(totalButtons).toHaveLength(numberTypes);
+
+    expect(types.length).toBe(numberTypes);
   });
 
   test('se clicar em um botão mostre somente pokémons daquele tipo', () => {
