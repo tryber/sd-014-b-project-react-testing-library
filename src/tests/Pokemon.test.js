@@ -10,7 +10,7 @@ describe('Teste o componente Pokemon', () => {
     const pokemonName = screen.getByTestId('pokemon-name');
     const pokemonType = screen.getByTestId('pokemon-type');
     const pokemonWeight = screen.getByTestId('pokemon-weight');
-    const pokemonImage = screen.getByAltText(/sprite/i);
+    const pokemonImage = screen.getByAltText(/Pikachu sprite/i);
 
     expect(pokemonName).toHaveTextContent('Pikachu');
     expect(pokemonType).toHaveTextContent('Electric');
@@ -27,7 +27,7 @@ describe('Teste o componente Pokemon', () => {
 
   it('Teste se o redirecionamento para "More Details" é feito corretamente', () => {
     const { history } = renderWithRouter(<App />);
-    const detailsLink = screen.getByText('More details');
+    const detailsLink = screen.getByText(/More details/i);
 
     userEvent.click(detailsLink);
 
@@ -36,14 +36,14 @@ describe('Teste o componente Pokemon', () => {
 
   it('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
     renderWithRouter(<App />);
-    const detailsLink = screen.getByText('More details');
+    const detailsLink = screen.getByText(/More details/i);
 
     userEvent.click(detailsLink);
     const favCheck = screen.getByRole('checkbox');
     userEvent.click(favCheck);
 
-    const favIcon = screen.getByAltText(/favorite/);
-    expect(favIcon.src).toContain('star-icon');
+    const favIcon = screen.getByAltText(/favorite/i);
+    expect(favIcon.src).toContain('/star-icon.svg');
   });
 });
 
