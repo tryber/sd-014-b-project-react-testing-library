@@ -52,3 +52,4 @@ describe('Teste o componente Pokemon', () => {
 });
 
 // Referência para testar o link: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/33/files
+// evaluator
