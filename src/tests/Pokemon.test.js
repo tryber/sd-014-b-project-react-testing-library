@@ -2,9 +2,8 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 
-const moreDetails = 'More details';
-
 describe('Teste o componente <Pokemon.js />', () => {
+  const moreDetails = 'More details';
   test(`Teste se é renderizado um card com as 
   informações de determinado pokémon.`, () => {
     renderWithRouter('/');
