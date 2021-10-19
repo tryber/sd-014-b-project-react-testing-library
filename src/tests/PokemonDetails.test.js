@@ -85,5 +85,9 @@ describe('Requisito 7 - Teste o componente PokemonDetails', () => {
 
     const checkbox = screen.getByLabelText('Pokémon favoritado?');
     expect(checkbox).toBeInTheDocument();
+
+    userEvent.click(checkbox);
+
+    expect(checkbox).toBe(true);
   });
 });
