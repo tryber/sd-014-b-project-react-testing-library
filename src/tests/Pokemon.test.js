@@ -27,7 +27,7 @@ describe('Teste o componente Pokemon', () => {
 
   it('Teste se o redirecionamento para "More Details" é feito corretamente', () => {
     const { history } = renderWithRouter(<App />);
-    const detailsLink = screen.getByText(/More details/i);
+    const detailsLink = screen.getByText('More details');
 
     userEvent.click(detailsLink);
 
@@ -36,7 +36,7 @@ describe('Teste o componente Pokemon', () => {
 
   it('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
     renderWithRouter(<App />);
-    const detailsLink = screen.getByText(/More details/i);
+    const detailsLink = screen.getByText('More details');
 
     userEvent.click(detailsLink);
     const favCheck = screen.getByRole('checkbox');
