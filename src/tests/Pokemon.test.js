@@ -51,7 +51,7 @@ describe('Requisito 6 - Teste o componente Pokemon', () => {
 
     userEvent.click(favorite);
 
-    const icon = screen.getByRole('img', { name: /is marked as favorite/ });
+    const icon = screen.getByRole('img', { name: /Pikachu is marked as favorite/ });
     const altImg = screen.getByRole('img', { name: /marked as favorite/ });
     expect(icon).toHaveAttribute('src', '/star-icon.svg');
     expect(altImg).toBeInTheDocument();
