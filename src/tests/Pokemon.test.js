@@ -7,6 +7,10 @@ import App from '../App';
 describe('Teste o componente Pokemon', () => {
   it('Teste se é renderizado um card com as informações de determinado pokémon', () => {
     renderWithRouter(<App />);
+
+    const resetButton = screen.getByText(/All/);
+    userEvent.click(resetButton);
+
     const pokemonName = screen.getByTestId('pokemon-name');
     const pokemonType = screen.getByTestId('pokemon-type');
     const pokemonWeight = screen.getByTestId('pokemon-weight');
