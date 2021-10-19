@@ -44,9 +44,9 @@ describe('Teste o componente Pokemon', () => {
 
     userEvent.click(detailsLink);
     const favCheck = screen.getByRole('checkbox');
-    userEvent.click(favCheck);
 
-    const favIcon = screen.getByAltText(/favorite/i);
+    userEvent.click(favCheck);
+    const favIcon = screen.getByAltText(/Pikachu is marked as favorite/i);
     expect(favIcon.src).toContain('/star-icon.svg');
   });
 });
