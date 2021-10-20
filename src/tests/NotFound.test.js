@@ -19,11 +19,9 @@ describe('Testa componente `NotFound`', () => {
   it('Testa se página mostra a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif', () => {
     renderWithRouter(<NotFound />);
 
-    const image = screen.getAllByRole('img');
-
-    expect(image).toHaveAttribute(
-      'src',
-      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif',
-    );
+    const imageNotFound = screen.getByAltText(/Pikachu crying/i);
+    expect(imageNotFound.src).toContain('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
+
+// ref: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/125

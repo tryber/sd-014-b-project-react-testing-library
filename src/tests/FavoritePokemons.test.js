@@ -28,4 +28,5 @@ describe('Testa o componente FavoritePokemons', () => {
 });
 
 // ref: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/6/
+// ref: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/29
 // ref: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/125
