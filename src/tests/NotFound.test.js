@@ -12,8 +12,8 @@ describe('Requisito 4: Teste o componente <NotFound.js />', () => {
   test('mostra a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif', () => {
     renderWithRouter(<NotFound />);
     const notFoundImg = screen.getByTestId('image-not-found');
-    const notFoundSrc = notFoundImg.getAttribute("src");
+    const notFoundSrc = notFoundImg.getAttribute('src');
     expect(notFoundImg).toBeInTheDocument();
-    expect(notFoundSrc).toEqual("https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif");
+    expect(notFoundSrc).toEqual('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
