@@ -17,7 +17,7 @@ describe('Teste o componente <Pokedex.js />', () => {
     const btn = screen.getByTestId('next-pokemon');
     userEvent.click(btn);
     expect(btn).toBeInTheDocument();
-       expect(btn.innerHTML).toEqual('Próximo pokémon');
+    expect(btn.innerHTML).toEqual('Próximo pokémon');
     const pokemon = screen.getByText('Charmander');
     expect(pokemon).toBeInTheDocument();
   });
