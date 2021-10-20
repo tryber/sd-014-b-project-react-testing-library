@@ -8,7 +8,8 @@ import pokemons from '../data';
 describe('Teste o componente <Pokedex.js />', () => {
   test('Teste se página contém um heading h2 com o texto Encountered pokémons.', () => {
     renderWithRouter(<App />);
-    const h2Text = screen.getByText('Encountered pokémons');
+    const h2Text = screen
+      .getByRole('heading', { level: 2, name: 'Encountered pokémons' });
     expect(h2Text).toBeInTheDocument();
   });
   test('Teste se é exibido o próximo Pokémon da lista', () => {
@@ -41,7 +42,8 @@ describe('Teste o componente <Pokedex.js />', () => {
   });
   test('Teste se é mostrado apenas um Pokémon por vez', () => {
     renderWithRouter(<App />);
+    const POKE_LENGTH = 1;
     const pokemonRender = screen.getAllByTestId('pokemon-name');
-    expect(pokemonRender.length).toBe(1);
+    expect(pokemonRender.length).toBe(POKE_LENGTH);
   });
 });
