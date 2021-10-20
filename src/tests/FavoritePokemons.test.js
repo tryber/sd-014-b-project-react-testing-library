@@ -6,14 +6,14 @@ import FavoritePokemons from '../components/FavoritePokemons';
 import App from '../App';
 
 describe('Testa o componente FavoritePokemons', () => {
-  test('Testa se é exibido na tela a mensagem No favorite pokemon found',
+  it('Testa se é exibido na tela a mensagem No favorite pokemon found',
     () => {
       renderWithRouter(<FavoritePokemons />);
       const notFoundPokFav = screen.getByText(/No favorite pokemon found/);
       expect(notFoundPokFav).toBeInTheDocument();
     });
 
-  test('Testa se é exibido todos os cards de pokémons favoritados.', () => {
+  it('Testa se é exibido todos os cards de pokémons favoritados.', () => {
     const { history } = renderWithRouter(<App />);
 
     history.push('/pokemons/25');
