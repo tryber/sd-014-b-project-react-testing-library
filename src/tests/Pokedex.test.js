@@ -1,41 +1,35 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from '../services/renderWithRouter';
-import userEvent from '@testing-library/user-event';
 import pokemons from '../data';
 
-
-
-describe('Teste o componente <Pokedex.js />', ()=>{
-
-
-
+describe('Teste o componente <Pokedex.js />', () => {
   test('Teste se página contém um heading h2 com o texto Encountered pokémons.', () => {
     renderWithRouter(<App />);
     const h2Text = screen.getByText('Encountered pokémons');
     expect(h2Text).toBeInTheDocument();
-
   });
   test('Teste se é exibido o próximo Pokémon da lista', () => {
     renderWithRouter(<App />);
-    const btn = screen.getByTestId("next-pokemon")
+    const btn = screen.getByTestId('next-pokemon');
     userEvent.click(btn);
     expect(btn).toBeInTheDocument();
     const pokemon = screen.getByText('Charmander');
     expect(pokemon).toBeInTheDocument();
-
   });
   test('Teste se a Pokédex tem os botões de filtro', () => {
     renderWithRouter(<App />);
+    const POKE_BTN_TYPE_LENGTH = 7;
     const filterBtn = screen.getByText('All');
     expect(filterBtn).toBeInTheDocument();
     const pokeTypeBtn = screen.getAllByTestId('pokemon-type-button');
-    expect(pokeTypeBtn.length).toBe(7);
+    expect(pokeTypeBtn.length).toBe(POKE_BTN_TYPE_LENGTH);
     pokemons.forEach(({ type }) => {
       const typeButton = screen.getByRole('button', { name: type });
       expect(typeButton).toBeInTheDocument();
-    })
+    });
   });
   test('Teste se a Pokédex contém um botão para resetar o filtro', () => {
     renderWithRouter(<App />);
@@ -44,13 +38,10 @@ describe('Teste o componente <Pokedex.js />', ()=>{
     userEvent.click(filterBtn);
     const pikachu = screen.getByText('Pikachu');
     expect(pikachu).toBeInTheDocument();
-
   });
   test('Teste se é mostrado apenas um Pokémon por vez', () => {
-    
     renderWithRouter(<App />);
     const pokemonRender = screen.getAllByTestId('pokemon-name');
     expect(pokemonRender.length).toBe(1);
-
-  })
-})
+  });
+});
