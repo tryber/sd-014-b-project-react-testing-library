@@ -1,57 +1,24 @@
 import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
-import App from '../App';
+import About from '../components/About';
 import renderWithRouter from './renderWithRouter';
 
-describe('Testing the component <App />', () => {
-  describe('At the nav bar on the top of the page', () => {
-    it('should have a link with the text "Home"', () => {
-      renderWithRouter(<App />);
-      expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
-    });
-    it('should have a link with the text "About"', () => {
-      renderWithRouter(<App />);
-      expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
-    });
-    it('should have a link with the text "Favorite Pokémons"', () => {
-      renderWithRouter(<App />);
-      expect(screen.getByRole('link', { name: /favorite pokémons/i }))
+describe('Testing the component <About />', () => {
+  describe('The page about the Pokédex', () => {
+    it('should have the title "About Pokédex"', () => {
+      renderWithRouter(<About />);
+      expect(screen.getByRole('heading', { level: 2, name: /about pokédex/i }))
         .toBeInTheDocument();
     });
-  });
-  describe('Clicking on the link "Home" at the nav bar', () => {
-    it('should redirect to the URL "/"', () => {
-      const { history } = renderWithRouter(<App />);
-      const homeLink = screen.getByRole('link', { name: /home/i });
-      userEvent.click(homeLink);
-      expect(history.location.pathname).toBe('/');
+    it('should have two paragraphs about the Pokédex', () => {
+      renderWithRouter(<About />);
+      const paragraphs = screen.getAllByText(/pokémons/i);
+      expect(paragraphs).toHaveLength(2);
     });
-  });
-  describe('Clicking on the link "About" at the nav bar', () => {
-    it('should redirect to the URL "/about"', () => {
-      const { history } = renderWithRouter(<App />);
-      const homeLink = screen.getByRole('link', { name: /about/i });
-      userEvent.click(homeLink);
-      expect(history.location.pathname).toBe('/about');
-    });
-  });
-  describe('Clicking on the link "Favorite Pokémons" at the nav bar', () => {
-    it('should redirect to the URL "/favorites"', () => {
-      const { history } = renderWithRouter(<App />);
-
-      const homeLink = screen.getByRole('link', { name: /favorite pokémons/i });
-      userEvent.click(homeLink);
-      expect(history.location.pathname).toBe('/favorites');
-    });
-  });
-  describe('Inserting an invalid URL', () => {
-    it('should redirect to the page "Not Found"', () => {
-      const { history } = renderWithRouter(<App />);
-      history.push('/invalid-url');
-
-      expect(screen.getByRole('heading', { level: 2, name: /page requested not found/i }))
-        .toBeInTheDocument();
+    it('should have an image of a Pokédex', () => {
+      renderWithRouter(<About />);
+      const pokedexImgURL = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
+      expect(screen.getByAltText(/pokédex/i)).toHaveAttribute('src', pokedexImgURL);
     });
   });
 });
