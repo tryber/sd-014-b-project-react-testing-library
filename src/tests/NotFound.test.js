@@ -19,7 +19,7 @@ describe('Testa componente `NotFound`', () => {
   it('Testa se página mostra a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif', () => {
     renderWithRouter(<NotFound />);
 
-    const image = screen.getAllByRole('img')[1];
+    const image = screen.getAllByRole('img');
 
     expect(image).toHaveAttribute(
       'src',
