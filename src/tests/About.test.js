@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import About from '../components/About';
 import renderWithRouter from './renderWithRouter';
 
-describe('Component about', () => {
+describe('Testa o componente about', () => {
   it('Teste se a página contém um heading h2 com o texto "About Pokédex"', () => {
     renderWithRouter(<About />);
 
