@@ -28,7 +28,8 @@ describe('Teste o componente <Pokemon.js />', () => {
     userEvent.click(moreDetailsLink);
     expect(history.location.pathname).toBe('/pokemons/25');
   });
-
+  // Ref.: https://github.com/tryber/sd-014-b-project-react-testing-
+  // library/pull/64/commits/b60809f40d6fa69e5780e967600cd1871ecc7436
   test('\'se existe um ícone de estrela nos Pokémons favoritados.\'', () => {
     renderWithRouter(<App />);
 
