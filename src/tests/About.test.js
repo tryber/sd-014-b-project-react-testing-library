@@ -1,29 +1,34 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import About from '../components/About';
+import renderWithRouter from './renderWithRouter';
 
-describe('Página about', () => {
-  it('Testa se a página contém as informações sobre a Pokédex', () => {
-    render(<About />);
-    const aboutPokedex = screen.getByTestId('about-pokedex');
-    expect(aboutPokedex).toBeInTheDocument();
+describe('Component about', () => {
+  it('Teste se a página contém um heading h2 com o texto "About Pokédex"', () => {
+    renderWithRouter(<About />);
+
+    const h2Heading = screen.getByRole('heading', {
+      level: 2,
+      name: 'About Pokédex',
+    });
+    expect(h2Heading).toBeInTheDocument();
   });
 
-  it('Testa se a página contém um heading h2 com o texto About Pokédex', () => {
-    render(<About />);
-    const aboutTextAbout = screen.getByTestId('about-text-about');
-    expect(aboutTextAbout).toHaveTextContent('About Pokédex');
+  it('Teste se a página contém dois parágrafos com texto sobre a Pokédex', () => {
+    renderWithRouter(<About />);
+    const paragraphOne = screen.getByText(/This application simulates/i);
+    expect(paragraphOne).toBeInTheDocument();
+
+    const paragraphTwo = screen.getByText(/One can filter/i);
+    expect(paragraphTwo).toBeInTheDocument();
   });
 
-  it('Testa se a página contém dois parágrafos com texto sobre a Pokédex', () => {
-    render(<About />);
-    const aboutParagraph = screen.getAllByTestId('"about-paragraph"');
-    expect(aboutParagraph).toHaveLength(2);
-  });
+  it('Teste se a página contém a imagem de uma Pokédex', () => {
+    renderWithRouter(<About />);
 
-  it('Testa se a página contém a imagem de uma Pokédex', () => {
-    render(<About />);
-    const aboutImagePokedex = screen.getByTestId('about-image-pokedex');
-    expect(aboutImagePokedex.src).toContain('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
+    const image = screen.getByAltText('Pokédex');
+    expect(image.src).toContain('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
 });
+
+// ref: https://github.com/tryber/sd-014-b-project-react-testing-library/pull/125
