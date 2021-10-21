@@ -5,7 +5,7 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Teste o componente <PokemonDetails.js />', () => {
-  renderWithRouter(<App />);
+  const moreDetails = 'More details';
   test(`Se as informações detalhadas do
   Pokémon selecionado são mostradas na tela`, () => {
     renderWithRouter(<App />);
@@ -14,10 +14,13 @@ describe('Teste o componente <PokemonDetails.js />', () => {
 
     const title = screen.getByText('Pikachu Details');
     expect(title).toBeInTheDocument();
+
     expect(linkDetails).not.toBeInTheDocument();
+
     const summary = screen.getByRole('heading', { level: 2, name: 'Summary' });
     expect(summary).toBeInTheDocument();
-    const paragraph = screen.getByText(/pokémon/);
+
+    const paragraph = screen.getByText(/electricity/);
     expect(paragraph).toBeInTheDocument();
   });
 
