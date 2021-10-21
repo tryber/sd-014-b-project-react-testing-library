@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
-describe('Testa se existe um conjunto de links no componente <App />', () => {
+describe('Testa componente <App />', () => {
   test('Se existe um link na tela com o texto "Home"', () => {
     renderWithRouter(<App />);
     const homeLink = screen.getByRole('link', { name: 'Home' });
