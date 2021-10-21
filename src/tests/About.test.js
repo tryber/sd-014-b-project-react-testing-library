@@ -6,12 +6,14 @@ import renderWithRouter from '../renderWithRouter';
 describe('Teste o componente <About.js />', () => {
   test('Se a página contém um heading h2 com o texto About Pokédex', () => {
     renderWithRouter(<About />);
+
     const headingAbout = screen.getByRole('heading', { level: 2, name: 'About Pokédex' });
     expect(headingAbout).toBeInTheDocument();
   });
 
   test('se a quantidade de parágrafos é igual a 2', () => {
     renderWithRouter(<About />);
+
     const quantityParagraphs = screen.getAllByText(/Pokémons/);
     expect(quantityParagraphs.length).toBe(2);
   });
