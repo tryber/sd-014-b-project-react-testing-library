@@ -31,7 +31,7 @@ test('Se a pagina contem 2 paragrafos com texto sobre a Pokedex', () => {
 
 test('se a pagina contem a imagem da pokedex', () => {
   render(<About />);
-  const urlImg = `https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png`;
+  const urlImg = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
   const getImg = screen.getByRole('img');
 
   expect(getImg).toHaveAttribute('src', urlImg);
