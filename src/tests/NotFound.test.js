@@ -17,10 +17,8 @@ test('se página contém um heading h2 com o texto Page requested not found', ()
   const notFoundTitle = screen.getByRole('heading',
     { name: 'Page requested not found Crying emoji' });
   expect(notFoundTitle).toBeInTheDocument();
-});
 
-test('se página mostra a imagem', () => {
-  const getImg = screen.getByRole('img');
+  const getImg = screen.getAllByRole('img');
 
-  expect(getImg).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+  expect(getImg[1]).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
 });
