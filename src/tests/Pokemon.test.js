@@ -48,4 +48,33 @@ link de navegação para exibir detalhes deste Pokémon.
   expect(customHistory.location.pathname).toBe('/pokemons/25');
 });
 
-// Teste se o card do Pokémon indicado na Pokédex contém um link de navegação para exibir detalhes deste Pokémon. O link deve possuir a URL /pokemons/<id>, onde <id> é o id do Pokémon exibido;
+test('se existe um ícone de estrela nos Pokémons favoritados.', () => {
+  const customHistory = createMemoryHistory();
+  render(
+    <Router history={ customHistory }>
+      <App />
+    </Router>,
+  );
+
+  const getMoreDetails = screen.getByRole('link', { name: 'More details' });
+
+  userEvent.click(getMoreDetails);
+
+  const checkBoxRole = screen.getByRole('checkbox');
+  userEvent.click(checkBoxRole);
+
+  const getHome = screen.getByRole('link', { name: 'Home' });
+  userEvent.click(getHome);
+
+  const getImgs = screen.getAllByRole('img');
+
+  expect(getImgs[1]).toHaveAttribute('src', '/star-icon.svg');
+  expect(getImgs[1]).toHaveAttribute('alt', 'Pikachu is marked as favorite');
+});
+
+
+// Teste se existe um ícone de estrela nos Pokémons favoritados.
+
+// O ícone deve ser uma imagem com o atributo src contendo o caminho /star-icon.svg;
+
+// A imagem deve ter o atributo alt igual a <pokemon> is marked as favorite, onde <pokemon> é o nome do Pokémon exibido.
