@@ -71,10 +71,3 @@ test('se existe um ícone de estrela nos Pokémons favoritados.', () => {
   expect(getImgs[1]).toHaveAttribute('src', '/star-icon.svg');
   expect(getImgs[1]).toHaveAttribute('alt', 'Pikachu is marked as favorite');
 });
-
-
-// Teste se existe um ícone de estrela nos Pokémons favoritados.
-
-// O ícone deve ser uma imagem com o atributo src contendo o caminho /star-icon.svg;
-
-// A imagem deve ter o atributo alt igual a <pokemon> is marked as favorite, onde <pokemon> é o nome do Pokémon exibido.
