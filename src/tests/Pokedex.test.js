@@ -26,13 +26,16 @@ describe('Tests the Pokedex.js application', () => {
       isPokemonFavoriteById={ favoritePokemonsMock }
     />);
     const button = screen.getByRole('button', { name: nextPokemon });
-    const name = screen.getByTestId(pokemonName).textContent;
+    let name = screen.getByTestId(pokemonName).textContent;
     expect(name).toBe('Alakazam');
     userEvent.click(button);
+    name = screen.getByTestId(pokemonName).textContent;
     expect(name).toBe('Snorlax');
     userEvent.click(button);
+    name = screen.getByTestId(pokemonName).textContent;
     expect(name).toBe('Dragonair');
     userEvent.click(button);
+    name = screen.getByTestId(pokemonName).textContent;
     expect(name).toBe('Alakazam');
   });
   test('only one pokémon is shown by time', () => {
@@ -49,36 +52,40 @@ describe('Tests the Pokedex.js application', () => {
       pokemons={ pokemons }
       isPokemonFavoriteById={ favoritePokemonsMock }
     />);
-    const MAXIMUM_LENGTH = 1;
+    const MAXIMUM_LENGTH_TYPE = 1;
     let button = screen.getAllByRole('button', { name: 'Electric' });
-    expect(button.length).toBe(MAXIMUM_LENGTH);
+    expect(button.length).toBe(MAXIMUM_LENGTH_TYPE);
     button = screen.getAllByRole('button', { name: 'Fire' });
-    expect(button.length).toBe(MAXIMUM_LENGTH);
+    expect(button.length).toBe(MAXIMUM_LENGTH_TYPE);
     button = screen.getAllByRole('button', { name: 'Bug' });
-    expect(button.length).toBe(MAXIMUM_LENGTH);
+    expect(button.length).toBe(MAXIMUM_LENGTH_TYPE);
     button = screen.getAllByRole('button', { name: 'Poison' });
-    expect(button.length).toBe(MAXIMUM_LENGTH);
+    expect(button.length).toBe(MAXIMUM_LENGTH_TYPE);
     button = screen.getAllByRole('button', { name: 'Psychic' });
-    expect(button.length).toBe(MAXIMUM_LENGTH);
+    expect(button.length).toBe(MAXIMUM_LENGTH_TYPE);
     button = screen.getAllByRole('button', { name: 'Normal' });
-    expect(button.length).toBe(MAXIMUM_LENGTH);
+    expect(button.length).toBe(MAXIMUM_LENGTH_TYPE);
     button = screen.getAllByRole('button', { name: 'Dragon' });
-    expect(button.length).toBe(MAXIMUM_LENGTH);
+    expect(button.length).toBe(MAXIMUM_LENGTH_TYPE);
+    const MAXIMUM_LENGTH_ALL = 7;
+    const buttons = screen.getAllByTestId('pokemon-type-button');
+    expect(buttons.length).toBe(MAXIMUM_LENGTH_ALL);
   });
   test('circulates through that type list when a filter is selected', () => {
     renderWithRouter(<Pokedex
       pokemons={ pokemons }
       isPokemonFavoriteById={ favoritePokemonsMock }
     />);
-    const typeButton = screen.getAllByRole('button', { name: 'Fire' });
-    const nextButton = screen.getAllByRole('button', { name: nextPokemon });
-    const name = screen.getByTestId(pokemonName).textContent;
-    expect(name).toBe('Pikachu');
-    userEvent.click(typeButton[0]);
+    const typeButton = screen.getByRole('button', { name: 'Fire' });
+    const nextButton = screen.getByRole('button', { name: nextPokemon });
+    userEvent.click(typeButton);
+    let name = screen.getByTestId(pokemonName).textContent;
     expect(name).toBe('Charmander');
-    userEvent.click(nextButton[0]);
+    userEvent.click(nextButton);
+    name = screen.getByTestId(pokemonName).textContent;
     expect(name).toBe('Rapidash');
-    userEvent.click(nextButton[0]);
+    userEvent.click(nextButton);
+    name = screen.getByTestId(pokemonName).textContent;
     expect(name).toBe('Charmander');
   });
   test('contains a reset filter button', () => {
@@ -89,15 +96,18 @@ describe('Tests the Pokedex.js application', () => {
     const typeButton = screen.getByRole('button', { name: 'Fire' });
     const nextButton = screen.getByRole('button', { name: nextPokemon });
     const allButton = screen.getByRole('button', { name: 'All' });
-    const name = screen.getByTestId(pokemonName).textContent;
+    let name = screen.getByTestId(pokemonName).textContent;
     expect(name).toBe('Pikachu');
     userEvent.click(typeButton);
+    name = screen.getByTestId(pokemonName).textContent;
     expect(allButton).toBeVisible();
     expect(name).toBe('Charmander');
     userEvent.click(nextButton);
+    name = screen.getByTestId(pokemonName).textContent;
     expect(allButton).toBeVisible();
     expect(name).toBe('Rapidash');
     userEvent.click(allButton);
+    name = screen.getByTestId(pokemonName).textContent;
     expect(allButton).toBeVisible();
     expect(name).toBe('Pikachu');
   });
