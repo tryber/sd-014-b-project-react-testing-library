@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import renderWithRouter from './renderWithRouter';
+import renderWithRouter from './renderWithRouter.js';
 import { FavoritePokemons } from '../components';
 
 describe('Testa o Favorite Pokémon.js', () => {
