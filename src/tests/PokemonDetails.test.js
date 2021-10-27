@@ -5,21 +5,21 @@ import App from '../App';
 import renderWithRouter from '../renderWithRouter';
 
 describe('Tests the PokemonDetails.js application', () => {
-  test('detailed information about the selected pokémon is shown', () => {
+  beforeEach(() => {
     const { history } = renderWithRouter(<App />);
     history.push('/pokemons/25');
+  });
+  test('detailed information about the selected pokémon is shown', () => {
     const heading = screen.getByRole('heading', { level: 2, name: 'Pikachu Details' });
     const summary = screen.getByRole('heading', { level: 2, name: 'Summary' });
-    const link = screen.getByRole('link', { name: 'More details' });
-    const text = screen.getByText(/This intelligent Pokémon roastshard berries/);
+    const text = screen.getByText(/This intelligent Pokémon roasts hard berries/);
+    const link = screen.queryByRole('link', { name: 'More details' });
     expect(heading).toBeInTheDocument();
     expect(summary).toBeInTheDocument();
-    expect(link).not.toBeInTheDocument();
     expect(text).toBeInTheDocument();
+    expect(link).not.toBeInTheDocument();
   });
   test('contains map with the location of the pokémon', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/pokemons/25');
     const heading = screen.getByRole('heading', {
       level: 2,
       name: 'Game Locations of Pikachu',
@@ -36,7 +36,14 @@ describe('Tests the PokemonDetails.js application', () => {
     expect(locations[1].src).toBe('https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
   });
   test('user can favorite a pokémon using the detailed page', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/pokemons/25');
+    const checkbox = screen.getByRole('checkbox');
+    const label = screen.getByLabelText('Pokémon favoritado?');
+    expect(checkbox).toBeInTheDocument();
+    expect(label).toBeInTheDocument();
+    expect(checkbox.checked).toBe(false);
+    userEvent.click(checkbox);
+    expect(checkbox.checked).toBe(true);
+    userEvent.click(checkbox);
+    expect(checkbox.checked).toBe(false);
   });
 });
