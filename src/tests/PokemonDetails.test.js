@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter.js';
+import renderWithRouter from './renderWithRouter';
 import App from '../App';
 // https://github.com/tryber/sd-014-b-project-react-testing-library/blob/anastacioneto-react-testing/src/tests/PokemonDetails.test.js
 // Referência Anastacio
