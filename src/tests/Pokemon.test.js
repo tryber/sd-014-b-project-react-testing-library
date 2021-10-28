@@ -37,6 +37,7 @@ describe('Req6: Testing Component <Pokemon />', () => {
       name: 'More details',
     });
     fireEvent.click(linkToDetails);
+
     const favoriteCheck = screen.getByRole('checkbox', {
       name: 'Pokémon favoritado?',
     });
