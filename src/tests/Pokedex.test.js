@@ -229,9 +229,7 @@ describe('testing reset button', () => {
     });
     expect(pikachuName && electricType && resetButton).toBeInTheDocument();
     userEvent.click(fire);
-    const charmanderName = screen.getByTestId(pokemonName, {
-      name: 'Charmander',
-    });
+    const charmanderName = screen.getByTestId(pokemonName, { name: 'Charmander' });
     const fireType = screen.getByTestId(pokemonType, { name: 'Fire' });
     expect(charmanderName && fireType && resetButton).toBeInTheDocument();
     userEvent.click(bug);
