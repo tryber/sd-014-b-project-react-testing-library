@@ -5,6 +5,8 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 
+const buttonNext = screen.getByTestId('next-pokemon');
+const pokemonName = 'pokemon-name';
 describe('if Pokedex page works', () => {
   test('if page has an h2 with text', () => {
     const history = createMemoryHistory();
@@ -19,7 +21,6 @@ describe('if Pokedex page works', () => {
     });
     expect(encounteredPokemons).toBeInTheDocument();
   });
-
   test('if the next pokemon is shown when the button is clicked', () => {
     const history = createMemoryHistory();
     render(
@@ -27,15 +28,11 @@ describe('if Pokedex page works', () => {
         <App />
       </Router>,
     );
-    const buttonNext = screen.getByTestId('next-pokemon');
     expect(buttonNext).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     const nextPokemonImage = screen.getByRole('img');
     expect(nextPokemonImage).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png');
   });
-
   test('if it is shown one pokemon at a time', () => {
     const history = createMemoryHistory();
     render(
@@ -86,7 +83,6 @@ describe('if Pokedex page works', () => {
     expect(normal).toBeInTheDocument();
     expect(dragon).toBeInTheDocument();
     userEvent.click(electric);
-    const pokemonName = 'pokemon-name';
     const pokemonType = 'pokemon-type';
     const pikachuName = screen.getByTestId(pokemonName, {
       name: 'Pikachu',
@@ -145,7 +141,6 @@ describe('if Pokedex page works', () => {
     expect(dragonairName && dragonType && all).toBeInTheDocument();
   });
 });
-
 describe('test next button', () => {
   test('if it works', () => {
     const history = createMemoryHistory();
@@ -154,74 +149,54 @@ describe('test next button', () => {
         <App />
       </Router>,
     );
-
-    const buttonNext = screen.getByTestId('next-pokemon');
-    const pokemonName = 'pokemon-name';
-
     userEvent.click(buttonNext);
 
     const charmanderName = screen.getByTestId(pokemonName, {
       name: 'Charmander',
     });
     expect(charmanderName).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     const caterpieName = screen.getByTestId(pokemonName, {
       name: 'Caterpie',
     });
     expect(caterpieName).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     const ekansName = screen.getByTestId(pokemonName, {
       name: 'Ekans',
     });
     expect(ekansName).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     const alakazanName = screen.getByTestId(pokemonName, {
       name: 'Alakazan',
     });
     expect(alakazanName).toBeInTheDocument();
     userEvent.click(buttonNext);
-
     const mewName = screen.getByTestId(pokemonName, {
       name: 'Mew',
     });
     expect(mewName).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     const rapidashName = screen.getByTestId(pokemonName, {
       name: 'Rapidash',
     });
     expect(rapidashName).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     const snorlaxName = screen.getByTestId(pokemonName, {
       name: 'Snorlax',
     });
     expect(snorlaxName).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     const dragonairName = screen.getByTestId(pokemonName, {
       name: 'Dragonair',
     });
     expect(dragonairName).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     const pikachuName = screen.getByTestId(pokemonName, {
       name: 'Pikachu',
     });
     expect(pikachuName).toBeInTheDocument();
   });
 });
-
 describe('testing reset button', () => {
   test('if reset button works', () => {
     const history = createMemoryHistory();
@@ -234,9 +209,7 @@ describe('testing reset button', () => {
       name: 'All',
     });
     expect(resetButton).toBeInTheDocument();
-
     userEvent.click(resetButton);
-
     const electric = screen.getByRole('button', {
       name: 'Electric',
     });
@@ -246,10 +219,7 @@ describe('testing reset button', () => {
     const bug = screen.getByRole('button', {
       name: 'Bug',
     });
-
-    const pokemonName = 'pokemon-name';
     const pokemonType = 'pokemon-type';
-
     userEvent.click(electric);
     const pikachuName = screen.getByTestId(pokemonName, {
       name: 'Pikachu',
@@ -262,29 +232,16 @@ describe('testing reset button', () => {
     const charmanderName = screen.getByTestId(pokemonName, {
       name: 'Charmander',
     });
-    const fireType = screen.getByTestId(pokemonType, {
-      name: 'Fire',
-    });
+    const fireType = screen.getByTestId(pokemonType, { name: 'Fire' });
     expect(charmanderName && fireType && resetButton).toBeInTheDocument();
     userEvent.click(bug);
-    const caterpieName = screen.getByTestId(pokemonName, {
-      name: 'Caterpie',
-    });
-    const bugType = screen.getByTestId(pokemonType, {
-      name: 'Bug',
-    });
+    const caterpieName = screen.getByTestId(pokemonName, { name: 'Caterpie' });
+    const bugType = screen.getByTestId(pokemonType, { name: 'Bug' });
     expect(caterpieName && bugType && resetButton).toBeInTheDocument();
-
     history.push('/');
-
-    const buttonNext = screen.getByTestId('next-pokemon');
-
     userEvent.click(buttonNext);
-
     expect(charmanderName).toBeInTheDocument();
-
     userEvent.click(buttonNext);
-
     expect(caterpieName).toBeInTheDocument();
   });
 });

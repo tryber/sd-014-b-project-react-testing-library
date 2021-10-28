@@ -27,20 +27,16 @@ describe('if favorite pokémons works', () => {
         <App />
       </Router>,
     );
-
     const moreDetailsLink = screen.getByRole('link', {
       name: 'More details',
     });
     userEvent.click(moreDetailsLink);
-
     const favoriteCheckbox = screen.getByRole('checkbox');
     userEvent.click(favoriteCheckbox);
-
     const favoritesLink = screen.getByRole('link', {
       name: 'Favorite Pokémons',
     });
     userEvent.click(favoritesLink);
-
     const favoritePokemons = screen.getAllByRole('img')[0];
     expect(favoritePokemons).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
   });
