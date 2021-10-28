@@ -8,10 +8,11 @@ describe('4. Testes do NotFound.js', () => {
     const notFound = screen.getByRole('heading', { name: /Page requested not found/ });
     expect(notFound).toBeInTheDocument();
   });
-  it('Se a página mostra a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif', () => {
-    render(<NotFound />);
-    const pokemonGif = screen.getByAltText(/Pikachu crying/);
-    expect(pokemonGif).toHaveAttribute('src',
-      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
-  });
+  it('Se a página mostra a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif',
+    () => {
+      render(<NotFound />);
+      const pokemonGif = screen.getByAltText(/Pikachu crying/);
+      expect(pokemonGif).toHaveAttribute('src',
+        'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+    });
 });
