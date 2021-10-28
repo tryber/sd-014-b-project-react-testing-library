@@ -52,39 +52,18 @@ describe('if Pokedex page works', () => {
         <App />
       </Router>,
     );
-    const all = screen.getByRole('button', {
-      name: 'All',
-    });
-    const electric = screen.getByRole('button', {
-      name: 'Electric',
-    });
-    const fire = screen.getByRole('button', {
-      name: 'Fire',
-    });
-    const bug = screen.getByRole('button', {
-      name: 'Bug',
-    });
-    const poison = screen.getByRole('button', {
-      name: 'Poison',
-    });
-    const psychic = screen.getByRole('button', {
-      name: 'Psychic',
-    });
-    const normal = screen.getByRole('button', {
-      name: 'Normal',
-    });
-    const dragon = screen.getByRole('button', {
-      name: 'Dragon',
-    });
-    expect(all).toBeInTheDocument();
-    expect(electric).toBeInTheDocument();
-    expect(fire).toBeInTheDocument();
-    expect(bug).toBeInTheDocument();
-    expect(poison).toBeInTheDocument();
-    expect(psychic).toBeInTheDocument();
-    expect(normal).toBeInTheDocument();
-    expect(dragon).toBeInTheDocument();
+
+    const filterButtons = screen.getAllByTestId('pokemon-type-button');
+    const SEVEN = 7;
+    expect(filterButtons).toHaveLength(SEVEN);
+
+    const all = screen.getByText('All');
+    const electric = screen.getByRole('button', { name: 'Electric' });
+    const fire = screen.getByRole('button', { name: 'Fire' });
+    const bug = screen.getByRole('button', { name: 'Bug' });
+
     userEvent.click(electric);
+
     const pokemonType = 'pokemon-type';
     const pikachuName = screen.getByTestId(pokemonName, {
       name: 'Pikachu',
@@ -109,38 +88,6 @@ describe('if Pokedex page works', () => {
       name: 'Bug',
     });
     expect(caterpieName && bugType && all).toBeInTheDocument();
-    userEvent.click(poison);
-    const ekansName = screen.getByTestId(pokemonName, {
-      name: 'Ekans',
-    });
-    const poisonType = screen.getByTestId(pokemonType, {
-      name: 'Poison',
-    });
-    expect(ekansName && poisonType && all).toBeInTheDocument();
-    userEvent.click(psychic);
-    const alakazanName = screen.getByTestId(pokemonName, {
-      name: 'Alakazan',
-    });
-    const psychicType = screen.getByTestId(pokemonType, {
-      name: 'Psychic',
-    });
-    expect(alakazanName && psychicType && all).toBeInTheDocument();
-    userEvent.click(normal);
-    const snorlaxName = screen.getByTestId(pokemonName, {
-      name: 'Snorlax',
-    });
-    const normalType = screen.getByTestId(pokemonType, {
-      name: 'Normal',
-    });
-    expect(snorlaxName && normalType && all).toBeInTheDocument();
-    userEvent.click(dragon);
-    const dragonairName = screen.getByTestId(pokemonName, {
-      name: 'Dragonair',
-    });
-    const dragonType = screen.getByTestId(pokemonType, {
-      name: 'Dragon',
-    });
-    expect(dragonairName && dragonType && all).toBeInTheDocument();
   });
 });
 describe('test next button', () => {
