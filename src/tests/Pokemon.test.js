@@ -1,9 +1,8 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
-import userEvent from '@testing-library/user-event';
-import FavoritePokemons from '../components/FavoritePokemons';
 
 const POKEMON_URL = '/pokemons/4';
 
