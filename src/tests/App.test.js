@@ -4,9 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-test('', () => {});
-
-describe('1. Teste do App.js', () => {
+describe('1. Testes do App.js', () => {
   it('Testa os links', () => {
     renderWithRouter(<App />);
     const linkHome = screen.getByRole('link', { name: 'Home' });
