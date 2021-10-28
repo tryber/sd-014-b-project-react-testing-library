@@ -146,6 +146,82 @@ describe('if Pokedex page works', () => {
   });
 });
 
+describe('test next button', () => {
+  test('if it works', () => {
+    const history = createMemoryHistory();
+    render(
+      <Router history={ history }>
+        <App />
+      </Router>,
+    );
+
+    const buttonNext = screen.getByTestId('next-pokemon');
+    const pokemonName = 'pokemon-name';
+
+    userEvent.click(buttonNext);
+
+    const charmanderName = screen.getByTestId(pokemonName, {
+      name: 'Charmander',
+    });
+    expect(charmanderName).toBeInTheDocument();
+
+    userEvent.click(buttonNext);
+
+    const caterpieName = screen.getByTestId(pokemonName, {
+      name: 'Caterpie',
+    });
+    expect(caterpieName).toBeInTheDocument();
+
+    userEvent.click(buttonNext);
+
+    const ekansName = screen.getByTestId(pokemonName, {
+      name: 'Ekans',
+    });
+    expect(ekansName).toBeInTheDocument();
+
+    userEvent.click(buttonNext);
+
+    const alakazanName = screen.getByTestId(pokemonName, {
+      name: 'Alakazan',
+    });
+    expect(alakazanName).toBeInTheDocument();
+    userEvent.click(buttonNext);
+
+    const mewName = screen.getByTestId(pokemonName, {
+      name: 'Mew',
+    });
+    expect(mewName).toBeInTheDocument();
+
+    userEvent.click(buttonNext);
+
+    const rapidashName = screen.getByTestId(pokemonName, {
+      name: 'Rapidash',
+    });
+    expect(rapidashName).toBeInTheDocument();
+
+    userEvent.click(buttonNext);
+
+    const snorlaxName = screen.getByTestId(pokemonName, {
+      name: 'Snorlax',
+    });
+    expect(snorlaxName).toBeInTheDocument();
+
+    userEvent.click(buttonNext);
+
+    const dragonairName = screen.getByTestId(pokemonName, {
+      name: 'Dragonair',
+    });
+    expect(dragonairName).toBeInTheDocument();
+
+    userEvent.click(buttonNext);
+
+    const pikachuName = screen.getByTestId(pokemonName, {
+      name: 'Pikachu',
+    });
+    expect(pikachuName).toBeInTheDocument();
+  });
+});
+
 describe('testing reset button', () => {
   test('if reset button works', () => {
     const history = createMemoryHistory();
