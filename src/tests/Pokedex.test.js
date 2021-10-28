@@ -102,6 +102,7 @@ describe('test next button', () => {
     userEvent.click(buttonNext);
 
     expect(buttonNext).toBeInTheDocument();
+    expect(buttonNext).toHaveValue('Próximo pokémon');
 
     const charmanderName = screen.getByTestId(pokemonName, {
       name: 'Charmander',
