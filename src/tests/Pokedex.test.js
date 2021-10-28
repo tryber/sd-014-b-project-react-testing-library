@@ -23,9 +23,13 @@ describe('Teste o componente <Pokedex.js />', () => {
       name: /próximo pokémon/i,
     });
 
-    userEvent.click(nextBtn);
+    const clicks = 9;
 
-    const nextPokemon = screen.getByText(/charmander/i);
+    for (let index = 0; index < clicks; index += 1) {
+      userEvent.click(nextBtn);
+    }
+
+    const nextPokemon = screen.getByText(/pikachu/i);
     expect(nextPokemon).toBeInTheDocument();
   });
 
@@ -55,6 +59,7 @@ describe('Teste o componente <Pokedex.js />', () => {
     const resetBtn = screen.getByRole('button', {
       name: 'All',
     });
+    userEvent.click(resetBtn);
     expect(resetBtn).toBeInTheDocument();
   });
 });
