@@ -1,9 +1,9 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import renderWithRouter from './utils/renderWithRouter';
 import App from '../App';
-import userEvent from '@testing-library/user-event';
 
 describe('Teste o componente <Pokemon.js />', () => {
   test('Teste se é renderizado um card com as informações '
@@ -47,7 +47,7 @@ describe('Teste o componente <Pokemon.js />', () => {
     expect(history.location.pathname).toBe('/pokemons/25');
   });
 
-  test('', () => {
+  test('Teste se existe um ícone de estrela nos Pokémons favoritados.', () => {
     renderWithRouter(<App />);
 
     const moreDetails = screen.getByRole('link', {
