@@ -5,8 +5,9 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 
-const buttonNext = screen.getByTestId('next-pokemon');
+const nextButton = 'next-pokemon';
 const pokemonName = 'pokemon-name';
+
 describe('if Pokedex page works', () => {
   test('if page has an h2 with text', () => {
     const history = createMemoryHistory();
@@ -28,6 +29,7 @@ describe('if Pokedex page works', () => {
         <App />
       </Router>,
     );
+    const buttonNext = screen.getByTestId(nextButton);
     expect(buttonNext).toBeInTheDocument();
     userEvent.click(buttonNext);
     const nextPokemonImage = screen.getByRole('img');
@@ -149,6 +151,7 @@ describe('test next button', () => {
         <App />
       </Router>,
     );
+    const buttonNext = screen.getByTestId(nextButton);
     userEvent.click(buttonNext);
 
     const charmanderName = screen.getByTestId(pokemonName, {
@@ -205,6 +208,7 @@ describe('testing reset button', () => {
         <App />
       </Router>,
     );
+    const buttonNext = screen.getByTestId(nextButton);
     const resetButton = screen.getByRole('button', {
       name: 'All',
     });
