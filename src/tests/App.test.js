@@ -1,55 +1,45 @@
+import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
-describe('Testing the component <App />', () => {
-  describe('At the nav bar on the top of the page', () => {
-    it('should have a link with the text "Home"', () => {
-      renderWithRouter(<App />);
-      expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
-    });
-    it('should have a link with the text "About"', () => {
-      renderWithRouter(<App />);
-      expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
-    });
-    it('should have a link with the text "Favorite Pokémons"', () => {
-      renderWithRouter(<App />);
-      expect(screen.getByRole('link', { name: /favorite pokémons/i }))
-        .toBeInTheDocument();
-    });
+describe('Teste do componente App', () => {
+  it('Testa se existe os links de navegação', () => {
+    renderWithRouter(<App />);
+
+    const btnHome = screen.getByRole('link', { name: 'Home' });
+    expect(btnHome).toBeInTheDocument();
+
+    const btnAbout = screen.getByRole('link', { name: 'About' });
+    expect(btnAbout).toBeInTheDocument();
+
+    const btnFavoritePokemons = screen.getByRole('link', { name: 'Favorite Pokémons' });
+    expect(btnFavoritePokemons).toBeInTheDocument();
   });
-  describe('Clicking on the link "Home" at the nav bar', () => {
-    it('should redirect to the URL "/"', () => {
-      const { history } = renderWithRouter(<App />);
-      const homeLink = screen.getByRole('link', { name: /home/i });
-      userEvent.click(homeLink);
-      expect(history.location.pathname).toBe('/');
-    });
+
+  it('Testa se os links de navegação correspondem ao endereço correto', () => {
+    const { history } = renderWithRouter(<App />);
+
+    const btnHome = screen.getByRole('link', { name: 'Home' });
+    const btnAbout = screen.getByRole('link', { name: 'About' });
+    const btnFavoritePokemons = screen.getByRole('link', { name: 'Favorite Pokémons' });
+
+    userEvent.click(btnHome);
+    expect(history.location.pathname).toBe('/');
+
+    userEvent.click(btnAbout);
+    expect(history.location.pathname).toBe('/about');
+
+    userEvent.click(btnFavoritePokemons);
+    expect(history.location.pathname).toBe('/favorites');
   });
-  describe('Clicking on the link "About" at the nav bar', () => {
-    it('should redirect to the URL "/about"', () => {
-      const { history } = renderWithRouter(<App />);
-      const homeLink = screen.getByRole('link', { name: /about/i });
-      userEvent.click(homeLink);
-      expect(history.location.pathname).toBe('/about');
-    });
-  });
-  describe('Clicking on the link "Favorite Pokémons" at the nav bar', () => {
-    it('should redirect to the URL "/favorites"', () => {
-      const { history } = renderWithRouter(<App />);
-      const homeLink = screen.getByRole('link', { name: /favorite pokémons/i });
-      userEvent.click(homeLink);
-      expect(history.location.pathname).toBe('/favorites');
-    });
-  });
-  describe('Inserting an invalid URL', () => {
-    it('should redirect to the page "Not Found"', () => {
-      const { history } = renderWithRouter(<App />);
-      history.push('/invalid-url');
-      expect(screen.getByRole('heading', { level: 2, name: /page requested not found/i }))
-        .toBeInTheDocument();
-    });
+
+  it('Testa se existe a PageNotFound', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/rotaQualquer');
+
+    const pageNotFound = screen.getByText('Page requested not found');
+    expect(pageNotFound).toBeInTheDocument();
   });
 });

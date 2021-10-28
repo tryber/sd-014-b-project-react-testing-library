@@ -1,30 +1,30 @@
-import { screen } from '@testing-library/react';
 import React from 'react';
-import { FavoritePokemons } from '../components';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import FavoritePokemons from '../components/FavoritePokemons';
 import renderWithRouter from './renderWithRouter';
+import App from '../App';
 
-describe('Testing the component <FavoritePokemons />', () => {
-  it(`should show the message "No favorite pokemon found" on the screen 
-      when no pokemon it is favorited`, () => {
+describe('Teste do componente Favorite Pokemons', () => {
+  it('Testa se existe a pagina notFound', () => {
     renderWithRouter(<FavoritePokemons />);
-    expect(screen.getByText(/no favorite pokemon found/i)).toBeInTheDocument();
+
+    const notFound = screen.getByText('No favorite pokemon found');
+    expect(notFound).toBeInTheDocument();
   });
-  it('should show all favorite pokemon cards', () => {
-    const favoritePokemonsMock = [
-      { id: 25,
-        name: 'Pikachu',
-        type: 'Electric',
-        averageWeight: { value: '6.0', measurementUnit: 'kg' },
-        image: 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
-      },
-      { id: 4,
-        name: 'Charmander',
-        type: 'Fire',
-        averageWeight: { value: '8.5', measurementUnit: 'kg' },
-        image: 'https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png',
-      },
-    ];
-    renderWithRouter(<FavoritePokemons pokemons={ favoritePokemonsMock } />);
-    expect(screen.getAllByTestId('pokemon-name')).toHaveLength(2);
+
+  it('Testa se existe um card de Pokemon favorito', () => {
+    const { history } = renderWithRouter(<App />);
+
+    const btnDetails = screen.getByRole('link', { name: 'More details' });
+    userEvent.click(btnDetails);
+
+    const checkbox = screen.getByRole('checkbox', { id: 'favorite' });
+    userEvent.click(checkbox);
+
+    history.push('/favorites');
+
+    const pokemonCard = screen.getByRole('link', { name: 'More details' });
+    expect(pokemonCard).toBeInTheDocument();
   });
 });
