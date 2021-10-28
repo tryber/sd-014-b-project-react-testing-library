@@ -98,11 +98,9 @@ describe('test next button', () => {
         <App />
       </Router>,
     );
-    const buttonNext = screen.getByTestId(nextButton);
-    userEvent.click(buttonNext);
-
+    const buttonNext = screen.getByText('Próximo pokémon');
     expect(buttonNext).toBeInTheDocument();
-    expect(buttonNext).toHaveValue('Próximo pokémon');
+    userEvent.click(buttonNext);
 
     const charmanderName = screen.getByTestId(pokemonName, {
       name: 'Charmander',
