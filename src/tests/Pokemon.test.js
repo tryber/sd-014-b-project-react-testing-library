@@ -27,7 +27,7 @@ describe('if pokemon page works', () => {
     const pokemonWeight = screen.getByTestId('pokemon-weight');
     expect(pokemonWeight).toHaveTextContent('Average weight: 6.0 kg');
 
-    const pokemonImg = screen.getByRole('img');
+    const pokemonImg = screen.getByAltText('Pikachu Sprite');
     expect(pokemonImg).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
   });
 
