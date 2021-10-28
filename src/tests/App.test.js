@@ -27,17 +27,6 @@ describe('teste do App', () => {
     const { location: { pathname } } = history;
     expect(pathname).toBe('/');
   });
-
-
-  /* test('Se ao clicar em Home, redireciona para o path /', () => {
-    const { history } = renderWithRouter(<App />);
-    const linkHome = screen.getByRole('link', { name: 'Home' });
-    userEvent.click(linkHome);
-    expect(history.location.pathname).toBe('/');
-  }); */
-
-
-
   it('Teste se a aplicação é redirecionada para a página de About', () => {
     const { history } = renderWithRouter(<App />);
     const linkToAbout = screen.getByRole('link', { name: /About/i });
