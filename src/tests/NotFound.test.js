@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import NotFound from '../components/NotFound';
 
 describe('Testing if <NotFound /> is rendering the correct information', () => {
-  it('should contain a h2 heading with the text "Page requested not found 😭"',
+  it('should render a <h2> with the text "Page requested not found 😭"',
     () => {
       render(<NotFound />);
 
@@ -12,7 +12,7 @@ describe('Testing if <NotFound /> is rendering the correct information', () => {
       expect(notFound).toBeInTheDocument();
     });
 
-  it('should render the img https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif',
+  it('should render https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif',
     () => {
       render(<NotFound />);
 

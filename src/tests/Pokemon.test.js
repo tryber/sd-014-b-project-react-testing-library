@@ -4,11 +4,8 @@ import renderWithRouter from './renderWithRouter';
 import Pokemon from '../components/Pokemon';
 import pokemons from '../data';
 
-// Consultei o repositório do Matheus Silveira para
-// conseguir terminar esse requisito
-
-describe('Testing the Pokemon component', () => {
-  it('it should render a card with information of a chosen pokemon', () => {
+describe('Testing if <NotFound /> is rendering the correct information', () => {
+  it('should render a single card of a chosen pokemon', () => {
     const pokemon = pokemons[0];
     const { name, type, averageWeight: { value, measurementUnit }, image } = pokemon;
 
@@ -28,20 +25,19 @@ describe('Testing the Pokemon component', () => {
     expect(pokemonImage).toHaveAttribute('src', image);
   });
 
-  it(`should have a navigation link on the indicated Pokémon card to show 
-  the details of that pokémon`, () => {
+  it('should have a navlink to the details of that pokemon', () => {
     const pokemon = pokemons[0];
     const { id } = pokemon;
 
     renderWithRouter(<Pokemon pokemon={ pokemon } isFavorite={ false } />);
 
-    const detailsLink = screen.getByRole('link', { name: 'More details' });
-    expect(detailsLink).toBeInTheDocument();
-    expect(detailsLink).toHaveAttribute('href', `/pokemons/${id}`);
+    const moreDetails = screen.getByRole('link', { name: 'More details' });
+    expect(moreDetails).toBeInTheDocument();
+    expect(moreDetails).toHaveAttribute('href', `/pokemons/${id}`);
   });
 
-  it(`should redirect to detail page when clicked on the navigation 
-  link of the Pokémon`, () => {
+  it(`when clicked, should display the details of the chosen pokémon,
+  with the correct route`, () => {
     const pokemon = pokemons[0];
     const { id } = pokemon;
 
@@ -60,7 +56,7 @@ describe('Testing the Pokemon component', () => {
     expect(pathname).toBe(`/pokemons/${id}`);
   });
 
-  it('should have a star icon on the favorite pokémons', () => {
+  it('should apply a starred stats when the user select their favorite pokemon', () => {
     const pokemon = pokemons[0];
     const { name } = pokemon;
 
